@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design Dashboard - Lake Como Style</title>
+    <style>
+      :root {
+        --sidebar-width: 280px;
+        --topbar-height: 60px;
+        --bg-color: #f3f4f6;
+        --sidebar-bg: #111827;
+        --sidebar-text: #e5e7eb;
+        --sidebar-hover: #374151;
+        --accent: #3b82f6;
+        --border-color: #e5e7eb;
+      }
+
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif;
+        background-color: var(--bg-color);
+        overflow: hidden;
+      }
+
+      /* Layout */
+      .dashboard-container {
+        display: flex;
+        height: 100vh;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        width: var(--sidebar-width);
+        background-color: var(--sidebar-bg);
+        color: var(--sidebar-text);
+        display: flex;
+        flex-direction: column;
+        border-right: 1px solid #374151;
+        transition: transform 0.3s ease;
+        z-index: 100;
+      }
+
+      .sidebar-header {
+        padding: 20px;
+        border-bottom: 1px solid #374151;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .brand {
+        font-weight: 700;
+        font-size: 1.25rem;
+        color: white;
+        letter-spacing: -0.025em;
+      }
+
+      .design-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        flex: 1;
+        overflow-y: auto;
+      }
+
+      .design-item {
+        border-bottom: 1px solid #1f2937;
+      }
+
+      .design-link {
+        display: block;
+        padding: 16px 20px;
+        color: #9ca3af;
+        text-decoration: none;
+        transition: all 0.2s;
+        cursor: pointer;
+        border-left: 3px solid transparent;
+      }
+
+      .design-link:hover {
+        background-color: var(--sidebar-hover);
+        color: white;
+      }
+
+      .design-link.active {
+        background-color: #1f2937;
+        color: white;
+        border-left-color: var(--accent);
+      }
+
+      .design-status {
+        font-size: 0.75rem;
+        margin-top: 4px;
+        display: flex;
+        gap: 8px;
+        opacity: 0.7;
+      }
+
+      .status-badge {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
+
+      .status-badge.found {
+        background-color: #10b981;
+      }
+      .status-badge.loading {
+        background-color: #f59e0b;
+      }
+      .status-badge.error {
+        background-color: #ef4444;
+      }
+
+      /* Main Content */
+      .main-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        position: relative;
+      }
+
+      /* Top Bar */
+      .topbar {
+        height: var(--topbar-height);
+        background-color: white;
+        border-bottom: 1px solid var(--border-color);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 24px;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      }
+
+      .current-design-info {
+        font-weight: 600;
+        color: #111827;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .device-toggles {
+        display: flex;
+        background: #f3f4f6;
+        padding: 4px;
+        border-radius: 8px;
+        gap: 4px;
+      }
+
+      .device-btn {
+        background: none;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        color: #6b7280;
+        font-size: 0.875rem;
+        transition: all 0.2s;
+      }
+
+      .device-btn:hover {
+        color: #111827;
+        background: #e5e7eb;
+      }
+
+      .device-btn.active {
+        background: white;
+        color: var(--accent);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      }
+
+      .actions {
+        display: flex;
+        gap: 12px;
+      }
+
+      .action-btn {
+        background: white;
+        border: 1px solid #d1d5db;
+        color: #374151;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-size: 0.875rem;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .action-btn:hover {
+        background-color: #f9fafb;
+        border-color: #9ca3af;
+      }
+
+      .action-btn.primary {
+        background-color: var(--accent);
+        border-color: var(--accent);
+        color: white;
+      }
+
+      .action-btn.primary:hover {
+        background-color: #2563eb;
+      }
+
+      /* Preview Area */
+      .preview-area {
+        flex: 1;
+        background-color: #e5e7eb;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+      }
+
+      .iframe-container {
+        background: white;
+        box-shadow:
+          0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+      }
+
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+      }
+
+      /* Loaders & Errors */
+      .loading-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s;
+      }
+
+      .loading-overlay.visible {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .spinner {
+        width: 40px;
+        height: 40px;
+        border: 3px solid #f3f3f3;
+        border-top: 3px solid var(--accent);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .scan-status {
+        padding: 16px;
+        margin-top: auto;
+        border-top: 1px solid #374151;
+        font-size: 0.75rem;
+        color: #9ca3af;
+      }
+
+      /* Responsive View Sizes */
+      .view-desktop {
+        width: 100%;
+        height: 100%;
+      }
+      .view-tablet {
+        width: 768px;
+        height: 1024px;
+        max-height: 90%;
+        border-radius: 12px;
+      }
+      .view-mobile {
+        width: 375px;
+        height: 667px;
+        max-height: 90%;
+        border-radius: 24px;
+        border: 8px solid #1f2937;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <div class="brand">Design Hub</div>
+        </div>
+
+        <ul class="design-list" id="designList">
+          <!-- Dynamically populated list -->
+          <li class="scan-status" id="scanStatus">Scanning for designs...</li>
+        </ul>
+
+        <div class="scan-status">
+          <p>Auto-detects: design-*.html</p>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="topbar">
+          <div class="current-design-info">
+            <span id="currentDesignTitle">Select a design</span>
+          </div>
+
+          <div class="device-toggles">
+            <button
+              class="device-btn active"
+              onclick="setDevice('desktop')"
+              title="Desktop View"
+            >
+              🖥️
+            </button>
+            <button
+              class="device-btn"
+              onclick="setDevice('tablet')"
+              title="Tablet View"
+            >
+              📱
+            </button>
+            <button
+              class="device-btn"
+              onclick="setDevice('mobile')"
+              title="Mobile View"
+            >
+              📱
+            </button>
+          </div>
+
+          <div class="actions">
+            <a href="#" id="openNewTabBtn" target="_blank" class="action-btn">
+              <span>Open in New Tab</span>
+              ↗
+            </a>
+            <button onclick="refreshFrame()" class="action-btn primary">
+              Refresh
+            </button>
+          </div>
+        </div>
+
+        <div class="preview-area">
+          <div class="iframe-container view-desktop" id="iframeContainer">
+            <iframe id="designFrame" src=""></iframe>
+            <div class="loading-overlay" id="loadingOverlay">
+              <div class="spinner"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      const designListEl = document.getElementById("designList");
+      const scanStatusEl = document.getElementById("scanStatus");
+      const designFrame = document.getElementById("designFrame");
+      const currentDesignTitle = document.getElementById("currentDesignTitle");
+      const openNewTabBtn = document.getElementById("openNewTabBtn");
+      const iframeContainer = document.getElementById("iframeContainer");
+      const loadingOverlay = document.getElementById("loadingOverlay");
+
+      let designs = [];
+      const MAX_SCAN = 20; // How many numbers to check
+      let firstFound = null;
+
+      // Initialize
+      document.addEventListener("DOMContentLoaded", async () => {
+        scanForDesigns();
+      });
+
+      // Device toggling
+      window.setDevice = (device) => {
+        iframeContainer.className = "iframe-container view-" + device;
+
+        // Update buttons
+        document
+          .querySelectorAll(".device-btn")
+          .forEach((btn) => btn.classList.remove("active"));
+        event.currentTarget.classList.add("active");
+      };
+
+      window.refreshFrame = () => {
+        const currentSrc = designFrame.src;
+        designFrame.src = "";
+        setTimeout(() => (designFrame.src = currentSrc), 10);
+      };
+
+      // Load a design
+      window.loadDesign = (filename, name) => {
+        // Update UI
+        document
+          .querySelectorAll(".design-link")
+          .forEach((link) => link.classList.remove("active"));
+        const activeLink = document.querySelector(
+          `[data-filename="${filename}"]`,
+        );
+        if (activeLink) activeLink.classList.add("active");
+
+        // Show loading
+        loadingOverlay.classList.add("visible");
+
+        // precise delay to show loader
+        setTimeout(() => {
+          designFrame.src = filename;
+          currentDesignTitle.textContent = name;
+          openNewTabBtn.href = filename;
+        }, 100);
+
+        designFrame.onload = () => {
+          loadingOverlay.classList.remove("visible");
+        };
+      };
+
+      async function scanForDesigns() {
+        scanStatusEl.textContent = "Scanning...";
+        designListEl.innerHTML = "";
+
+        let foundCount = 0;
+        let consecutiveFailures = 0;
+        const isFileProtocol = window.location.protocol === "file:";
+
+        // If file protocol, we can't really "detect" without valid fetch.
+        // We will optimistically list the first few, or use a purely manual approach?
+        // Better: List 1-5 by default, then offer a button to "Load More".
+        const limit = isFileProtocol ? 5 : MAX_SCAN;
+
+        for (let i = 1; i <= limit; i++) {
+          const filename = `design-${i}.html`;
+          const name = `Design ${i}`;
+
+          if (isFileProtocol) {
+            // In file protocol, we assume existence for the first few to avoid CORS errors preventing any usage.
+            addDesignToList(filename, name, "unknown");
+            foundCount++;
+          } else {
+            try {
+              const response = await fetch(filename, { method: "HEAD" });
+              if (response.ok) {
+                addDesignToList(filename, name, "found");
+                if (!firstFound) firstFound = filename;
+                foundCount++;
+                consecutiveFailures = 0;
+              } else {
+                consecutiveFailures++;
+              }
+            } catch (error) {
+              // Start of the loop or network error
+              consecutiveFailures++;
+            }
+
+            if (consecutiveFailures > 3) break;
+          }
+        }
+
+        if (foundCount === 0) {
+          scanStatusEl.innerHTML =
+            "No designs found.<br><br><small>If you are opening this file directly, browsers block detecting other files. Use a local server (e.g., Live Server) for automatic detection.</small>";
+        } else {
+          scanStatusEl.textContent = "";
+          // If file protocol, show a note
+          if (isFileProtocol) {
+            const note = document.createElement("div");
+            note.style.padding = "12px";
+            note.style.fontSize = "0.75rem";
+            note.style.color = "#9ca3af";
+            note.innerHTML =
+              "Running in local mode. <br>Listing likely files (1-5). <br>Use a server for auto-detection.";
+            designListEl.appendChild(note);
+          }
+        }
+      }
+
+      function addDesignToList(filename, name, status = "found") {
+        const li = document.createElement("li");
+        li.className = "design-item";
+
+        let badgeClass = "found";
+        let statusText = "Ready";
+
+        if (status === "unknown") {
+          badgeClass = "loading";
+          statusText = "Local File";
+        }
+
+        const a = document.createElement("a");
+        a.className = "design-link";
+        a.dataset.filename = filename;
+        a.innerHTML = `
+            <div style="font-weight:500;">${name}</div>
+            <div class="design-status">
+                <span class="status-badge ${badgeClass}"></span> ${statusText}
+                <span style="margin-left:auto; opacity: 0.5; font-size: 0.7rem;">${filename}</span>
+            </div>
+        `;
+
+        a.onclick = (e) => {
+          e.preventDefault();
+          loadDesign(filename, name);
+        };
+
+        li.appendChild(a);
+        designListEl.appendChild(li);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1080 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lake Como Style | Luxury Immersive Experiences</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Updated Typography for a more Editorial Look */
+      body {
+        font-family: "Montserrat", sans-serif;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      .font-serif {
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      /* Smooth Scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Custom Animations */
+      .animate-fade-in {
+        animation: fadeIn 1s ease-out forwards;
+        opacity: 0;
+      }
+      .animate-slide-up {
+        animation: slideUp 0.8s ease-out forwards;
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      .animate-scale-in {
+        animation: scaleIn 1.2s ease-out forwards;
+        opacity: 0;
+        transform: scale(0.95);
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes slideUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes scaleIn {
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .glass-nav {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+      }
+
+      /* Hide scrollbar */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+
+    <script>
+      // --- SITE DATA ---
+      const SITE_DATA = {
+        homepage: [
+          {
+            _id: "homepage",
+            heroSection: {
+              ctaLink: "/contact",
+              eventShowcase: {
+                eventTypes: [
+                  "Pre- or Post-wedding events",
+                  "Small group celebrations",
+                  "VIP clients",
+                ],
+                link: "/themes",
+                title: "Perfect For",
+              },
+              mainHeading:
+                "From curated La Dolce Vita lunches & Bond Aperitivos for visitors to private villa events and bespoke couture, we create immersive Made-in-Italy fashion experiences.",
+              mobileVideoFile: {
+                assetUrl:
+                  "https://cdn.sanity.io/files/c20abca7/production/d1ef0f0bf33db10c1157acd3f71a066ca846983a.mp4",
+              },
+              playIndicatorText: "hear the music",
+              preHeading: "Luxury Immersive Fashion Experiences on Lake Como",
+              secondaryCtaLink: "/process",
+              subHeading:
+                "Celebrate elegance, style, and the timeless charm of Lake Como",
+              videoFile: {
+                assetUrl:
+                  "https://cdn.sanity.io/files/c20abca7/production/8619aa7c6162b0324b047155cadceb864dc70208.mp4",
+              },
+            },
+          },
+        ],
+        navbar: [
+          {
+            _id: "navbar",
+            ctaLink: "/contact",
+            ctaText: "Book Now",
+            links: [
+              { label: "Home", url: "/" },
+              { label: "2026 Themes", url: "/themes" },
+              { label: "Weekly Events", url: "/process" },
+              { label: "Ticketed Exp.", url: "/faq" },
+              { label: "Private Events", url: "/cast" },
+              { label: "Movie Trailer", url: "/movie" },
+              { label: "Gallery", url: "/gallery" },
+              { label: "About", url: "/crew" },
+              { label: "Contact", url: "/contact" },
+            ],
+            logoText: "LAKE COMO STYLE",
+          },
+        ],
+        footer: [
+          {
+            email: "info@lakecomostyle.it ",
+            footerTagline: "Curated Italian Moments",
+            phone: "+393487847234",
+            title: "Global Footer",
+          },
+        ],
+        themesPage: [
+          {
+            hero: {
+              description:
+                "Our 2026 themes are designed to turn every day on Lake Como into a fully immersive memory. Step into a world of curated props, photo-ready backdrops, polaroid moments, signature cocktails, themed menus, and music that brings each event to life.",
+              mainTitle: "Immersive Themes, Unforgettable Moments",
+              secondaryTitle:
+                "Fully themed, fully immersive, fully unforgettable",
+            },
+            themesList: [
+              {
+                title: "Agents of Style",
+                genre: "Bond Inspired",
+                vibe: "Sleek, stylish, high-stakes, espionage.",
+                story:
+                  "Guests step into the world of secret agents, daring missions, and intrigue.",
+                image: {
+                  assetUrl:
+                    "https://cdn.sanity.io/images/c20abca7/production/4729227fb0bb7d2fcb85a055cb40b79b0c6afa7e-1600x900.jpg",
+                },
+              },
+              {
+                title: "La Dolce Vita",
+                genre: "Italian / Romantic Glamour",
+                vibe: "Stylish, fun, romantic, sun-soaked Italian adventure.",
+                story:
+                  "Guests step into a story of romance and playful elegance in the heart of 1960s Italy.",
+                image: {
+                  assetUrl:
+                    "https://cdn.sanity.io/images/c20abca7/production/9abe77fbeaf20b814914e6c9e218b5753a162c4c-1064x911.png",
+                },
+              },
+              {
+                title: "The Hollywood Hustle",
+                genre: "Old Hollywood / Glamour",
+                vibe: "Classic 1940s–1960s Tinseltown glamour.",
+                story:
+                  "Guests become stars of a vintage cinematic caper, full of red carpets and silver-screen drama.",
+                image: {
+                  assetUrl:
+                    "https://cdn.sanity.io/images/c20abca7/production/4a261b170c114177ab1ba62caaa1577566afc635-1170x780.jpg",
+                },
+              },
+            ],
+          },
+        ],
+        castPage: [
+          {
+            hero: {
+              title: "Designed for Celebration, Styled to Remember",
+              subtitle: "From intimate gatherings to full celebrations",
+            },
+            content: {
+              paragraphs: [
+                "We create unforgettable experiences for groups of all sizes. Whether it’s an intimate gathering or a large celebration, our team brings your event to life with style, elegance, and flair.",
+                "Guests can choose from our exclusive 2026 themes—from the timeless glamour of La Dolce Vita, to the cinematic sparkle of Hollywood Hustle, or the sophisticated intrigue of Bond.",
+                "We provide all themed backdrops and props for Polaroid moments, with the option to personalize backdrops, giving your guests fun, memorable keepsakes.",
+              ],
+            },
+            showcaseImages: [
+              {
+                image: {
+                  assetUrl:
+                    "https://cdn.sanity.io/images/c20abca7/production/437dd49a02ecac575dc481e3535b2dfb4b275442-951x913.png",
+                },
+              },
+              {
+                image: {
+                  assetUrl:
+                    "https://cdn.sanity.io/images/c20abca7/production/06e1175d3bde3e3a5a3d37ad7841001a66cdd2ce-1920x1080.png",
+                },
+              },
+              {
+                image: {
+                  assetUrl:
+                    "https://cdn.sanity.io/images/c20abca7/production/5bdb7664d902978a660db843d80ca21424de53bf-960x720.jpg",
+                },
+              },
+            ],
+          },
+        ],
+        processPage: [
+          {
+            hero: {
+              heading: "Seasonal Weekly Events",
+              subHeading: "From Drinks to Dinner to Dancing Under the Stars",
+              description:
+                "Our 2026 themed experiences invite guests into a one-of-a-kind atmosphere on Lake Como, featuring photo-ready backdrops and a curated selection of props for spontaneous, playful photo moments.",
+            },
+            steps: [
+              {
+                stepNumber: 1,
+                heading: "Choose Your Story",
+                body: "Select from our signature themes or create a custom one. With over 3,000 costumes and props, your celebration can be uniquely tailored.",
+              },
+              {
+                stepNumber: 2,
+                heading: "Pick Your Location",
+                body: "Decide where your cinematic experience will take place: Our Venue, a Luxury Hotel, or Your Chosen Venue.",
+              },
+              {
+                stepNumber: 3,
+                heading: "Production Design",
+                body: "Our team curates every detail to bring your theme to life. From custom step & repeat backdrops to curated props.",
+              },
+              {
+                stepNumber: 4,
+                heading: "The Big Day",
+                body: "On the day of your event, guests step into a world of intrigue, glamour, and cinematic storytelling.",
+              },
+              {
+                stepNumber: 5,
+                heading: "Post-Production",
+                body: "Within 3–4 weeks, we deliver a beautifully produced 3-minute cinematic trailer.",
+              },
+            ],
+          },
+        ],
+        moviePage: [
+          {
+            hero: {
+              heading: "Where Every Guest Becomes A Star",
+              subHeading: "Lights, Camera, Action!",
+              subSubHeading:
+                "Our professional videographer captures your private event to create your very own 3-minute movie trailer.",
+            },
+            deliverables: [
+              {
+                title: "3-Minute Movie Trailer",
+                description:
+                  "A fully edited trailer up to 3 minutes in length with custom music and titles.",
+              },
+              {
+                title: "Social Media Cuts",
+                description:
+                  "Shorter versions optimized for Instagram, TikTok, YouTube, or Facebook.",
+              },
+            ],
+          },
+        ],
+        crewPage: [
+          {
+            hero: {
+              heading: "Your Event Crew",
+              subHeading: "From the Big Apple to the heart of Milan",
+            },
+            crewMembers: [
+              {
+                name: "Dee Lasprogata",
+                role: "Founder & Creative Director",
+                bio: [
+                  "Our founder, Dee Lasprogata has over 30 years of experience in fashion, working in New York, Los Angeles, Rome, Milan, and Lake Como.",
+                  "She has launched pioneering fashion collections working with celebrities including Valentino and Stevie Wonder.",
+                ],
+                image: {
+                  assetUrl:
+                    "https://cdn.sanity.io/images/c20abca7/production/e60f4c4a969ae568d0975a407795225dbe163a2a-470x558.png",
+                },
+              },
+              {
+                name: "Stefano Dozza",
+                role: "Filmmaker & Visual Director",
+                bio: [
+                  "Stefano Dozza is a filmmaker, photographer, and content producer from Bologna. He brings expertise in filmmaking and photography.",
+                ],
+                image: {
+                  assetUrl:
+                    "https://cdn.sanity.io/images/c20abca7/production/427d578bd9cde9bcce27512c36b3c3eadc4d7ccb-3456x5184.jpg",
+                },
+              },
+            ],
+            logos: [
+              {
+                assetUrl:
+                  "https://cdn.sanity.io/images/c20abca7/production/db22b67cdc4c6ad9f1d230c9710b05345e46bb3f-1170x382.jpg",
+              },
+              {
+                assetUrl:
+                  "https://cdn.sanity.io/images/c20abca7/production/1abdd77c34d19a7d239ef968514a8ca79dbadb74-656x360.jpg",
+              },
+              {
+                assetUrl:
+                  "https://cdn.sanity.io/images/c20abca7/production/458f2cfdae32d8daf86566e6e95bd6c2ad526070-1170x639.jpg",
+              },
+            ],
+          },
+        ],
+        venuePage: [
+          {
+            hero: {
+              heading: "Themed Events at Authentic Italian Venues",
+              subHeading: "From Villas to Historic Restaurants",
+            },
+            description: [
+              "AGENTS OF STYLE AT HOTEL TERZO CROTTO: Nestled in the heart of Cernobbio, Hotel Terzo Crotto is a charming historic property.",
+              "DATES: May 6 & May 16 | TIME: 5pm- 8pm",
+            ],
+            galleryImages: [
+              {
+                assetUrl:
+                  "https://cdn.sanity.io/images/c20abca7/production/bdfedf714bf67f3384a2a0f05294fb2222c2c744-1008x756.jpg",
+              },
+              {
+                assetUrl:
+                  "https://cdn.sanity.io/images/c20abca7/production/5bdb7664d902978a660db843d80ca21424de53bf-960x720.jpg",
+              },
+            ],
+          },
+        ],
+        galleryPage: [
+          {
+            hero: {
+              heading: "Scenes from the Experiences",
+              subHeading: "Lights, Camera, Action!",
+            },
+            images: [
+              {
+                assetUrl:
+                  "https://cdn.sanity.io/images/c20abca7/production/89307f3fef09feb106360e6380de44b5e9bb536c-1582x821.png",
+              },
+              {
+                assetUrl:
+                  "https://cdn.sanity.io/images/c20abca7/production/388b2d0430dbd54b63706e771f3a00cf16086aae-3024x2179.jpg",
+              },
+              {
+                assetUrl:
+                  "https://cdn.sanity.io/images/c20abca7/production/91472121a6a46f2e4be72ab8cebb4a232978c1d5-1775x892.png",
+              },
+              {
+                assetUrl:
+                  "https://cdn.sanity.io/images/c20abca7/production/ccd733b1ba903f27752dccddac1eaba559934d87-1788x673.png",
+              },
+              {
+                assetUrl:
+                  "https://cdn.sanity.io/images/c20abca7/production/9c7cbf0d082b55c42bddd5af0ff9a80563785bc0-1040x576.png",
+              },
+              {
+                assetUrl:
+                  "https://cdn.sanity.io/images/c20abca7/production/b70d3a824263d3ded7cdfc65e44cd041abccdb6e-2350x4029.jpg",
+              },
+            ],
+          },
+        ],
+        faqPage: [
+          {
+            faqs: [
+              {
+                question:
+                  "Are there weekly events open to all guests visiting Lake Como?",
+                answer:
+                  "Yes! We host weekly events for all guests visiting Lake Como, ranging from casual aperitivi to pre-fixed dinners at select lakeside locations.",
+              },
+              {
+                question: "Can I book a private event?",
+                answer:
+                  "Yes! We offer private events tailored for bachelorettes, tour groups, corporate functions, and other special gatherings.",
+              },
+              {
+                question: "How long in advance do I need to book?",
+                answer:
+                  "We recommend booking private events at least 2–4 weeks in advance to ensure availability.",
+              },
+            ],
+          },
+        ],
+        contactPage: [
+          {
+            hero: {
+              mainHeading: "Join the Party in Style",
+              description: "Drop us a message and step into the experience.",
+              preHeading: "Get in Touch",
+            },
+            form: {
+              emailLabel: "Email",
+              submitButtonText: "Join the Vibe",
+              formTitle: "Step Into the Scene",
+              firstNameLabel: "First Name",
+              lastNameLabel: "Last Name",
+              messageLabel: "Event Inquiry",
+            },
+          },
+        ],
+      };
+    </script>
+  </head>
+  <body
+    class="bg-sky-50 text-slate-900 antialiased selection:bg-sky-200 selection:text-sky-900 overflow-x-hidden"
+  >
+    <!-- FLOATING NAVBAR -->
+    <nav class="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
+      <div
+        class="glass-nav rounded-full px-6 py-3 flex items-center gap-6 md:gap-8 transition-all duration-300 max-w-5xl w-full justify-between"
+      >
+        <!-- Mobile Menu Toggle -->
+        <button class="lg:hidden text-sky-900" onclick="toggleMobileMenu()">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+
+        <!-- Logo -->
+        <div
+          onclick="navigate('/')"
+          class="text-xl font-serif tracking-widest cursor-pointer font-bold text-sky-950 whitespace-nowrap"
+        >
+          LAKE COMO STYLE
+        </div>
+
+        <!-- Desktop Links -->
+        <div
+          class="hidden lg:flex items-center space-x-6 text-xs font-medium tracking-wider text-slate-600 uppercase"
+          id="desktop-links"
+        >
+          <!-- Links injected by JS -->
+        </div>
+
+        <!-- CTA -->
+        <button
+          onclick="navigate('/contact')"
+          class="bg-sky-900 text-white px-5 py-2 rounded-full text-xs font-bold tracking-wider hover:bg-sky-700 transition-colors whitespace-nowrap"
+        >
+          BOOK NOW
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 bg-white/95 backdrop-blur-xl z-40 hidden flex-col justify-center items-center space-y-6 animate-fade-in"
+    >
+      <button
+        class="absolute top-8 right-8 text-slate-500"
+        onclick="toggleMobileMenu()"
+      >
+        <i data-lucide="x" class="w-8 h-8"></i>
+      </button>
+      <!-- Mobile links injected by JS -->
+    </div>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main id="app-content" class="min-h-screen">
+      <!-- Dynamic content will be injected here -->
+    </main>
+
+    <!-- EDITORIAL FOOTER -->
+    <footer class="bg-sky-950 text-sky-100 py-20 border-t border-sky-900/50">
+      <div class="container mx-auto px-6 grid md:grid-cols-4 gap-12">
+        <div class="md:col-span-2">
+          <h2 class="text-3xl font-serif mb-6 text-white">LAKE COMO STYLE</h2>
+          <p class="text-sky-200/80 max-w-md font-light">
+            Creating immersive, cinematic, and unforgettable fashion experiences
+            on the timeless shores of Lake Como.
+          </p>
+          <div class="flex gap-6 mt-8">
+            <a href="#" class="hover:text-white transition-colors"
+              ><i data-lucide="instagram" class="w-5 h-5"></i
+            ></a>
+            <a href="#" class="hover:text-white transition-colors"
+              ><i data-lucide="facebook" class="w-5 h-5"></i
+            ></a>
+            <a href="#" class="hover:text-white transition-colors"
+              ><i data-lucide="linkedin" class="w-5 h-5"></i
+            ></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-serif text-lg mb-4 text-white">Contact</h4>
+          <p class="font-light text-sm mb-2">info@lakecomostyle.it</p>
+          <p class="font-light text-sm">+39 348 784 7234</p>
+        </div>
+        <div>
+          <h4 class="font-serif text-lg mb-4 text-white">Legal</h4>
+          <ul class="space-y-2 font-light text-sm">
+            <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-white">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div
+        class="container mx-auto px-6 mt-16 pt-8 border-t border-sky-900/50 text-center text-xs text-sky-400/60 uppercase tracking-widest"
+      >
+        © 2026 Lake Como Style. All rights reserved.
+      </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+      // --- ROUTER & STATE ---
+      let CURRENT_PATH = "/";
+
+      function navigate(path) {
+        CURRENT_PATH = path;
+        window.scrollTo(0, 0);
+        renderPage();
+        // Close mobile menu if open
+        document.getElementById("mobile-menu").classList.add("hidden");
+        updateActiveLink();
+      }
+
+      function toggleMobileMenu() {
+        const menu = document.getElementById("mobile-menu");
+        menu.classList.toggle("hidden");
+        menu.classList.toggle("flex");
+      }
+
+      function updateActiveLink() {
+        const desktopLinks = document.querySelectorAll("#desktop-links button");
+        desktopLinks.forEach((link) => {
+          if (link.dataset.path === CURRENT_PATH) {
+            link.classList.add("text-sky-900", "font-bold");
+            link.classList.remove("text-slate-600");
+          } else {
+            link.classList.remove("text-sky-900", "font-bold");
+            link.classList.add("text-slate-600");
+          }
+        });
+      }
+
+      // --- COMPONENTS RENDERERS ---
+
+      function renderNavbar() {
+        const navData = SITE_DATA.navbar[0];
+        const desktopContainer = document.getElementById("desktop-links");
+        const mobileContainer = document.getElementById("mobile-menu");
+
+        // Render Desktop
+        desktopContainer.innerHTML = navData.links
+          .map(
+            (link) => `
+                <button 
+                    onclick="navigate('${link.url}')"
+                    class="hover:text-sky-800 transition-colors"
+                    data-path="${link.url}"
+                >
+                    ${link.label}
+                </button>
+            `,
+          )
+          .join("");
+
+        // Render Mobile
+        let mobileHTML = navData.links
+          .map(
+            (link) => `
+                <button 
+                    onclick="navigate('${link.url}')"
+                    class="text-2xl font-serif text-sky-950 hover:text-sky-600 transition-colors"
+                >
+                    ${link.label}
+                </button>
+            `,
+          )
+          .join("");
+
+        mobileContainer.innerHTML = `
+                <button class="absolute top-8 right-8 text-slate-500" onclick="toggleMobileMenu()"><i data-lucide="x" class="w-8 h-8"></i></button>
+                ${mobileHTML}
+            `;
+      }
+
+      // --- PAGE GENERATORS ---
+
+      function getHomeHTML() {
+        const data = SITE_DATA.homepage[0].heroSection;
+        return `
+            <div class="relative min-h-screen w-full overflow-hidden flex items-end pb-20 md:pb-32 justify-center">
+                <!-- Cinematic Video Background -->
+                <div class="absolute inset-0 z-0">
+                    <video autoplay muted loop playsinline class="w-full h-full object-cover">
+                        <source src="${data.videoFile.assetUrl}" type="video/mp4" />
+                    </video>
+                    <!-- Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-sky-950/90 via-sky-900/20 to-transparent"></div>
+                </div>
+
+                <!-- Glass Content Card -->
+                <div class="relative z-10 container mx-auto px-6">
+                    <div class="glass-panel p-8 md:p-16 rounded-3xl max-w-4xl mx-auto text-center shadow-2xl animate-scale-in">
+                        <h2 class="text-xs md:text-sm font-bold tracking-[0.3em] uppercase mb-6 text-sky-900 animate-slide-up">${data.preHeading}</h2>
+                        <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif leading-tight mb-8 text-slate-900 animate-slide-up" style="animation-delay: 0.1s">${data.mainHeading}</h1>
+                        <p class="text-lg md:text-xl font-light mb-10 text-slate-600 max-w-2xl mx-auto animate-slide-up" style="animation-delay: 0.2s">${data.subHeading}</p>
+                        
+                        <div class="flex flex-col md:flex-row items-center justify-center gap-4 animate-slide-up" style="animation-delay: 0.3s">
+                            <button onclick="navigate('${data.ctaLink}')" class="px-10 py-4 bg-sky-900 text-white font-medium text-sm tracking-widest uppercase rounded-full hover:bg-sky-800 transition-all hover:scale-105 shadow-lg w-full md:w-auto">Start Journey</button>
+                            <button onclick="navigate('${data.secondaryCtaLink}')" class="px-10 py-4 bg-white text-sky-900 border border-sky-100 font-medium text-sm tracking-widest uppercase rounded-full hover:bg-sky-50 transition-colors w-full md:w-auto">Explore Themes</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Bottom Tags -->
+                    <div class="mt-12 flex flex-wrap justify-center gap-4 md:gap-8 opacity-80 animate-fade-in" style="animation-delay: 1s">
+                        ${data.eventShowcase.eventTypes
+                          .filter((t) => t)
+                          .map(
+                            (type) => `
+                            <span class="px-4 py-2 bg-white/10 backdrop-blur-md rounded-full text-xs text-white uppercase tracking-wider border border-white/20">
+                                ${type}
+                            </span>
+                        `,
+                          )
+                          .join("")}
+                    </div>
+                </div>
+            </div>
+            `;
+      }
+
+      function getThemesHTML() {
+        const data = SITE_DATA.themesPage[0];
+        return `
+            <div class="pt-32 pb-20 bg-sky-50 min-h-screen">
+                <div class="container mx-auto px-6">
+                    <div class="text-center max-w-3xl mx-auto mb-24 animate-slide-up">
+                        <span class="text-sky-600 font-bold tracking-widest uppercase text-xs mb-4 block">Our 2026 Collection</span>
+                        <h1 class="text-5xl md:text-7xl font-serif text-sky-950 mb-8">${data.hero.mainTitle}</h1>
+                        <p class="text-xl text-slate-500 font-light leading-relaxed">${data.hero.description}</p>
+                    </div>
+                    
+                    <div class="space-y-32">
+                        ${data.themesList
+                          .map(
+                            (theme, idx) => `
+                            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-24 group">
+                                <div class="w-full md:w-1/2 ${idx % 2 === 1 ? "md:order-last" : ""}">
+                                    <div class="relative overflow-hidden rounded-[2rem] shadow-2xl aspect-[4/5] md:aspect-[3/4]">
+                                        <img src="${theme.image.assetUrl}" alt="${theme.title}" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                                        <div class="absolute inset-0 bg-sky-900/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                                    </div>
+                                </div>
+                                <div class="w-full md:w-1/2 text-center md:text-left">
+                                    <div class="inline-block px-3 py-1 border border-sky-200 rounded-full text-sky-600 text-xs font-bold uppercase tracking-widest mb-6">${theme.genre}</div>
+                                    <h2 class="text-4xl md:text-6xl font-serif text-sky-950 mb-6">${theme.title}</h2>
+                                    <p class="text-lg text-slate-600 font-light leading-relaxed mb-8">${theme.story}</p>
+                                    <div class="flex flex-col gap-2 border-l-2 border-sky-200 pl-6 text-left">
+                                        <span class="text-xs uppercase text-sky-400 font-bold tracking-widest">The Vibe</span>
+                                        <span class="text-slate-700 italic font-serif text-xl">${theme.vibe}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        `,
+                          )
+                          .join("")}
+                    </div>
+                </div>
+            </div>
+            `;
+      }
+
+      function getProcessHTML() {
+        const data = SITE_DATA.processPage[0];
+        return `
+            <div class="pt-32 pb-20 bg-white min-h-screen">
+                <div class="container mx-auto px-6">
+                    <div class="text-center max-w-4xl mx-auto mb-24 animate-slide-up">
+                        <span class="text-sky-600 font-bold tracking-widest uppercase text-xs mb-4 block">${data.hero.heading}</span>
+                        <h1 class="text-5xl md:text-6xl font-serif text-sky-950 mb-8">${data.hero.subHeading}</h1>
+                        <p class="text-lg text-slate-600 font-light leading-relaxed whitespace-pre-line">${data.hero.description}</p>
+                    </div>
+
+                    <div class="relative max-w-5xl mx-auto">
+                        <!-- Vertical Line (Desktop) -->
+                        <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-sky-100 -translate-x-1/2"></div>
+
+                        <div class="space-y-12 md:space-y-24 relative">
+                            ${data.steps
+                              .map(
+                                (step, idx) => `
+                                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-0">
+                                    <!-- Left Side -->
+                                    <div class="w-full md:w-1/2 md:pr-16 text-center md:text-right ${idx % 2 === 1 ? "md:invisible hidden md:block" : ""}">
+                                        <h3 class="text-3xl font-serif text-sky-900 mb-3">${step.heading}</h3>
+                                        <p class="text-slate-500 font-light leading-relaxed text-sm">${step.body.substring(0, 150)}...</p>
+                                    </div>
+
+                                    <!-- Center Marker -->
+                                    <div class="relative z-10 flex-shrink-0 w-12 h-12 rounded-full bg-sky-50 border border-sky-200 flex items-center justify-center text-sky-900 font-serif font-bold text-lg shadow-sm">
+                                        ${step.stepNumber}
+                                    </div>
+
+                                    <!-- Right Side -->
+                                    <div class="w-full md:w-1/2 md:pl-16 text-center md:text-left ${idx % 2 === 0 ? "md:invisible hidden md:block" : ""}">
+                                        <h3 class="text-3xl font-serif text-sky-900 mb-3">${step.heading}</h3>
+                                        <p class="text-slate-500 font-light leading-relaxed text-sm">${step.body.substring(0, 150)}...</p>
+                                    </div>
+                                    
+                                    <!-- Mobile Content (Shown when desktop side is hidden/invisible) -->
+                                     <div class="md:hidden text-center bg-sky-50 p-6 rounded-xl w-full">
+                                        <h3 class="text-2xl font-serif text-sky-900 mb-2">${step.heading}</h3>
+                                        <p class="text-slate-600 font-light text-sm">${step.body}</p>
+                                    </div>
+                                </div>
+                            `,
+                              )
+                              .join("")}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `;
+      }
+
+      function getCastHTML() {
+        const data = SITE_DATA.castPage[0];
+        return `
+            <div class="pt-32 pb-20 bg-sky-950 text-white min-h-screen">
+                <div class="container mx-auto px-6">
+                    <div class="grid lg:grid-cols-2 gap-16 items-start">
+                        <div class="sticky top-32 animate-slide-up">
+                            <span class="text-sky-400 font-bold tracking-widest uppercase text-xs mb-4 block">Private Events</span>
+                            <h1 class="text-5xl md:text-7xl font-serif mb-8 text-white leading-none">${data.hero.title}</h1>
+                            <p class="text-xl text-sky-200 font-light italic mb-12">${data.hero.subtitle}</p>
+                            
+                            <div class="prose prose-invert prose-lg font-light text-sky-100/80 mb-12">
+                                ${data.content.paragraphs
+                                  .slice(0, 3)
+                                  .map((para) => `<p>${para}</p>`)
+                                  .join("")}
+                            </div>
+                            
+                            <button onclick="navigate('/contact')" class="inline-flex items-center gap-3 px-8 py-4 bg-white text-sky-950 rounded-full font-bold tracking-wider hover:bg-sky-100 transition-colors">
+                                INQUIRE NOW <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+
+                        <!-- Masonry Grid for Images -->
+                        <div class="columns-1 md:columns-2 gap-6 space-y-6">
+                            ${data.showcaseImages
+                              .map(
+                                (item, i) => `
+                                <div class="break-inside-avoid rounded-2xl overflow-hidden shadow-2xl hover:opacity-90 transition-opacity duration-500">
+                                    <img src="${item.image.assetUrl}" class="w-full h-auto object-cover" alt="Event" loading="lazy" />
+                                </div>
+                            `,
+                              )
+                              .join("")}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `;
+      }
+
+      function getMovieHTML() {
+        const data = SITE_DATA.moviePage[0];
+        return `
+            <div class="relative min-h-screen bg-black text-white pt-32 pb-20 overflow-hidden">
+                <!-- Abstract Background -->
+                <div class="absolute inset-0 opacity-30">
+                     <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(14,165,233,0.3),transparent_70%)]"></div>
+                </div>
+
+                <div class="container mx-auto px-6 relative z-10">
+                    <div class="text-center max-w-4xl mx-auto mb-24 animate-scale-in">
+                        <div class="w-20 h-20 bg-sky-900/50 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-8 border border-sky-800">
+                             <i data-lucide="clapperboard" class="w-8 h-8 text-sky-400"></i>
+                        </div>
+                        <h1 class="text-5xl md:text-8xl font-serif mb-6 tracking-tight">${data.hero.heading}</h1>
+                        <p class="text-2xl text-sky-200 font-light font-serif italic">${data.hero.subHeading}</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                        ${data.deliverables
+                          .map(
+                            (item) => `
+                            <div class="bg-white/5 backdrop-blur-md border border-white/10 p-10 rounded-3xl hover:bg-white/10 transition-colors duration-300">
+                                <h3 class="text-3xl font-serif text-sky-300 mb-4">${item.title}</h3>
+                                <p class="text-slate-300 font-light leading-relaxed">${item.description}</p>
+                            </div>
+                        `,
+                          )
+                          .join("")}
+                    </div>
+                </div>
+            </div>
+            `;
+      }
+
+      function getTicketedHTML() {
+        const venueData = SITE_DATA.venuePage[0];
+        const faqData = SITE_DATA.faqPage[0];
+
+        return `
+            <div class="pt-32 pb-20 bg-slate-50 min-h-screen">
+                <div class="container mx-auto px-6">
+                    
+                    <!-- Venue Feature -->
+                    <div class="bg-white rounded-[3rem] p-8 md:p-16 shadow-xl mb-24 animate-slide-up">
+                        <div class="grid lg:grid-cols-2 gap-16">
+                            <div class="flex flex-col justify-center">
+                                <span class="text-sky-600 font-bold uppercase tracking-widest text-xs mb-4">Ticketed Experiences</span>
+                                <h1 class="text-4xl md:text-6xl font-serif text-slate-900 mb-8">${venueData.hero.heading}</h1>
+                                <div class="space-y-6 text-slate-600 font-light mb-8">
+                                    ${venueData.description.map((desc) => `<p>${desc}</p>`).join("")}
+                                </div>
+                                <button class="px-8 py-4 bg-sky-900 text-white rounded-full font-bold tracking-widest uppercase hover:bg-sky-800 transition-colors w-max">
+                                    Book Your Spot
+                                </button>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                ${venueData.galleryImages
+                                  .slice(0, 4)
+                                  .map(
+                                    (img, i) => `
+                                    <img src="${img.assetUrl}" class="rounded-2xl w-full h-full object-cover aspect-square ${i % 2 !== 0 ? "mt-8" : "mb-8"}" alt="Venue" />
+                                `,
+                                  )
+                                  .join("")}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Clean Accordion FAQ -->
+                    <div class="max-w-3xl mx-auto">
+                        <h2 class="text-4xl font-serif text-center text-slate-900 mb-12">Common Questions</h2>
+                        <div class="space-y-4">
+                            ${faqData.faqs
+                              .map(
+                                (faq, i) => `
+                                <div class="bg-white rounded-2xl p-1 shadow-sm transition-shadow hover:shadow-md">
+                                    <details class="group">
+                                        <summary class="flex justify-between items-center p-6 cursor-pointer list-none font-medium text-slate-800 text-lg">
+                                            ${faq.question}
+                                            <span class="bg-sky-50 text-sky-600 rounded-full w-8 h-8 flex items-center justify-center transition-transform group-open:rotate-180">
+                                                <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                                            </span>
+                                        </summary>
+                                        <div class="px-6 pb-6 text-slate-500 font-light leading-relaxed">
+                                            ${faq.answer}
+                                        </div>
+                                    </details>
+                                </div>
+                            `,
+                              )
+                              .join("")}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `;
+      }
+
+      function getGalleryHTML() {
+        const data = SITE_DATA.galleryPage[0];
+        return `
+            <div class="pt-32 pb-20 bg-white min-h-screen">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-16 animate-fade-in">
+                        <h1 class="text-5xl md:text-7xl font-serif text-slate-900 mb-4">${data.hero.heading}</h1>
+                        <p class="text-xl text-slate-500 font-serif italic">${data.hero.subHeading}</p>
+                    </div>
+                    
+                    <div class="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8 animate-slide-up">
+                        ${data.images
+                          .map(
+                            (img) => `
+                            <div class="break-inside-avoid relative group overflow-hidden rounded-xl cursor-pointer">
+                                <img src="${img.assetUrl}" class="w-full h-auto transition-transform duration-700 group-hover:scale-105" alt="Gallery" loading="lazy" />
+                                <div class="absolute inset-0 bg-sky-900/0 group-hover:bg-sky-900/20 transition-colors duration-300"></div>
+                            </div>
+                        `,
+                          )
+                          .join("")}
+                    </div>
+                </div>
+            </div>
+            `;
+      }
+
+      function getAboutHTML() {
+        const data = SITE_DATA.crewPage[0];
+        return `
+            <div class="pt-32 pb-20 bg-sky-50 min-h-screen">
+                <div class="container mx-auto px-6">
+                    <div class="text-center max-w-4xl mx-auto mb-24 animate-slide-up">
+                        <span class="text-sky-600 font-bold tracking-widest uppercase text-xs mb-4 block">Behind the Scenes</span>
+                        <h1 class="text-5xl md:text-7xl font-serif text-sky-950 mb-8">${data.hero.heading}</h1>
+                        <p class="text-xl text-slate-600 font-light">${data.hero.description}</p>
+                    </div>
+
+                    <div class="space-y-32 mb-32">
+                        ${data.crewMembers
+                          .map(
+                            (member, i) => `
+                            <div class="flex flex-col md:flex-row gap-16 items-center">
+                                <div class="w-full md:w-1/2 ${i % 2 === 1 ? "md:order-last" : ""}">
+                                    <div class="relative p-4">
+                                        <div class="absolute inset-0 border border-sky-200 rounded-full transform rotate-3"></div>
+                                        <img src="${member.image.assetUrl}" class="relative rounded-full aspect-square object-cover shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 w-full max-w-md mx-auto" alt="${member.name}" />
+                                    </div>
+                                </div>
+                                <div class="w-full md:w-1/2 text-center md:text-left">
+                                    <h3 class="text-4xl font-serif text-sky-950 mb-2">${member.name}</h3>
+                                    <p class="text-xs font-bold uppercase tracking-widest text-sky-600 mb-8 border-b border-sky-200 inline-block pb-2">${member.role}</p>
+                                    <div class="space-y-4 text-slate-600 font-light leading-relaxed">
+                                        ${member.bio.map((p) => `<p>${p}</p>`).join("")}
+                                    </div>
+                                </div>
+                            </div>
+                        `,
+                          )
+                          .join("")}
+                    </div>
+                    
+                    <div class="border-t border-sky-200 pt-16">
+                        <p class="text-center font-serif italic text-2xl text-slate-400 mb-12">Featured In</p>
+                        <div class="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-40 mix-blend-multiply">
+                            ${data.logos.map((logo) => `<img src="${logo.assetUrl}" class="h-10 md:h-16 object-contain" alt="Press Logo" />`).join("")}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `;
+      }
+
+      function getContactHTML() {
+        const data = SITE_DATA.contactPage[0];
+        return `
+            <div class="min-h-screen bg-white flex flex-col md:flex-row">
+                <!-- Visual Side -->
+                <div class="w-full md:w-1/2 bg-sky-950 relative overflow-hidden min-h-[40vh] md:min-h-screen">
+                    <img src="https://cdn.sanity.io/images/c20abca7/production/708cec19ac0d52a98033e50246ca0cb168209f2f-414x600.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-sky-950 to-transparent"></div>
+                    <div class="relative z-10 h-full flex flex-col justify-center p-12 md:p-24 text-white">
+                        <span class="text-sky-400 font-bold tracking-widest uppercase text-xs mb-4">${data.hero.preHeading}</span>
+                        <h1 class="text-5xl md:text-7xl font-serif mb-8">${data.hero.mainHeading}</h1>
+                        <p class="text-sky-200 font-light text-lg max-w-md">${data.hero.description}</p>
+                        
+                        <div class="mt-12 space-y-6 text-sm font-light">
+                             <div class="flex items-center gap-4"><div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center"><i data-lucide="mail" class="w-4 h-4"></i></div> info@lakecomostyle.it</div>
+                             <div class="flex items-center gap-4"><div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center"><i data-lucide="phone" class="w-4 h-4"></i></div> +39 348 784 7234</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Form Side -->
+                <div class="w-full md:w-1/2 flex items-center justify-center p-12 md:p-24">
+                    <div class="w-full max-w-lg">
+                        <h2 class="text-3xl font-serif text-sky-950 mb-8">${data.form.formTitle}</h2>
+                        <form class="space-y-6" onsubmit="event.preventDefault(); alert('Message sent!');">
+                            <div class="grid grid-cols-2 gap-6">
+                                <div class="space-y-2">
+                                    <label class="text-xs font-bold uppercase text-slate-400 tracking-wider">${data.form.firstNameLabel}</label>
+                                    <input type="text" class="w-full border-b border-slate-200 py-2 focus:outline-none focus:border-sky-600 transition-colors bg-transparent font-light" placeholder="Jane" />
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-xs font-bold uppercase text-slate-400 tracking-wider">${data.form.lastNameLabel}</label>
+                                    <input type="text" class="w-full border-b border-slate-200 py-2 focus:outline-none focus:border-sky-600 transition-colors bg-transparent font-light" placeholder="Doe" />
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase text-slate-400 tracking-wider">${data.form.emailLabel}</label>
+                                <input type="email" class="w-full border-b border-slate-200 py-2 focus:outline-none focus:border-sky-600 transition-colors bg-transparent font-light" placeholder="jane@example.com" />
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase text-slate-400 tracking-wider">${data.form.messageLabel}</label>
+                                <textarea rows="4" class="w-full border-b border-slate-200 py-2 focus:outline-none focus:border-sky-600 transition-colors bg-transparent font-light resize-none" placeholder="Tell us about your dream event..."></textarea>
+                            </div>
+                            <button class="w-full bg-sky-950 text-white py-5 rounded-none font-bold tracking-widest uppercase hover:bg-sky-800 transition-all mt-8">
+                                ${data.form.submitButtonText}
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            `;
+      }
+
+      // --- CORE RENDER FUNCTION ---
+
+      function renderPage() {
+        const container = document.getElementById("app-content");
+        let content = "";
+
+        switch (CURRENT_PATH) {
+          case "/":
+            content = getHomeHTML();
+            break;
+          case "/themes":
+            content = getThemesHTML();
+            break;
+          case "/process":
+            content = getProcessHTML();
+            break;
+          case "/cast":
+            content = getCastHTML();
+            break;
+          case "/movie":
+            content = getMovieHTML();
+            break;
+          case "/faq":
+            content = getTicketedHTML();
+            break;
+          case "/gallery":
+            content = getGalleryHTML();
+            break;
+          case "/crew":
+            content = getAboutHTML();
+            break;
+          case "/contact":
+            content = getContactHTML();
+            break;
+          default:
+            content = getHomeHTML();
+        }
+
+        container.innerHTML = content;
+        lucide.createIcons(); // Re-init icons for new content
+        renderNavbar(); // Re-render to update state
+        updateActiveLink(); // Ensure active state is correct
+      }
+
+      // --- INIT ---
+
+      document.addEventListener("DOMContentLoaded", () => {
+        renderPage();
+        renderNavbar();
+        updateActiveLink();
+      });
+    </script>
+  </body>
+</html>
