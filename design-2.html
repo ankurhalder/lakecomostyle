@@ -15,23 +15,31 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Italiana&family=Montserrat:wght@200;300;400;500;600&display=swap"
       rel="stylesheet"
     />
 
     <style>
-      /* Updated Typography for a more Editorial Look */
+      /* DESIGN SYSTEM: "Modern Italian Luxury" */
+      :root {
+        --color-deep-blue: #082f49; /* sky-950 */
+        --color-cream: #f8fafc; /* slate-50 */
+      }
+
       body {
         font-family: "Montserrat", sans-serif;
+        background-color: var(--color-cream);
+        color: var(--color-deep-blue);
       }
+
       h1,
       h2,
       h3,
       h4,
       h5,
       h6,
-      .font-serif {
-        font-family: "Cormorant Garamond", serif;
+      .font-display {
+        font-family: "Italiana", serif;
       }
 
       /* Smooth Scrolling */
@@ -41,18 +49,18 @@
 
       /* Custom Animations */
       .animate-fade-in {
-        animation: fadeIn 1s ease-out forwards;
+        animation: fadeIn 1.2s ease-out forwards;
         opacity: 0;
       }
       .animate-slide-up {
-        animation: slideUp 0.8s ease-out forwards;
+        animation: slideUp 1s cubic-bezier(0.2, 1, 0.2, 1) forwards;
         opacity: 0;
         transform: translateY(40px);
       }
-      .animate-scale-in {
-        animation: scaleIn 1.2s ease-out forwards;
+      .animate-scale-reveal {
+        animation: scaleReveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         opacity: 0;
-        transform: scale(0.95);
+        transform: scale(1.1);
       }
 
       @keyframes fadeIn {
@@ -66,25 +74,34 @@
           transform: translateY(0);
         }
       }
-      @keyframes scaleIn {
+      @keyframes scaleReveal {
         to {
           opacity: 1;
           transform: scale(1);
         }
       }
 
+      /* Utility Classes */
+      .text-shadow-sm {
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      }
       .glass-panel {
-        background: rgba(255, 255, 255, 0.7);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
       }
 
-      .glass-nav {
-        background: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+      /* Grain Texture */
+      .grain-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.03;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
       }
 
       /* Hide scrollbar */
@@ -94,6 +111,14 @@
       .no-scrollbar {
         -ms-overflow-style: none;
         scrollbar-width: none;
+      }
+
+      /* Image Hover Effects */
+      .hover-zoom-img {
+        transition: transform 1.2s cubic-bezier(0.2, 1, 0.2, 1);
+      }
+      .group:hover .hover-zoom-img {
+        transform: scale(1.05);
       }
     </style>
 
@@ -445,99 +470,83 @@
     </script>
   </head>
   <body
-    class="bg-sky-50 text-slate-900 antialiased selection:bg-sky-200 selection:text-sky-900 overflow-x-hidden"
+    class="bg-slate-50 text-sky-950 antialiased selection:bg-sky-200 selection:text-sky-900 overflow-x-hidden"
   >
-    <!-- FLOATING NAVBAR -->
-    <nav class="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
-      <div
-        class="glass-nav rounded-full px-6 py-3 flex items-center gap-6 md:gap-8 transition-all duration-300 max-w-5xl w-full justify-between"
-      >
-        <!-- Mobile Menu Toggle -->
-        <button class="lg:hidden text-sky-900" onclick="toggleMobileMenu()">
-          <i data-lucide="menu" class="w-6 h-6"></i>
-        </button>
+    <div class="grain-overlay"></div>
 
+    <!-- MODERN LUXURY NAVBAR -->
+    <nav
+      id="navbar"
+      class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-transparent py-6 border-b border-transparent"
+    >
+      <div class="container mx-auto px-6 flex justify-between items-center">
         <!-- Logo -->
         <div
           onclick="navigate('/')"
-          class="text-xl font-serif tracking-widest cursor-pointer font-bold text-sky-950 whitespace-nowrap"
+          class="text-xl font-display font-medium tracking-[0.2em] cursor-pointer text-white mix-blend-difference z-50"
         >
           LAKE COMO STYLE
         </div>
 
         <!-- Desktop Links -->
-        <div
-          class="hidden lg:flex items-center space-x-6 text-xs font-medium tracking-wider text-slate-600 uppercase"
-          id="desktop-links"
-        >
+        <div class="hidden lg:flex items-center gap-10" id="desktop-links">
           <!-- Links injected by JS -->
         </div>
 
-        <!-- CTA -->
+        <!-- Mobile Toggle -->
         <button
-          onclick="navigate('/contact')"
-          class="bg-sky-900 text-white px-5 py-2 rounded-full text-xs font-bold tracking-wider hover:bg-sky-700 transition-colors whitespace-nowrap"
+          class="lg:hidden text-white mix-blend-difference z-50"
+          onclick="toggleMobileMenu()"
         >
-          BOOK NOW
+          <i data-lucide="menu" class="w-6 h-6"></i>
         </button>
       </div>
-    </nav>
 
-    <!-- Mobile Menu Overlay -->
-    <div
-      id="mobile-menu"
-      class="fixed inset-0 bg-white/95 backdrop-blur-xl z-40 hidden flex-col justify-center items-center space-y-6 animate-fade-in"
-    >
-      <button
-        class="absolute top-8 right-8 text-slate-500"
-        onclick="toggleMobileMenu()"
+      <!-- Mobile Menu Overlay -->
+      <div
+        id="mobile-menu"
+        class="fixed inset-0 bg-sky-950 text-white z-40 hidden flex-col justify-center items-center space-y-8 animate-fade-in"
       >
-        <i data-lucide="x" class="w-8 h-8"></i>
-      </button>
-      <!-- Mobile links injected by JS -->
-    </div>
+        <!-- Mobile links injected by JS -->
+      </div>
+    </nav>
 
     <!-- MAIN CONTENT CONTAINER -->
     <main id="app-content" class="min-h-screen">
       <!-- Dynamic content will be injected here -->
     </main>
 
-    <!-- EDITORIAL FOOTER -->
-    <footer class="bg-sky-950 text-sky-100 py-20 border-t border-sky-900/50">
+    <!-- ELEGANT FOOTER -->
+    <footer class="bg-sky-950 text-white py-24 border-t border-sky-900/30">
       <div class="container mx-auto px-6 grid md:grid-cols-4 gap-12">
         <div class="md:col-span-2">
-          <h2 class="text-3xl font-serif mb-6 text-white">LAKE COMO STYLE</h2>
-          <p class="text-sky-200/80 max-w-md font-light">
-            Creating immersive, cinematic, and unforgettable fashion experiences
-            on the timeless shores of Lake Como.
+          <h2 class="text-3xl font-display mb-8">LAKE COMO STYLE</h2>
+          <p class="text-sky-200/70 font-light max-w-sm leading-relaxed">
+            Experience the timeless elegance of Italy through our curated
+            immersive events, bespoke private parties, and cinematic
+            productions.
           </p>
-          <div class="flex gap-6 mt-8">
-            <a href="#" class="hover:text-white transition-colors"
-              ><i data-lucide="instagram" class="w-5 h-5"></i
-            ></a>
-            <a href="#" class="hover:text-white transition-colors"
-              ><i data-lucide="facebook" class="w-5 h-5"></i
-            ></a>
-            <a href="#" class="hover:text-white transition-colors"
-              ><i data-lucide="linkedin" class="w-5 h-5"></i
-            ></a>
+        </div>
+
+        <div>
+          <h4 class="font-display text-lg mb-6 text-sky-200">Connect</h4>
+          <div class="flex flex-col gap-4 font-light text-sm text-white/80">
+            <a href="#" class="hover:text-white transition-colors">Instagram</a>
+            <a href="#" class="hover:text-white transition-colors">LinkedIn</a>
+            <a href="#" class="hover:text-white transition-colors">Email</a>
           </div>
         </div>
+
         <div>
-          <h4 class="font-serif text-lg mb-4 text-white">Contact</h4>
-          <p class="font-light text-sm mb-2">info@lakecomostyle.it</p>
-          <p class="font-light text-sm">+39 348 784 7234</p>
-        </div>
-        <div>
-          <h4 class="font-serif text-lg mb-4 text-white">Legal</h4>
-          <ul class="space-y-2 font-light text-sm">
-            <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
-            <li><a href="#" class="hover:text-white">Terms of Service</a></li>
-          </ul>
+          <h4 class="font-display text-lg mb-6 text-sky-200">Inquiries</h4>
+          <p class="font-light text-sm text-white/80 mb-2">
+            info@lakecomostyle.it
+          </p>
+          <p class="font-light text-sm text-white/80">+39 348 784 7234</p>
         </div>
       </div>
       <div
-        class="container mx-auto px-6 mt-16 pt-8 border-t border-sky-900/50 text-center text-xs text-sky-400/60 uppercase tracking-widest"
+        class="container mx-auto px-6 mt-20 pt-8 border-t border-white/10 text-center text-xs text-white/40 uppercase tracking-widest"
       >
         © 2026 Lake Como Style. All rights reserved.
       </div>
@@ -553,27 +562,113 @@
         window.scrollTo(0, 0);
         renderPage();
         // Close mobile menu if open
-        document.getElementById("mobile-menu").classList.add("hidden");
-        updateActiveLink();
+        const menu = document.getElementById("mobile-menu");
+        if (!menu.classList.contains("hidden")) {
+          toggleMobileMenu();
+        }
+        updateNavbarState();
       }
 
       function toggleMobileMenu() {
         const menu = document.getElementById("mobile-menu");
-        menu.classList.toggle("hidden");
-        menu.classList.toggle("flex");
+        const icon = document.querySelector(".lg\\:hidden i");
+
+        if (menu.classList.contains("hidden")) {
+          menu.classList.remove("hidden");
+          menu.classList.add("flex");
+          icon.setAttribute("data-lucide", "x");
+        } else {
+          menu.classList.add("hidden");
+          menu.classList.remove("flex");
+          icon.setAttribute("data-lucide", "menu");
+        }
+        lucide.createIcons();
       }
 
-      function updateActiveLink() {
-        const desktopLinks = document.querySelectorAll("#desktop-links button");
-        desktopLinks.forEach((link) => {
-          if (link.dataset.path === CURRENT_PATH) {
-            link.classList.add("text-sky-900", "font-bold");
-            link.classList.remove("text-slate-600");
-          } else {
-            link.classList.remove("text-sky-900", "font-bold");
-            link.classList.add("text-slate-600");
+      function updateNavbarState() {
+        const navbar = document.getElementById("navbar");
+        const links = navbar.querySelectorAll(".nav-link");
+        const ctaBtn = navbar.querySelector(".cta-btn");
+
+        const isScrolled = window.scrollY > 50;
+        const isHome = CURRENT_PATH === "/";
+
+        if (isScrolled || !isHome) {
+          navbar.classList.add(
+            "bg-white/90",
+            "backdrop-blur-md",
+            "shadow-sm",
+            "py-4",
+          );
+          navbar.classList.remove(
+            "bg-transparent",
+            "py-6",
+            "border-transparent",
+          );
+
+          // For mix-blend-difference to work against white bg, text needs to be black
+          // But mix-blend-difference against white results in white text (inverted), which is invisible.
+          // So we remove mix-blend and set specific colors.
+          document.querySelectorAll(".mix-blend-difference").forEach((el) => {
+            el.classList.remove("mix-blend-difference", "text-white");
+            el.classList.add("text-sky-950");
+          });
+
+          links.forEach((link) => {
+            link.classList.remove("text-white", "mix-blend-difference");
+            link.classList.add("text-sky-950/80", "hover:text-sky-950");
+            if (link.dataset.path === CURRENT_PATH)
+              link.classList.add("text-sky-950", "font-medium");
+          });
+
+          if (ctaBtn) {
+            ctaBtn.classList.remove(
+              "border-white",
+              "text-white",
+              "mix-blend-difference",
+            );
+            ctaBtn.classList.add("bg-sky-950", "text-white");
           }
-        });
+        } else {
+          navbar.classList.remove(
+            "bg-white/90",
+            "backdrop-blur-md",
+            "shadow-sm",
+            "py-4",
+          );
+          navbar.classList.add("bg-transparent", "py-6", "border-transparent");
+
+          // Re-apply mix blend for hero overlay
+          const logo = navbar.querySelector(".font-display");
+          const toggle = navbar.querySelector(".lg\\:hidden");
+
+          if (logo.classList.contains("text-sky-950")) {
+            logo.classList.remove("text-sky-950");
+            logo.classList.add("text-white", "mix-blend-difference");
+          }
+          if (toggle) {
+            toggle.classList.remove("text-sky-950");
+            toggle.classList.add("text-white", "mix-blend-difference");
+          }
+
+          links.forEach((link) => {
+            link.classList.remove(
+              "text-sky-950/80",
+              "hover:text-sky-950",
+              "text-sky-950",
+            );
+            link.classList.add("text-white", "mix-blend-difference");
+          });
+
+          if (ctaBtn) {
+            ctaBtn.classList.add(
+              "border-white",
+              "text-white",
+              "mix-blend-difference",
+            );
+            ctaBtn.classList.remove("bg-sky-950", "text-white");
+          }
+        }
       }
 
       // --- COMPONENTS RENDERERS ---
@@ -584,12 +679,12 @@
         const mobileContainer = document.getElementById("mobile-menu");
 
         // Render Desktop
-        desktopContainer.innerHTML = navData.links
+        let desktopHTML = navData.links
           .map(
             (link) => `
                 <button 
                     onclick="navigate('${link.url}')"
-                    class="hover:text-sky-800 transition-colors"
+                    class="nav-link text-xs uppercase tracking-[0.15em] font-light transition-all duration-300 text-white mix-blend-difference hover:opacity-70"
                     data-path="${link.url}"
                 >
                     ${link.label}
@@ -598,13 +693,21 @@
           )
           .join("");
 
+        desktopHTML += `
+                <button onclick="navigate('/contact')" class="cta-btn ml-6 px-6 py-2 border border-white text-white text-xs uppercase tracking-widest hover:bg-white hover:text-sky-950 transition-all duration-300 mix-blend-difference">
+                    Book Now
+                </button>
+            `;
+
+        desktopContainer.innerHTML = desktopHTML;
+
         // Render Mobile
         let mobileHTML = navData.links
           .map(
             (link) => `
                 <button 
                     onclick="navigate('${link.url}')"
-                    class="text-2xl font-serif text-sky-950 hover:text-sky-600 transition-colors"
+                    class="text-3xl font-display text-white/90 hover:text-white transition-colors"
                 >
                     ${link.label}
                 </button>
@@ -612,10 +715,7 @@
           )
           .join("");
 
-        mobileContainer.innerHTML = `
-                <button class="absolute top-8 right-8 text-slate-500" onclick="toggleMobileMenu()"><i data-lucide="x" class="w-8 h-8"></i></button>
-                ${mobileHTML}
-            `;
+        mobileContainer.innerHTML = mobileHTML;
       }
 
       // --- PAGE GENERATORS ---
@@ -623,42 +723,37 @@
       function getHomeHTML() {
         const data = SITE_DATA.homepage[0].heroSection;
         return `
-            <div class="relative min-h-screen w-full overflow-hidden flex items-end pb-20 md:pb-32 justify-center">
-                <!-- Cinematic Video Background -->
+            <div class="relative h-screen w-full overflow-hidden bg-sky-950">
                 <div class="absolute inset-0 z-0">
-                    <video autoplay muted loop playsinline class="w-full h-full object-cover">
+                    <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-80 scale-105 animate-[zoomIn_20s_infinite_alternate]">
                         <source src="${data.videoFile.assetUrl}" type="video/mp4" />
                     </video>
-                    <!-- Gradient Overlay -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-sky-950/90 via-sky-900/20 to-transparent"></div>
+                    <div class="absolute inset-0 bg-black/20"></div>
                 </div>
 
-                <!-- Glass Content Card -->
-                <div class="relative z-10 container mx-auto px-6">
-                    <div class="glass-panel p-8 md:p-16 rounded-3xl max-w-4xl mx-auto text-center shadow-2xl animate-scale-in">
-                        <h2 class="text-xs md:text-sm font-bold tracking-[0.3em] uppercase mb-6 text-sky-900 animate-slide-up">${data.preHeading}</h2>
-                        <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif leading-tight mb-8 text-slate-900 animate-slide-up" style="animation-delay: 0.1s">${data.mainHeading}</h1>
-                        <p class="text-lg md:text-xl font-light mb-10 text-slate-600 max-w-2xl mx-auto animate-slide-up" style="animation-delay: 0.2s">${data.subHeading}</p>
+                <div class="relative z-10 h-full container mx-auto px-6 flex flex-col justify-center items-center text-center">
+                    <div class="animate-scale-reveal">
+                        <p class="text-white/90 uppercase tracking-[0.4em] text-xs font-medium mb-8">${data.preHeading}</p>
+                        <h1 class="text-6xl md:text-8xl lg:text-9xl font-display text-white leading-none mb-10 mix-blend-overlay opacity-90">
+                            LAKE COMO <br/> <span class="italic font-light">Style</span>
+                        </h1>
+                        <p class="text-lg md:text-xl font-light text-white/80 max-w-2xl mx-auto leading-relaxed mb-12">
+                            ${data.mainHeading}
+                        </p>
                         
-                        <div class="flex flex-col md:flex-row items-center justify-center gap-4 animate-slide-up" style="animation-delay: 0.3s">
-                            <button onclick="navigate('${data.ctaLink}')" class="px-10 py-4 bg-sky-900 text-white font-medium text-sm tracking-widest uppercase rounded-full hover:bg-sky-800 transition-all hover:scale-105 shadow-lg w-full md:w-auto">Start Journey</button>
-                            <button onclick="navigate('${data.secondaryCtaLink}')" class="px-10 py-4 bg-white text-sky-900 border border-sky-100 font-medium text-sm tracking-widest uppercase rounded-full hover:bg-sky-50 transition-colors w-full md:w-auto">Explore Themes</button>
+                        <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+                            <button onclick="navigate('${data.ctaLink}')" class="px-10 py-4 bg-white text-sky-950 text-xs font-bold uppercase tracking-widest hover:bg-sky-100 transition-colors shadow-xl">
+                                Begin The Journey
+                            </button>
+                            <button onclick="navigate('${data.secondaryCtaLink}')" class="group flex items-center gap-2 text-white text-xs font-bold uppercase tracking-widest hover:text-sky-200 transition-colors">
+                                <span class="w-8 h-px bg-white group-hover:bg-sky-200 transition-colors"></span> View Events
+                            </button>
                         </div>
                     </div>
-                    
-                    <!-- Bottom Tags -->
-                    <div class="mt-12 flex flex-wrap justify-center gap-4 md:gap-8 opacity-80 animate-fade-in" style="animation-delay: 1s">
-                        ${data.eventShowcase.eventTypes
-                          .filter((t) => t)
-                          .map(
-                            (type) => `
-                            <span class="px-4 py-2 bg-white/10 backdrop-blur-md rounded-full text-xs text-white uppercase tracking-wider border border-white/20">
-                                ${type}
-                            </span>
-                        `,
-                          )
-                          .join("")}
-                    </div>
+                </div>
+                
+                <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50 animate-bounce">
+                    <i data-lucide="arrow-down" class="w-6 h-6"></i>
                 </div>
             </div>
             `;
@@ -667,32 +762,36 @@
       function getThemesHTML() {
         const data = SITE_DATA.themesPage[0];
         return `
-            <div class="pt-32 pb-20 bg-sky-50 min-h-screen">
+            <div class="pt-32 pb-24 bg-slate-50 min-h-screen">
                 <div class="container mx-auto px-6">
-                    <div class="text-center max-w-3xl mx-auto mb-24 animate-slide-up">
-                        <span class="text-sky-600 font-bold tracking-widest uppercase text-xs mb-4 block">Our 2026 Collection</span>
-                        <h1 class="text-5xl md:text-7xl font-serif text-sky-950 mb-8">${data.hero.mainTitle}</h1>
-                        <p class="text-xl text-slate-500 font-light leading-relaxed">${data.hero.description}</p>
+                    <div class="text-center max-w-4xl mx-auto mb-32 animate-slide-up">
+                        <h1 class="text-5xl md:text-7xl font-display text-sky-950 mb-8 relative inline-block">
+                            The 2026 Collection
+                            <span class="absolute -top-6 -right-6 text-sm font-sans font-bold tracking-widest text-sky-500 uppercase">New Season</span>
+                        </h1>
+                        <p class="text-lg text-slate-600 font-light leading-relaxed max-w-2xl mx-auto">${data.hero.description}</p>
                     </div>
                     
-                    <div class="space-y-32">
+                    <div class="space-y-40">
                         ${data.themesList
                           .map(
                             (theme, idx) => `
-                            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-24 group">
+                            <div class="group flex flex-col md:flex-row gap-12 md:gap-24 items-center animate-slide-up" style="animation-delay: ${idx * 0.15}s">
                                 <div class="w-full md:w-1/2 ${idx % 2 === 1 ? "md:order-last" : ""}">
-                                    <div class="relative overflow-hidden rounded-[2rem] shadow-2xl aspect-[4/5] md:aspect-[3/4]">
-                                        <img src="${theme.image.assetUrl}" alt="${theme.title}" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
-                                        <div class="absolute inset-0 bg-sky-900/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                                    <div class="relative overflow-hidden aspect-[4/5] shadow-2xl">
+                                        <img src="${theme.image.assetUrl}" alt="${theme.title}" class="w-full h-full object-cover hover-zoom-img" />
+                                        <div class="absolute inset-0 border-[12px] border-white/90 pointer-events-none"></div>
                                     </div>
                                 </div>
                                 <div class="w-full md:w-1/2 text-center md:text-left">
-                                    <div class="inline-block px-3 py-1 border border-sky-200 rounded-full text-sky-600 text-xs font-bold uppercase tracking-widest mb-6">${theme.genre}</div>
-                                    <h2 class="text-4xl md:text-6xl font-serif text-sky-950 mb-6">${theme.title}</h2>
-                                    <p class="text-lg text-slate-600 font-light leading-relaxed mb-8">${theme.story}</p>
-                                    <div class="flex flex-col gap-2 border-l-2 border-sky-200 pl-6 text-left">
-                                        <span class="text-xs uppercase text-sky-400 font-bold tracking-widest">The Vibe</span>
-                                        <span class="text-slate-700 italic font-serif text-xl">${theme.vibe}</span>
+                                    <div class="flex items-center gap-4 justify-center md:justify-start mb-6">
+                                        <span class="h-px w-12 bg-sky-900"></span>
+                                        <span class="text-xs font-bold uppercase tracking-widest text-sky-900">${theme.genre}</span>
+                                    </div>
+                                    <h3 class="text-5xl md:text-6xl font-display text-sky-950 mb-6">${theme.title}</h3>
+                                    <p class="text-lg text-slate-600 font-light leading-relaxed mb-8 max-w-md mx-auto md:mx-0">${theme.story}</p>
+                                    <div class="inline-block border-b border-sky-900 pb-1 text-sky-900 text-sm tracking-widest uppercase cursor-pointer hover:opacity-70 transition-opacity">
+                                        Explore Aesthetic
                                     </div>
                                 </div>
                             </div>
@@ -708,50 +807,41 @@
       function getProcessHTML() {
         const data = SITE_DATA.processPage[0];
         return `
-            <div class="pt-32 pb-20 bg-white min-h-screen">
+            <div class="pt-32 pb-24 bg-white min-h-screen">
                 <div class="container mx-auto px-6">
-                    <div class="text-center max-w-4xl mx-auto mb-24 animate-slide-up">
-                        <span class="text-sky-600 font-bold tracking-widest uppercase text-xs mb-4 block">${data.hero.heading}</span>
-                        <h1 class="text-5xl md:text-6xl font-serif text-sky-950 mb-8">${data.hero.subHeading}</h1>
-                        <p class="text-lg text-slate-600 font-light leading-relaxed whitespace-pre-line">${data.hero.description}</p>
+                    <div class="flex flex-col items-center text-center mb-24 animate-slide-up">
+                        <span class="text-sky-900/40 font-display italic text-3xl mb-4">How it works</span>
+                        <h1 class="text-5xl md:text-7xl font-display text-sky-950 mb-8">${data.hero.heading}</h1>
+                        <p class="text-slate-600 font-light max-w-2xl mx-auto leading-relaxed">${data.hero.description}</p>
                     </div>
 
-                    <div class="relative max-w-5xl mx-auto">
-                        <!-- Vertical Line (Desktop) -->
-                        <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-sky-100 -translate-x-1/2"></div>
+                    <div class="relative max-w-4xl mx-auto">
+                        <div class="absolute left-[19px] top-0 bottom-0 w-px bg-sky-100 md:left-1/2 md:-translate-x-1/2"></div>
 
-                        <div class="space-y-12 md:space-y-24 relative">
-                            ${data.steps
-                              .map(
-                                (step, idx) => `
-                                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-0">
-                                    <!-- Left Side -->
-                                    <div class="w-full md:w-1/2 md:pr-16 text-center md:text-right ${idx % 2 === 1 ? "md:invisible hidden md:block" : ""}">
-                                        <h3 class="text-3xl font-serif text-sky-900 mb-3">${step.heading}</h3>
-                                        <p class="text-slate-500 font-light leading-relaxed text-sm">${step.body.substring(0, 150)}...</p>
-                                    </div>
-
-                                    <!-- Center Marker -->
-                                    <div class="relative z-10 flex-shrink-0 w-12 h-12 rounded-full bg-sky-50 border border-sky-200 flex items-center justify-center text-sky-900 font-serif font-bold text-lg shadow-sm">
-                                        ${step.stepNumber}
-                                    </div>
-
-                                    <!-- Right Side -->
-                                    <div class="w-full md:w-1/2 md:pl-16 text-center md:text-left ${idx % 2 === 0 ? "md:invisible hidden md:block" : ""}">
-                                        <h3 class="text-3xl font-serif text-sky-900 mb-3">${step.heading}</h3>
-                                        <p class="text-slate-500 font-light leading-relaxed text-sm">${step.body.substring(0, 150)}...</p>
-                                    </div>
-                                    
-                                    <!-- Mobile Content (Shown when desktop side is hidden/invisible) -->
-                                     <div class="md:hidden text-center bg-sky-50 p-6 rounded-xl w-full">
-                                        <h3 class="text-2xl font-serif text-sky-900 mb-2">${step.heading}</h3>
-                                        <p class="text-slate-600 font-light text-sm">${step.body}</p>
-                                    </div>
+                        ${data.steps
+                          .map(
+                            (step, idx) => `
+                            <div class="relative flex flex-col md:flex-row gap-8 md:gap-0 py-12 animate-fade-in" style="animation-delay: ${idx * 0.1}s">
+                                <!-- Marker -->
+                                <div class="absolute left-0 md:left-1/2 md:-translate-x-1/2 w-10 h-10 rounded-full bg-white border border-sky-200 flex items-center justify-center z-10 text-sky-900 font-display text-sm pt-1">
+                                    ${step.stepNumber}
                                 </div>
-                            `,
-                              )
-                              .join("")}
-                        </div>
+
+                                <!-- Content Left -->
+                                <div class="w-full md:w-1/2 md:pr-16 md:text-right pl-16 md:pl-0 ${idx % 2 === 1 ? "md:invisible hidden md:block" : ""}">
+                                     <h3 class="text-2xl font-display text-sky-950 mb-2">${step.heading}</h3>
+                                     <p class="text-slate-500 font-light text-sm leading-relaxed">${step.body.substring(0, 180)}...</p>
+                                </div>
+                                
+                                <!-- Content Right -->
+                                 <div class="w-full md:w-1/2 md:pl-16 pl-16 md:pl-0 ${idx % 2 === 0 ? "md:invisible hidden md:block" : ""}">
+                                     <h3 class="text-2xl font-display text-sky-950 mb-2">${step.heading}</h3>
+                                     <p class="text-slate-500 font-light text-sm leading-relaxed">${step.body.substring(0, 180)}...</p>
+                                </div>
+                            </div>
+                        `,
+                          )
+                          .join("")}
                     </div>
                 </div>
             </div>
@@ -761,33 +851,30 @@
       function getCastHTML() {
         const data = SITE_DATA.castPage[0];
         return `
-            <div class="pt-32 pb-20 bg-sky-950 text-white min-h-screen">
+            <div class="pt-32 pb-24 bg-sky-950 text-white min-h-screen">
                 <div class="container mx-auto px-6">
-                    <div class="grid lg:grid-cols-2 gap-16 items-start">
-                        <div class="sticky top-32 animate-slide-up">
-                            <span class="text-sky-400 font-bold tracking-widest uppercase text-xs mb-4 block">Private Events</span>
-                            <h1 class="text-5xl md:text-7xl font-serif mb-8 text-white leading-none">${data.hero.title}</h1>
-                            <p class="text-xl text-sky-200 font-light italic mb-12">${data.hero.subtitle}</p>
-                            
-                            <div class="prose prose-invert prose-lg font-light text-sky-100/80 mb-12">
-                                ${data.content.paragraphs
-                                  .slice(0, 3)
-                                  .map((para) => `<p>${para}</p>`)
-                                  .join("")}
-                            </div>
-                            
-                            <button onclick="navigate('/contact')" class="inline-flex items-center gap-3 px-8 py-4 bg-white text-sky-950 rounded-full font-bold tracking-wider hover:bg-sky-100 transition-colors">
-                                INQUIRE NOW <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                            </button>
+                    <div class="grid lg:grid-cols-2 gap-20 items-center">
+                        <div class="animate-slide-up sticky top-32">
+                             <h1 class="text-6xl md:text-8xl font-display leading-none mb-12 opacity-90">${data.hero.title}</h1>
+                             <div class="space-y-6 text-sky-100/70 font-light text-lg leading-relaxed mb-12 border-l border-white/20 pl-8">
+                                 ${data.content.paragraphs
+                                   .slice(0, 2)
+                                   .map((p) => `<p>${p}</p>`)
+                                   .join("")}
+                             </div>
+                             <button onclick="navigate('/contact')" class="px-10 py-5 border border-white/30 text-white text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-sky-950 transition-all duration-300">
+                                Inquire For Private Events
+                             </button>
                         </div>
-
-                        <!-- Masonry Grid for Images -->
-                        <div class="columns-1 md:columns-2 gap-6 space-y-6">
+                        
+                        <div class="grid gap-8">
                             ${data.showcaseImages
+                              .slice(0, 3)
                               .map(
                                 (item, i) => `
-                                <div class="break-inside-avoid rounded-2xl overflow-hidden shadow-2xl hover:opacity-90 transition-opacity duration-500">
-                                    <img src="${item.image.assetUrl}" class="w-full h-auto object-cover" alt="Event" loading="lazy" />
+                                <div class="relative group overflow-hidden ${i === 1 ? "ml-12" : ""}">
+                                    <img src="${item.image.assetUrl}" class="w-full aspect-[4/3] object-cover hover-zoom-img grayscale group-hover:grayscale-0 transition-all duration-700" loading="lazy" />
+                                    <div class="absolute bottom-4 left-4 text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity delay-100 text-white mix-blend-difference">Lake Como Moments</div>
                                 </div>
                             `,
                               )
@@ -802,28 +889,24 @@
       function getMovieHTML() {
         const data = SITE_DATA.moviePage[0];
         return `
-            <div class="relative min-h-screen bg-black text-white pt-32 pb-20 overflow-hidden">
-                <!-- Abstract Background -->
-                <div class="absolute inset-0 opacity-30">
-                     <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(14,165,233,0.3),transparent_70%)]"></div>
+            <div class="relative min-h-screen bg-black flex items-center py-24">
+                <div class="absolute inset-0 opacity-50">
+                    <img src="https://cdn.sanity.io/images/c20abca7/production/321c90df5c1ee24afc8168a27d44c0893d84a55f-500x500.png" class="w-full h-full object-cover blur-md scale-110" />
                 </div>
-
-                <div class="container mx-auto px-6 relative z-10">
-                    <div class="text-center max-w-4xl mx-auto mb-24 animate-scale-in">
-                        <div class="w-20 h-20 bg-sky-900/50 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-8 border border-sky-800">
-                             <i data-lucide="clapperboard" class="w-8 h-8 text-sky-400"></i>
-                        </div>
-                        <h1 class="text-5xl md:text-8xl font-serif mb-6 tracking-tight">${data.hero.heading}</h1>
-                        <p class="text-2xl text-sky-200 font-light font-serif italic">${data.hero.subHeading}</p>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                
+                <div class="container mx-auto px-6 relative z-10 text-center text-white">
+                    <div class="w-px h-24 bg-white/30 mx-auto mb-12"></div>
+                    <h1 class="text-6xl md:text-9xl font-display mb-8 tracking-tighter animate-scale-reveal mix-blend-overlay text-white">${data.hero.heading}</h1>
+                    <p class="text-2xl font-light text-white/80 italic mb-20 font-display">${data.hero.subHeading}</p>
+                    
+                    <div class="flex flex-wrap justify-center gap-6">
                         ${data.deliverables
                           .map(
                             (item) => `
-                            <div class="bg-white/5 backdrop-blur-md border border-white/10 p-10 rounded-3xl hover:bg-white/10 transition-colors duration-300">
-                                <h3 class="text-3xl font-serif text-sky-300 mb-4">${item.title}</h3>
-                                <p class="text-slate-300 font-light leading-relaxed">${item.description}</p>
+                            <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-10 max-w-sm hover:bg-white/10 transition-colors duration-500 text-left">
+                                <h3 class="text-3xl font-display text-white mb-4">${item.title}</h3>
+                                <p class="text-white/60 font-light leading-relaxed">${item.description}</p>
                             </div>
                         `,
                           )
@@ -837,60 +920,45 @@
       function getTicketedHTML() {
         const venueData = SITE_DATA.venuePage[0];
         const faqData = SITE_DATA.faqPage[0];
-
         return `
-            <div class="pt-32 pb-20 bg-slate-50 min-h-screen">
+            <div class="pt-32 pb-24 bg-slate-50 min-h-screen">
                 <div class="container mx-auto px-6">
-                    
-                    <!-- Venue Feature -->
-                    <div class="bg-white rounded-[3rem] p-8 md:p-16 shadow-xl mb-24 animate-slide-up">
-                        <div class="grid lg:grid-cols-2 gap-16">
-                            <div class="flex flex-col justify-center">
-                                <span class="text-sky-600 font-bold uppercase tracking-widest text-xs mb-4">Ticketed Experiences</span>
-                                <h1 class="text-4xl md:text-6xl font-serif text-slate-900 mb-8">${venueData.hero.heading}</h1>
-                                <div class="space-y-6 text-slate-600 font-light mb-8">
+                    <div class="bg-white shadow-2xl mb-32 animate-slide-up">
+                        <div class="grid lg:grid-cols-2">
+                            <div class="p-16 md:p-32 flex flex-col justify-center">
+                                <span class="text-sky-900/60 font-display text-2xl italic mb-6">Upcoming</span>
+                                <h1 class="text-5xl md:text-7xl font-display text-sky-950 mb-10">${venueData.hero.heading}</h1>
+                                <div class="space-y-8 font-light text-slate-600 mb-12 leading-relaxed text-lg">
                                     ${venueData.description.map((desc) => `<p>${desc}</p>`).join("")}
                                 </div>
-                                <button class="px-8 py-4 bg-sky-900 text-white rounded-full font-bold tracking-widest uppercase hover:bg-sky-800 transition-colors w-max">
-                                    Book Your Spot
+                                <button class="px-10 py-4 bg-sky-950 text-white text-xs font-bold uppercase tracking-widest hover:bg-sky-900 transition-colors w-max">
+                                    Purchase Tickets
                                 </button>
                             </div>
-                            <div class="grid grid-cols-2 gap-4">
-                                ${venueData.galleryImages
-                                  .slice(0, 4)
-                                  .map(
-                                    (img, i) => `
-                                    <img src="${img.assetUrl}" class="rounded-2xl w-full h-full object-cover aspect-square ${i % 2 !== 0 ? "mt-8" : "mb-8"}" alt="Venue" />
-                                `,
-                                  )
-                                  .join("")}
+                            <div class="relative min-h-[500px]">
+                                <img src="${venueData.galleryImages[0].assetUrl}" class="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Clean Accordion FAQ -->
                     <div class="max-w-3xl mx-auto">
-                        <h2 class="text-4xl font-serif text-center text-slate-900 mb-12">Common Questions</h2>
-                        <div class="space-y-4">
-                            ${faqData.faqs
-                              .map(
-                                (faq, i) => `
-                                <div class="bg-white rounded-2xl p-1 shadow-sm transition-shadow hover:shadow-md">
-                                    <details class="group">
-                                        <summary class="flex justify-between items-center p-6 cursor-pointer list-none font-medium text-slate-800 text-lg">
-                                            ${faq.question}
-                                            <span class="bg-sky-50 text-sky-600 rounded-full w-8 h-8 flex items-center justify-center transition-transform group-open:rotate-180">
-                                                <i data-lucide="chevron-down" class="w-4 h-4"></i>
-                                            </span>
-                                        </summary>
-                                        <div class="px-6 pb-6 text-slate-500 font-light leading-relaxed">
-                                            ${faq.answer}
-                                        </div>
-                                    </details>
-                                </div>
+                        <h2 class="text-4xl font-display text-center text-sky-950 mb-16">Information</h2>
+                        <div class="divide-y divide-slate-200 border-t border-b border-slate-200">
+                             ${faqData.faqs
+                               .map(
+                                 (faq, i) => `
+                                <details class="group py-8">
+                                    <summary class="flex justify-between items-center cursor-pointer list-none text-xl font-display text-sky-950">
+                                        ${faq.question}
+                                        <span class="text-sky-300 font-sans text-2xl font-light transition-transform group-open:rotate-45">+</span>
+                                    </summary>
+                                    <div class="pt-6 text-slate-500 font-light leading-relaxed pl-4 border-l border-sky-200 mt-4">
+                                        ${faq.answer}
+                                    </div>
+                                </details>
                             `,
-                              )
-                              .join("")}
+                               )
+                               .join("")}
                         </div>
                     </div>
                 </div>
@@ -901,20 +969,20 @@
       function getGalleryHTML() {
         const data = SITE_DATA.galleryPage[0];
         return `
-            <div class="pt-32 pb-20 bg-white min-h-screen">
+            <div class="pt-32 pb-24 bg-white min-h-screen">
                 <div class="container mx-auto px-6">
-                    <div class="text-center mb-16 animate-fade-in">
-                        <h1 class="text-5xl md:text-7xl font-serif text-slate-900 mb-4">${data.hero.heading}</h1>
-                        <p class="text-xl text-slate-500 font-serif italic">${data.hero.subHeading}</p>
+                    <div class="text-center mb-24 animate-slide-up">
+                        <h1 class="text-6xl md:text-8xl font-display text-sky-950 mb-6">${data.hero.heading}</h1>
+                        <p class="text-xl text-slate-500 font-light max-w-2xl mx-auto">${data.hero.subHeading}</p>
                     </div>
                     
-                    <div class="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8 animate-slide-up">
+                    <div class="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8 animate-fade-in">
                         ${data.images
                           .map(
                             (img) => `
-                            <div class="break-inside-avoid relative group overflow-hidden rounded-xl cursor-pointer">
-                                <img src="${img.assetUrl}" class="w-full h-auto transition-transform duration-700 group-hover:scale-105" alt="Gallery" loading="lazy" />
-                                <div class="absolute inset-0 bg-sky-900/0 group-hover:bg-sky-900/20 transition-colors duration-300"></div>
+                            <div class="break-inside-avoid relative group overflow-hidden">
+                                <img src="${img.assetUrl}" class="w-full h-auto hover-zoom-img grayscale-[0.5] group-hover:grayscale-0 transition-all duration-700" loading="lazy" />
+                                <div class="absolute inset-0 bg-sky-950/20 group-hover:bg-transparent transition-colors duration-500"></div>
                             </div>
                         `,
                           )
@@ -928,29 +996,28 @@
       function getAboutHTML() {
         const data = SITE_DATA.crewPage[0];
         return `
-            <div class="pt-32 pb-20 bg-sky-50 min-h-screen">
+            <div class="pt-32 pb-24 bg-slate-50 min-h-screen">
                 <div class="container mx-auto px-6">
-                    <div class="text-center max-w-4xl mx-auto mb-24 animate-slide-up">
-                        <span class="text-sky-600 font-bold tracking-widest uppercase text-xs mb-4 block">Behind the Scenes</span>
-                        <h1 class="text-5xl md:text-7xl font-serif text-sky-950 mb-8">${data.hero.heading}</h1>
-                        <p class="text-xl text-slate-600 font-light">${data.hero.description}</p>
+                    <div class="text-center max-w-4xl mx-auto mb-32 animate-slide-up">
+                        <h1 class="text-6xl md:text-8xl font-display text-sky-950 mb-8">${data.hero.heading}</h1>
+                        <p class="text-2xl text-slate-600 font-light font-display italic text-sky-900/60">${data.hero.description}</p>
                     </div>
 
-                    <div class="space-y-32 mb-32">
+                    <div class="space-y-40 mb-40">
                         ${data.crewMembers
                           .map(
                             (member, i) => `
-                            <div class="flex flex-col md:flex-row gap-16 items-center">
-                                <div class="w-full md:w-1/2 ${i % 2 === 1 ? "md:order-last" : ""}">
-                                    <div class="relative p-4">
-                                        <div class="absolute inset-0 border border-sky-200 rounded-full transform rotate-3"></div>
-                                        <img src="${member.image.assetUrl}" class="relative rounded-full aspect-square object-cover shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 w-full max-w-md mx-auto" alt="${member.name}" />
+                            <div class="flex flex-col md:flex-row gap-20 items-center">
+                                <div class="w-full md:w-5/12 ${i % 2 === 1 ? "md:order-last" : ""}">
+                                    <div class="relative">
+                                        <div class="absolute -inset-4 border border-sky-200 translate-x-4 translate-y-4"></div>
+                                        <img src="${member.image.assetUrl}" class="relative w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-1000 shadow-lg" alt="${member.name}" />
                                     </div>
                                 </div>
-                                <div class="w-full md:w-1/2 text-center md:text-left">
-                                    <h3 class="text-4xl font-serif text-sky-950 mb-2">${member.name}</h3>
-                                    <p class="text-xs font-bold uppercase tracking-widest text-sky-600 mb-8 border-b border-sky-200 inline-block pb-2">${member.role}</p>
-                                    <div class="space-y-4 text-slate-600 font-light leading-relaxed">
+                                <div class="w-full md:w-7/12 text-center md:text-left">
+                                    <h3 class="text-5xl font-display text-sky-950 mb-4">${member.name}</h3>
+                                    <p class="text-xs font-bold uppercase tracking-widest text-sky-400 mb-10">${member.role}</p>
+                                    <div class="space-y-6 text-slate-600 font-light leading-relaxed text-lg columns-1 md:columns-2 gap-8">
                                         ${member.bio.map((p) => `<p>${p}</p>`).join("")}
                                     </div>
                                 </div>
@@ -960,10 +1027,10 @@
                           .join("")}
                     </div>
                     
-                    <div class="border-t border-sky-200 pt-16">
-                        <p class="text-center font-serif italic text-2xl text-slate-400 mb-12">Featured In</p>
-                        <div class="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-40 mix-blend-multiply">
-                            ${data.logos.map((logo) => `<img src="${logo.assetUrl}" class="h-10 md:h-16 object-contain" alt="Press Logo" />`).join("")}
+                    <div class="border-t border-slate-200 pt-24 text-center">
+                        <p class="font-display text-3xl text-slate-300 mb-16 italic">Featured In</p>
+                        <div class="flex flex-wrap justify-center items-center gap-16 md:gap-28 opacity-40 hover:opacity-100 transition-opacity duration-500 mix-blend-multiply">
+                            ${data.logos.map((logo) => `<img src="${logo.assetUrl}" class="h-8 md:h-12 object-contain grayscale" />`).join("")}
                         </div>
                     </div>
                 </div>
@@ -974,47 +1041,44 @@
       function getContactHTML() {
         const data = SITE_DATA.contactPage[0];
         return `
-            <div class="min-h-screen bg-white flex flex-col md:flex-row">
-                <!-- Visual Side -->
-                <div class="w-full md:w-1/2 bg-sky-950 relative overflow-hidden min-h-[40vh] md:min-h-screen">
+            <div class="min-h-screen bg-slate-50 flex flex-col lg:flex-row">
+                <div class="lg:w-1/2 bg-sky-950 relative overflow-hidden min-h-[40vh] lg:min-h-screen">
                     <img src="https://cdn.sanity.io/images/c20abca7/production/708cec19ac0d52a98033e50246ca0cb168209f2f-414x600.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay" />
-                    <div class="absolute inset-0 bg-gradient-to-t from-sky-950 to-transparent"></div>
-                    <div class="relative z-10 h-full flex flex-col justify-center p-12 md:p-24 text-white">
-                        <span class="text-sky-400 font-bold tracking-widest uppercase text-xs mb-4">${data.hero.preHeading}</span>
-                        <h1 class="text-5xl md:text-7xl font-serif mb-8">${data.hero.mainHeading}</h1>
-                        <p class="text-sky-200 font-light text-lg max-w-md">${data.hero.description}</p>
+                    <div class="relative z-10 h-full flex flex-col justify-center p-12 lg:p-24 text-white">
+                        <span class="text-sky-300 font-bold tracking-widest uppercase text-xs mb-8 block">${data.hero.preHeading}</span>
+                        <h1 class="text-6xl md:text-8xl font-display mb-8 leading-none">${data.hero.mainHeading}</h1>
+                        <p class="text-sky-100/70 font-light text-lg max-w-md mb-12">${data.hero.description}</p>
                         
-                        <div class="mt-12 space-y-6 text-sm font-light">
-                             <div class="flex items-center gap-4"><div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center"><i data-lucide="mail" class="w-4 h-4"></i></div> info@lakecomostyle.it</div>
-                             <div class="flex items-center gap-4"><div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center"><i data-lucide="phone" class="w-4 h-4"></i></div> +39 348 784 7234</div>
+                        <div class="space-y-2 text-sm font-light tracking-wide text-white/60">
+                            <p>Lake Como, Italy</p>
+                            <p>info@lakecomostyle.it</p>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Form Side -->
-                <div class="w-full md:w-1/2 flex items-center justify-center p-12 md:p-24">
-                    <div class="w-full max-w-lg">
-                        <h2 class="text-3xl font-serif text-sky-950 mb-8">${data.form.formTitle}</h2>
-                        <form class="space-y-6" onsubmit="event.preventDefault(); alert('Message sent!');">
-                            <div class="grid grid-cols-2 gap-6">
-                                <div class="space-y-2">
-                                    <label class="text-xs font-bold uppercase text-slate-400 tracking-wider">${data.form.firstNameLabel}</label>
-                                    <input type="text" class="w-full border-b border-slate-200 py-2 focus:outline-none focus:border-sky-600 transition-colors bg-transparent font-light" placeholder="Jane" />
+                <div class="lg:w-1/2 flex items-center justify-center p-12 lg:p-24 bg-white">
+                    <div class="w-full max-w-xl">
+                        <h2 class="text-4xl font-display text-sky-950 mb-12">${data.form.formTitle}</h2>
+                        <form class="space-y-10" onsubmit="event.preventDefault(); alert('Message sent!');">
+                            <div class="grid grid-cols-2 gap-8">
+                                <div class="group">
+                                    <label class="block text-xs font-bold uppercase text-slate-400 tracking-wider mb-2 group-focus-within:text-sky-900 transition-colors">${data.form.firstNameLabel}</label>
+                                    <input type="text" class="w-full border-b border-slate-200 py-3 focus:outline-none focus:border-sky-900 transition-colors bg-transparent text-sky-950 font-light text-lg" />
                                 </div>
-                                <div class="space-y-2">
-                                    <label class="text-xs font-bold uppercase text-slate-400 tracking-wider">${data.form.lastNameLabel}</label>
-                                    <input type="text" class="w-full border-b border-slate-200 py-2 focus:outline-none focus:border-sky-600 transition-colors bg-transparent font-light" placeholder="Doe" />
+                                <div class="group">
+                                    <label class="block text-xs font-bold uppercase text-slate-400 tracking-wider mb-2 group-focus-within:text-sky-900 transition-colors">${data.form.lastNameLabel}</label>
+                                    <input type="text" class="w-full border-b border-slate-200 py-3 focus:outline-none focus:border-sky-900 transition-colors bg-transparent text-sky-950 font-light text-lg" />
                                 </div>
                             </div>
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase text-slate-400 tracking-wider">${data.form.emailLabel}</label>
-                                <input type="email" class="w-full border-b border-slate-200 py-2 focus:outline-none focus:border-sky-600 transition-colors bg-transparent font-light" placeholder="jane@example.com" />
+                            <div class="group">
+                                <label class="block text-xs font-bold uppercase text-slate-400 tracking-wider mb-2 group-focus-within:text-sky-900 transition-colors">${data.form.emailLabel}</label>
+                                <input type="email" class="w-full border-b border-slate-200 py-3 focus:outline-none focus:border-sky-900 transition-colors bg-transparent text-sky-950 font-light text-lg" />
                             </div>
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase text-slate-400 tracking-wider">${data.form.messageLabel}</label>
-                                <textarea rows="4" class="w-full border-b border-slate-200 py-2 focus:outline-none focus:border-sky-600 transition-colors bg-transparent font-light resize-none" placeholder="Tell us about your dream event..."></textarea>
+                            <div class="group">
+                                <label class="block text-xs font-bold uppercase text-slate-400 tracking-wider mb-2 group-focus-within:text-sky-900 transition-colors">${data.form.messageLabel}</label>
+                                <textarea rows="4" class="w-full border-b border-slate-200 py-3 focus:outline-none focus:border-sky-900 transition-colors bg-transparent text-sky-950 font-light text-lg resize-none"></textarea>
                             </div>
-                            <button class="w-full bg-sky-950 text-white py-5 rounded-none font-bold tracking-widest uppercase hover:bg-sky-800 transition-all mt-8">
+                            <button class="w-full bg-sky-950 text-white py-5 text-xs font-bold tracking-widest uppercase hover:bg-sky-900 transition-colors mt-8 shadow-xl">
                                 ${data.form.submitButtonText}
                             </button>
                         </form>
@@ -1063,17 +1127,32 @@
         }
 
         container.innerHTML = content;
-        lucide.createIcons(); // Re-init icons for new content
-        renderNavbar(); // Re-render to update state
-        updateActiveLink(); // Ensure active state is correct
+        lucide.createIcons();
+
+        updateNavbarState();
+
+        // Re-render Navbar Links to update active state
+        const desktopLinks = document.getElementById("desktop-links");
+        if (desktopLinks && desktopLinks.children.length > 0) {
+          const links = desktopLinks.querySelectorAll(".nav-link");
+          links.forEach((link) => {
+            if (link.dataset.path === CURRENT_PATH) {
+              link.classList.remove("font-light");
+              link.classList.add("font-medium");
+            } else {
+              link.classList.add("font-light");
+              link.classList.remove("font-medium");
+            }
+          });
+        }
       }
 
       // --- INIT ---
 
       document.addEventListener("DOMContentLoaded", () => {
-        renderPage();
         renderNavbar();
-        updateActiveLink();
+        renderPage();
+        window.addEventListener("scroll", updateNavbarState);
       });
     </script>
   </body>
