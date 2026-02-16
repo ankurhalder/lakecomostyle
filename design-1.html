@@ -3,690 +3,491 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lake Como Style - Luxury Immersive Fashion Experiences</title>
+    <title>Lake Como Style | Luxury Immersive Fashion Experiences</title>
     <style>
-      /* Premium Lake Como Style Website */
-      @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap");
-
+      @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Gilda+Display&family=Italiana&family=Montserrat:wght@200;300;400;500;600;700&family=Tenor+Sans&display=swap");
       :root {
-        --primary-blue: #a8d8ea;
-        --metallic-blue: #6db1d3;
-        --deep-blue: #4a8daa;
-        --light-bg: #f8fcff;
-        --white: #ffffff;
-        --dark-text: #1a2332;
-        --gold-accent: #d4af37;
+        --sky-blue: #e8f4f8;
+        --metallic-blue: #7ec8e3;
+        --azure: #5ba8c8;
+        --deep-azure: #3d8ba8;
+        --navy: #2c5f75;
+        --white: #fff;
+        --off-white: #fafcfd;
+        --text-dark: #1f2937;
+        --text-light: #6b7280;
+        --gold: #c9a961;
       }
-
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+      }
+      html {
         scroll-behavior: smooth;
       }
-
       body {
-        font-family: "Montserrat", sans-serif;
-        background: var(--light-bg);
-        color: var(--dark-text);
-        line-height: 1.6;
+        font-family: "Tenor Sans", sans-serif;
+        background: var(--off-white);
+        color: var(--text-dark);
+        line-height: 1.8;
         overflow-x: hidden;
       }
-
       h1,
       h2,
-      h3 {
-        font-family: "Playfair Display", serif;
+      h3,
+      h4 {
+        font-family: "Gilda Display", serif;
+        font-weight: 400;
         color: var(--metallic-blue);
-        font-weight: 700;
-        letter-spacing: 1px;
+        letter-spacing: 2px;
       }
-
       h1 {
-        font-size: 3.5rem;
-        line-height: 1.2;
+        font-size: 5rem;
+        line-height: 1.1;
+        background: linear-gradient(
+          135deg,
+          var(--azure) 0%,
+          var(--metallic-blue) 50%,
+          var(--sky-blue) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
       h2 {
-        font-size: 2.5rem;
-        margin-bottom: 1.5rem;
+        font-size: 3.5rem;
+        margin-bottom: 2rem;
       }
       h3 {
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
       }
-
       p {
-        font-family: "Montserrat", sans-serif;
-        font-size: 1.1rem;
-        color: var(--dark-text);
-        margin-bottom: 1rem;
+        font-size: 1.125rem;
+        line-height: 1.9;
+        margin-bottom: 1.5rem;
       }
-
-      .elegant-text {
+      .elegant-script {
         font-family: "Cormorant Garamond", serif;
-        font-size: 1.3rem;
-        font-weight: 400;
+        font-size: 1.5rem;
+        font-style: italic;
+        color: var(--azure);
       }
-
-      /* Navigation */
+      .uppercase-title {
+        font-family: "Montserrat", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--azure);
+      }
       .navbar {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        padding: 1.5rem 5%;
         position: fixed;
-        width: 100%;
         top: 0;
-        z-index: 1000;
-        box-shadow: 0 2px 20px rgba(168, 216, 234, 0.3);
-        border-bottom: 2px solid var(--primary-blue);
+        width: 100%;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(20px);
+        z-index: 9999;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border-bottom: 1px solid rgba(126, 200, 227, 0.15);
       }
-
+      .navbar.scrolled {
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 10px 40px rgba(126, 200, 227, 0.08);
+      }
       .nav-container {
-        max-width: 1400px;
+        max-width: 1600px;
         margin: 0 auto;
+        padding: 1.5rem 4rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        flex-wrap: wrap;
       }
-
       .logo {
-        font-family: "Playfair Display", serif;
-        font-size: 1.8rem;
-        font-weight: 700;
+        font-family: "Italiana", serif;
+        font-size: 1.75rem;
         color: var(--metallic-blue);
         text-decoration: none;
-        letter-spacing: 2px;
+        letter-spacing: 4px;
       }
-
-      .nav-links {
+      .nav-menu {
         display: flex;
         list-style: none;
-        gap: 2rem;
+        gap: 3rem;
         align-items: center;
-        flex-wrap: wrap;
       }
-
-      .nav-links a {
-        color: var(--metallic-blue);
+      .nav-menu a {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.875rem;
+        color: var(--text-dark);
         text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 2px;
         font-weight: 500;
-        font-size: 0.95rem;
-        transition: all 0.3s ease;
-        position: relative;
+        transition: all 0.3s;
       }
-
-      .nav-links a:hover {
-        color: var(--deep-blue);
+      .nav-menu a:hover {
+        color: var(--azure);
       }
-
-      .nav-links a::after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: var(--gold-accent);
-        transition: width 0.3s ease;
-      }
-
-      .nav-links a:hover::after {
-        width: 100%;
-      }
-
-      .cta-button {
-        background: linear-gradient(
-          135deg,
-          var(--metallic-blue),
-          var(--deep-blue)
-        );
+      .nav-cta {
+        padding: 0.875rem 2.5rem;
+        background: linear-gradient(135deg, var(--metallic-blue), var(--azure));
         color: white !important;
-        padding: 0.8rem 2rem;
-        border-radius: 30px;
-        font-weight: 600;
-        box-shadow: 0 4px 15px rgba(109, 177, 211, 0.4);
-        transition: all 0.3s ease;
+        border-radius: 50px;
+        box-shadow: 0 8px 25px rgba(126, 200, 227, 0.35);
       }
-
-      .cta-button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(109, 177, 211, 0.6);
+      .nav-cta:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(126, 200, 227, 0.5);
       }
-
-      /* Hero Section */
       .hero {
         min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: linear-gradient(135deg, #f8fcff 0%, #e3f4f9 100%);
-        padding: 8rem 5% 4rem;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .hero::before {
-        content: "";
-        position: absolute;
-        top: -50%;
-        right: -20%;
-        width: 800px;
-        height: 800px;
-        background: radial-gradient(
-          circle,
-          rgba(168, 216, 234, 0.3) 0%,
-          transparent 70%
+        padding: 10rem 4rem 6rem;
+        background: linear-gradient(
+          135deg,
+          #fafcfd 0%,
+          #e8f4f8 50%,
+          #d4e9f2 100%
         );
-        border-radius: 50%;
-      }
-
-      .hero-content {
-        max-width: 1200px;
-        text-align: center;
-        z-index: 2;
+        overflow: hidden;
         position: relative;
       }
-
+      .hero-content {
+        max-width: 1400px;
+        text-align: center;
+        z-index: 10;
+      }
       .hero-subtitle {
         font-family: "Cormorant Garamond", serif;
         font-size: 1.5rem;
-        color: var(--metallic-blue);
-        margin-bottom: 1rem;
         font-style: italic;
+        color: var(--azure);
+        margin-bottom: 1.5rem;
       }
-
       .hero-title {
-        font-size: 4rem;
-        color: var(--metallic-blue);
+        font-size: 5.5rem;
         margin-bottom: 2rem;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
       }
-
       .hero-description {
-        font-size: 1.3rem;
-        color: var(--dark-text);
-        max-width: 900px;
+        font-size: 1.25rem;
+        max-width: 950px;
         margin: 0 auto 3rem;
-        line-height: 1.8;
+        color: var(--text-light);
       }
-
       .hero-buttons {
         display: flex;
         gap: 2rem;
         justify-content: center;
+        margin-top: 3rem;
         flex-wrap: wrap;
       }
-
-      .btn-primary,
-      .btn-secondary {
-        padding: 1.2rem 3rem;
-        border-radius: 40px;
-        font-size: 1.1rem;
+      .btn {
+        padding: 1.25rem 3.5rem;
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.95rem;
         font-weight: 600;
         text-decoration: none;
-        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        border-radius: 50px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         display: inline-block;
       }
-
       .btn-primary {
-        background: linear-gradient(
-          135deg,
-          var(--metallic-blue),
-          var(--deep-blue)
-        );
+        background: linear-gradient(135deg, var(--metallic-blue), var(--azure));
         color: white;
-        box-shadow: 0 5px 20px rgba(109, 177, 211, 0.4);
+        box-shadow: 0 10px 35px rgba(126, 200, 227, 0.4);
       }
-
       .btn-primary:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(109, 177, 211, 0.6);
+        transform: translateY(-4px);
+        box-shadow: 0 18px 50px rgba(126, 200, 227, 0.6);
       }
-
       .btn-secondary {
-        background: white;
-        color: var(--metallic-blue);
-        border: 2px solid var(--metallic-blue);
+        background: transparent;
+        color: var(--azure);
+        border: 2px solid var(--azure);
       }
-
       .btn-secondary:hover {
-        background: var(--metallic-blue);
+        background: var(--azure);
         color: white;
       }
-
-      /* Section Styles */
       .section {
-        padding: 6rem 5%;
-        max-width: 1400px;
+        padding: 8rem 4rem;
+        max-width: 1600px;
         margin: 0 auto;
       }
-
       .section-header {
         text-align: center;
-        margin-bottom: 4rem;
+        margin-bottom: 5rem;
       }
-
       .section-tag {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: var(--azure);
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+      .section-title {
+        font-size: 4rem;
+        margin-bottom: 2rem;
+      }
+      .section-description {
+        font-size: 1.2rem;
+        max-width: 900px;
+        margin: 0 auto;
+        color: var(--text-light);
+        line-height: 2;
+      }
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 3rem;
+        margin-top: 4rem;
+      }
+      .card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 15px 60px rgba(126, 200, 227, 0.12);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid rgba(126, 200, 227, 0.1);
+      }
+      .card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 25px 80px rgba(126, 200, 227, 0.25);
+      }
+      .card-image {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+      }
+      .card-content {
+        padding: 2.5rem;
+      }
+      .card-title {
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
+        color: var(--azure);
+      }
+      .card-subtitle {
         font-family: "Cormorant Garamond", serif;
         font-size: 1.2rem;
-        color: var(--metallic-blue);
         font-style: italic;
-        margin-bottom: 0.5rem;
-      }
-
-      .section-title {
-        font-size: 3rem;
         color: var(--metallic-blue);
         margin-bottom: 1.5rem;
       }
-
-      .section-description {
-        font-size: 1.2rem;
-        color: var(--dark-text);
-        max-width: 800px;
-        margin: 0 auto;
-        line-height: 1.8;
-      }
-
-      /* Cards */
-      .cards-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 3rem;
-        margin-top: 3rem;
-      }
-
-      .card {
-        background: white;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(168, 216, 234, 0.2);
-        transition: all 0.3s ease;
-        border: 1px solid var(--primary-blue);
-      }
-
-      .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 40px rgba(109, 177, 211, 0.3);
-      }
-
-      .card-image {
-        width: 100%;
-        height: 300px;
-        object-fit: cover;
-      }
-
-      .card-content {
-        padding: 2rem;
-      }
-
-      .card-title {
-        font-size: 1.8rem;
-        color: var(--metallic-blue);
-        margin-bottom: 1rem;
-      }
-
-      .card-genre {
-        font-family: "Cormorant Garamond", serif;
-        font-size: 1.1rem;
-        color: var(--deep-blue);
-        font-style: italic;
-        margin-bottom: 1rem;
-      }
-
       .card-text {
-        font-size: 1rem;
-        color: var(--dark-text);
-        line-height: 1.7;
-        margin-bottom: 0.8rem;
+        font-size: 1.05rem;
+        line-height: 1.85;
+        color: var(--text-light);
+        margin-bottom: 1rem;
       }
-
-      /* Gallery Grid */
       .gallery-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
         gap: 2rem;
-        margin-top: 3rem;
+        margin-top: 4rem;
       }
-
       .gallery-item {
-        position: relative;
+        border-radius: 12px;
         overflow: hidden;
-        border-radius: 15px;
-        box-shadow: 0 5px 20px rgba(168, 216, 234, 0.3);
-        transition: transform 0.3s ease;
+        box-shadow: 0 12px 45px rgba(126, 200, 227, 0.15);
+        transition: all 0.5s;
+        aspect-ratio: 4/3;
       }
-
       .gallery-item:hover {
-        transform: scale(1.05);
+        transform: scale(1.03);
       }
-
       .gallery-item img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        display: block;
       }
-
-      /* Steps Timeline */
-      .steps-container {
-        max-width: 1000px;
-        margin: 4rem auto;
+      .cta-box {
+        background: linear-gradient(
+          135deg,
+          rgba(232, 244, 248, 0.6),
+          rgba(212, 233, 242, 0.8)
+        );
+        border-radius: 25px;
+        padding: 5rem 4rem;
+        text-align: center;
+        margin: 6rem 0;
+        border: 1px solid rgba(126, 200, 227, 0.2);
+        box-shadow: 0 20px 60px rgba(126, 200, 227, 0.15);
       }
-
-      .step {
-        background: white;
-        padding: 3rem;
-        margin-bottom: 3rem;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(168, 216, 234, 0.2);
-        border-left: 5px solid var(--metallic-blue);
-      }
-
-      .step-number {
-        font-family: "Playfair Display", serif;
-        font-size: 4rem;
-        color: var(--primary-blue);
-        font-weight: 700;
-        margin-bottom: 1rem;
-      }
-
-      .step-title {
-        font-size: 2rem;
-        color: var(--metallic-blue);
-        margin-bottom: 1rem;
-      }
-
-      .step-tagline {
-        font-family: "Cormorant Garamond", serif;
-        font-size: 1.2rem;
-        color: var(--deep-blue);
-        font-style: italic;
-        margin-bottom: 1.5rem;
-      }
-
-      /* Team Members */
       .team-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
         gap: 4rem;
         margin-top: 4rem;
       }
-
       .team-member {
         background: white;
         border-radius: 20px;
         overflow: hidden;
-        box-shadow: 0 10px 30px rgba(168, 216, 234, 0.2);
+        box-shadow: 0 15px 60px rgba(126, 200, 227, 0.12);
       }
-
       .team-image {
         width: 100%;
-        height: 400px;
+        height: 450px;
         object-fit: cover;
       }
-
       .team-content {
         padding: 2.5rem;
       }
-
       .team-name {
-        font-size: 2rem;
-        color: var(--metallic-blue);
-        margin-bottom: 0.5rem;
+        font-size: 2.2rem;
+        color: var(--azure);
       }
-
       .team-role {
         font-family: "Cormorant Garamond", serif;
-        font-size: 1.2rem;
-        color: var(--deep-blue);
-        font-style: italic;
-        margin-bottom: 1.5rem;
-      }
-
-      /* FAQ */
-      .faq-container {
-        max-width: 900px;
-        margin: 3rem auto;
-      }
-
-      .faq-item {
-        background: white;
-        padding: 2rem;
-        margin-bottom: 1.5rem;
-        border-radius: 15px;
-        box-shadow: 0 5px 20px rgba(168, 216, 234, 0.2);
-        border-left: 4px solid var(--metallic-blue);
-      }
-
-      .faq-question {
         font-size: 1.3rem;
+        font-style: italic;
         color: var(--metallic-blue);
-        font-weight: 600;
-        margin-bottom: 1rem;
+        margin-bottom: 1.5rem;
       }
-
-      .faq-answer {
-        font-size: 1.05rem;
-        color: var(--dark-text);
-        line-height: 1.7;
-      }
-
-      /* Contact Form */
       .contact-form {
-        max-width: 700px;
-        margin: 3rem auto;
+        max-width: 800px;
+        margin: 4rem auto;
         background: white;
-        padding: 3rem;
-        border-radius: 20px;
-        box-shadow: 0 10px 40px rgba(168, 216, 234, 0.3);
-        border: 2px solid var(--primary-blue);
+        padding: 4rem;
+        border-radius: 25px;
+        box-shadow: 0 20px 70px rgba(126, 200, 227, 0.15);
       }
-
       .form-group {
         margin-bottom: 2rem;
       }
-
       .form-group label {
         display: block;
-        color: var(--metallic-blue);
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.95rem;
         font-weight: 600;
-        margin-bottom: 0.5rem;
-        font-size: 1.1rem;
+        color: var(--azure);
+        margin-bottom: 0.75rem;
+        text-transform: uppercase;
       }
-
       .form-group input,
       .form-group textarea,
       .form-group select {
         width: 100%;
-        padding: 1rem;
-        border: 2px solid var(--primary-blue);
-        border-radius: 10px;
-        font-size: 1rem;
-        font-family: "Montserrat", sans-serif;
-        transition: all 0.3s ease;
+        padding: 1.2rem 1.5rem;
+        border: 2px solid rgba(126, 200, 227, 0.2);
+        border-radius: 12px;
+        font-size: 1.05rem;
+        background: var(--off-white);
       }
-
-      .form-group input:focus,
-      .form-group textarea:focus,
-      .form-group select:focus {
-        outline: none;
-        border-color: var(--metallic-blue);
-        box-shadow: 0 0 10px rgba(168, 216, 234, 0.3);
-      }
-
       .form-group textarea {
-        min-height: 150px;
-        resize: vertical;
+        min-height: 180px;
       }
-
       .submit-btn {
         width: 100%;
-        padding: 1.2rem;
-        background: linear-gradient(
-          135deg,
-          var(--metallic-blue),
-          var(--deep-blue)
-        );
+        padding: 1.5rem;
+        background: linear-gradient(135deg, var(--metallic-blue), var(--azure));
         color: white;
         border: none;
-        border-radius: 40px;
-        font-size: 1.2rem;
+        border-radius: 50px;
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.05rem;
         font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
         cursor: pointer;
-        transition: all 0.3s ease;
+        box-shadow: 0 10px 35px rgba(126, 200, 227, 0.4);
       }
-
       .submit-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(109, 177, 211, 0.6);
+        transform: translateY(-3px);
       }
-
-      /* Footer */
       .footer {
-        background: linear-gradient(
-          135deg,
-          var(--metallic-blue),
-          var(--deep-blue)
-        );
+        background: linear-gradient(135deg, var(--navy), var(--deep-azure));
         color: white;
-        padding: 4rem 5% 2rem;
-        margin-top: 4rem;
+        padding: 5rem 4rem 2rem;
+        margin-top: 6rem;
       }
-
       .footer-content {
-        max-width: 1400px;
+        max-width: 1600px;
         margin: 0 auto;
         text-align: center;
       }
-
       .footer-logo {
-        font-family: "Playfair Display", serif;
-        font-size: 2rem;
-        font-weight: 700;
+        font-family: "Italiana", serif;
+        font-size: 2.5rem;
+        letter-spacing: 5px;
         margin-bottom: 1rem;
-        letter-spacing: 2px;
       }
-
       .footer-tagline {
         font-family: "Cormorant Garamond", serif;
-        font-size: 1.3rem;
+        font-size: 1.5rem;
         font-style: italic;
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
       }
-
       .footer-contact {
         display: flex;
         justify-content: center;
-        gap: 3rem;
-        margin-bottom: 2rem;
+        gap: 4rem;
+        margin-bottom: 3rem;
         flex-wrap: wrap;
       }
-
       .footer-contact a {
         color: white;
         text-decoration: none;
         font-size: 1.1rem;
-        transition: color 0.3s ease;
       }
-
-      .footer-contact a:hover {
-        color: var(--gold-accent);
-      }
-
       .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
         padding-top: 2rem;
-        margin-top: 2rem;
-        font-size: 0.9rem;
+        margin-top: 3rem;
         opacity: 0.8;
       }
-
-      /* Animations */
-      .shimmer {
-        background: linear-gradient(
-          90deg,
-          var(--primary-blue) 0%,
-          var(--metallic-blue) 50%,
-          var(--primary-blue) 100%
-        );
-        background-size: 200% auto;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: shimmer 3s linear infinite;
-      }
-
-      @keyframes shimmer {
-        to {
-          background-position: 200% center;
-        }
-      }
-
-      .fade-in {
-        animation: fadeIn 1s ease-in;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      /* Responsive */
       @media (max-width: 768px) {
         h1 {
-          font-size: 2.5rem;
-        }
-        h2 {
-          font-size: 2rem;
-        }
-        .nav-links {
-          gap: 1rem;
-          font-size: 0.85rem;
+          font-size: 3rem;
         }
         .hero-title {
-          font-size: 2.5rem;
+          font-size: 3rem;
         }
-        .cards-grid {
-          grid-template-columns: 1fr;
+        .nav-menu {
+          display: none;
         }
+        .cards-grid,
+        .gallery-grid,
         .team-grid {
           grid-template-columns: 1fr;
+        }
+        .section {
+          padding: 4rem 1.5rem;
         }
       }
     </style>
   </head>
   <body>
-    <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
       <div class="nav-container">
         <a href="#home" class="logo">LAKE COMO STYLE</a>
-        <ul class="nav-links">
+        <ul class="nav-menu">
           <li><a href="#home">Home</a></li>
-          <li><a href="#themes">2026 Themes</a></li>
-          <li><a href="#events">Ticketed Events</a></li>
-          <li><a href="#private">Private Events</a></li>
-          <li><a href="#movie">Movie Trailer</a></li>
+          <li><a href="#themes">Themes</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#private">Private</a></li>
+          <li><a href="#movie">Movie</a></li>
           <li><a href="#gallery">Gallery</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#contact" class="cta-button">Book Now</a></li>
+          <li><a href="#contact" class="nav-cta">Book Now</a></li>
         </ul>
       </div>
     </nav>
 
-    <!-- HOME SECTION -->
-    <section id="home" class="hero fade-in">
+    <section id="home" class="hero">
       <div class="hero-content">
-        <p class="hero-subtitle elegant-text">
+        <p class="hero-subtitle">
           Luxury Immersive Fashion Experiences on Lake Como
         </p>
-        <h1 class="hero-title shimmer">
+        <h1 class="hero-title">
           Celebrate elegance, style, and the timeless charm of Lake Como
         </h1>
         <p class="hero-description">
@@ -694,87 +495,93 @@
           private villa events and bespoke couture, we create immersive
           Made-in-Italy fashion experiences.
         </p>
-
-        <div style="margin: 3rem 0">
-          <h3 style="color: var(--metallic-blue); margin-bottom: 1.5rem">
-            Perfect For
-          </h3>
+        <div style="margin: 3.5rem 0">
+          <p class="uppercase-title" style="margin-bottom: 2rem">Perfect For</p>
           <div
             style="
               display: flex;
               justify-content: center;
-              gap: 2rem;
+              gap: 3rem;
               flex-wrap: wrap;
             "
           >
-            <div class="elegant-text" style="color: var(--deep-blue)">
-              ✦ Pre- or Post-wedding events
-            </div>
-            <div class="elegant-text" style="color: var(--deep-blue)">
-              ✦ Small group celebrations
-            </div>
-            <div class="elegant-text" style="color: var(--deep-blue)">
-              ✦ VIP clients
-            </div>
+            <div class="elegant-script">✦ Pre- or Post-wedding events</div>
+            <div class="elegant-script">✦ Small group celebrations</div>
+            <div class="elegant-script">✦ VIP clients</div>
           </div>
         </div>
-
         <div class="hero-buttons">
-          <a href="#contact" class="btn-primary">Book Your Experience</a>
-          <a href="#themes" class="btn-secondary">Explore Themes</a>
+          <a href="#contact" class="btn btn-primary">Book Your Experience</a>
+          <a href="#themes" class="btn btn-secondary">Explore Themes</a>
         </div>
       </div>
     </section>
 
-    <!-- FEATURES SECTION -->
-    <section class="section">
+    <section class="section" style="background: white">
       <div class="section-header">
-        <p class="section-tag">Curated Experiences</p>
-        <h2 class="section-title">Made-in-Italy Fashion Experiences</h2>
+        <p class="section-tag">IMMERSIVE ELEGANCE</p>
+        <h2 class="section-title">Experience the Magic</h2>
         <p class="section-description">
-          From La Dolce Vita lunches to Bond-inspired aperitivos, we create
-          unforgettable moments on the shores of Lake Como
+          Step into a world where Italian elegance meets cinematic storytelling
         </p>
       </div>
+      <div
+        style="
+          max-width: 1200px;
+          margin: 0 auto;
+          border-radius: 20px;
+          overflow: hidden;
+          box-shadow: 0 25px 80px rgba(126, 200, 227, 0.25);
+        "
+      >
+        <video controls style="width: 100%; display: block">
+          <source
+            src="https://cdn.sanity.io/files/c20abca7/production/8619aa7c6162b0324b047155cadceb864dc70208.mp4"
+            type="video/mp4"
+          />
+        </video>
+      </div>
+    </section>
 
+    <section class="section">
+      <div class="section-header">
+        <p class="section-tag">CURATED EXPERIENCES</p>
+        <h2 class="section-title">Made-in-Italy Fashion Experiences</h2>
+      </div>
       <div class="cards-grid">
         <div class="card">
           <div class="card-content">
-            <h3 class="card-title">✨ Themed Events</h3>
+            <h3 class="card-title">Themed Events</h3>
+            <p class="card-subtitle">Immersive Storytelling</p>
             <p class="card-text">
-              Choose from our exclusive 2026 themes including La Dolce Vita,
-              Hollywood Hustle, and Agents of Style. Each theme features curated
-              props, photo-ready backdrops, signature cocktails, and themed
-              music.
+              Exclusive 2026 themes with curated props, photo-ready backdrops,
+              signature cocktails, and themed music.
             </p>
           </div>
         </div>
-
         <div class="card">
           <div class="card-content">
-            <h3 class="card-title">🎬 Cinematic Experiences</h3>
+            <h3 class="card-title">Cinematic Trailers</h3>
+            <p class="card-subtitle">Your Story, Filmed</p>
             <p class="card-text">
-              Professional videography captures your event, creating a 3-minute
-              movie trailer with custom titles, cast names, and music. Delivered
-              within 3-4 weeks with social media-ready clips.
+              3-minute movie trailer with custom titles and music, delivered in
+              3-4 weeks with social media clips.
             </p>
           </div>
         </div>
-
         <div class="card">
           <div class="card-content">
-            <h3 class="card-title">🎭 Premium Props & Costumes</h3>
+            <h3 class="card-title">Couture Collection</h3>
+            <p class="card-subtitle">Over 3,000 Pieces</p>
             <p class="card-text">
-              Over 3,000 curated costumes and props spanning multiple eras and
-              styles. Guests can come dressed to theme or select from our
-              extensive collection.
+              Extensive collection of couture costumes and props spanning
+              multiple eras and styles.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- THEMES SECTION -->
     <section id="themes" class="section" style="background: white">
       <div class="section-header">
         <p class="section-tag">
@@ -785,10 +592,10 @@
           Our 2026 themes are designed to turn every day on Lake Como into a
           fully immersive memory. Step into a world of curated props,
           photo-ready backdrops, polaroid moments, signature cocktails, themed
-          menus, and music that brings each event to life.
+          menus, and music that brings each event to life. Come dressed to match
+          the theme or pick from an array of fun props.
         </p>
       </div>
-
       <div class="cards-grid">
         <div class="card">
           <img
@@ -798,7 +605,7 @@
           />
           <div class="card-content">
             <h3 class="card-title">Agents of Style</h3>
-            <p class="card-genre">Bond Inspired</p>
+            <p class="card-subtitle">Bond Inspired</p>
             <p class="card-text">
               <strong>The Story:</strong> Guests step into the world of secret
               agents, daring missions, and intrigue. Think tuxedos, glamorous
@@ -813,7 +620,6 @@
             </p>
           </div>
         </div>
-
         <div class="card">
           <img
             src="https://cdn.sanity.io/images/c20abca7/production/9abe77fbeaf20b814914e6c9e218b5753a162c4c-1064x911.png"
@@ -822,7 +628,7 @@
           />
           <div class="card-content">
             <h3 class="card-title">La Dolce Vita</h3>
-            <p class="card-genre">Italian / Romantic Glamour Theme</p>
+            <p class="card-subtitle">Italian / Romantic Glamour Theme</p>
             <p class="card-text">
               <strong>The Story:</strong> Guests step into a story of romance
               and playful elegance in the heart of 1960s Italy. Think flowing
@@ -838,7 +644,6 @@
             </p>
           </div>
         </div>
-
         <div class="card">
           <img
             src="https://cdn.sanity.io/images/c20abca7/production/4a261b170c114177ab1ba62caaa1577566afc635-1170x780.jpg"
@@ -847,7 +652,7 @@
           />
           <div class="card-content">
             <h3 class="card-title">The Hollywood Hustle</h3>
-            <p class="card-genre">Old Hollywood / Glamour Theme</p>
+            <p class="card-subtitle">Old Hollywood / Glamour Theme</p>
             <p class="card-text">
               <strong>The Story:</strong> Guests become stars of a vintage
               cinematic caper, full of red carpets, flashing cameras, and
@@ -864,81 +669,62 @@
           </div>
         </div>
       </div>
-
-      <!-- Custom Theme CTA -->
-      <div
-        style="
-          background: linear-gradient(135deg, #e3f4f9 0%, #f8fcff 100%);
-          border-radius: 30px;
-          padding: 4rem 5%;
-          margin: 4rem 0;
-          text-align: center;
-        "
-      >
-        <h2 style="color: var(--metallic-blue); margin-bottom: 1.5rem">
-          Theme Inquiry
-        </h2>
-        <p class="section-description" style="margin-bottom: 2rem">
+      <div class="cta-box">
+        <h2 style="font-size: 3rem">Theme Inquiry</h2>
+        <p style="font-size: 1.3rem; color: var(--text-light)">
           Don't see what you're looking for? We can design a custom theme
           tailored to your event.
         </p>
-        <a href="#contact" class="btn-primary">Join the Scene</a>
+        <a href="#contact" class="btn btn-primary">Join the Scene</a>
       </div>
     </section>
 
-    <!-- TICKETED EVENTS SECTION -->
     <section id="events" class="section">
       <div class="section-header">
-        <p class="section-tag">Themed Events at Stunning Venues</p>
-        <h2 class="section-title">2026 Open Ticketed Experiences</h2>
-        <p class="section-description">
-          Themed Events at Authentic Italian Venues - From Villas to Historic
-          Restaurants
-        </p>
+        <p class="section-tag">TICKETED EVENTS</p>
+        <h2 class="section-title">Themed Events at Authentic Italian Venues</h2>
       </div>
-
       <div
         style="
-          max-width: 900px;
-          margin: 3rem auto;
+          max-width: 1000px;
+          margin: 0 auto;
           background: white;
           padding: 3rem;
           border-radius: 20px;
-          box-shadow: 0 10px 30px rgba(168, 216, 234, 0.2);
+          box-shadow: 0 15px 60px rgba(126, 200, 227, 0.12);
         "
       >
-        <h3 style="color: var(--metallic-blue); margin-bottom: 1.5rem">
-          AGENTS OF STYLE AT HOTEL TERZO CROTTO
+        <h3 style="color: var(--azure); margin-bottom: 1.5rem">
+          Agents of Style at Hotel Terzo Crotto
         </h3>
-        <p class="elegant-text">
-          Nestled in the heart of Cernobbio, Hotel Terzo Crotto is a charming
-          historic property set in a garden‑surrounded former farmhouse dating
-          back to the late 19th century. The hotel's tranquil setting offers
-          easy access to the lakeside and local attractions like Villa d'Este
-          while maintaining a peaceful, picturesque atmosphere.
-        </p>
-        <p class="elegant-text" style="margin-top: 1.5rem">
-          With inviting outdoor spaces, wine cellar and a welcoming restaurant
-          celebrating authentic Italian cuisine, Hotel Terzo Crotto provides an
-          elegant backdrop for any event.
+        <p class="card-text">
+          AGENTS OF STYLE AT HOTEL TERZO CROTTO: Nestled in the heart of
+          Cernobbio, Hotel Terzo Crotto is a charming historic property set in a
+          garden‑surrounded former farmhouse dating back to the late 19th
+          century. The hotel’s tranquil setting offers easy access to the
+          lakeside and local attractions like Villa d’Este while maintaining a
+          peaceful, picturesque atmosphere. With inviting outdoor spaces, wine
+          cellar and a welcoming restaurant celebrating authentic Italian
+          cuisine, Hotel Terzo Crotto provides an elegant backdrop for any
+          event.
         </p>
         <div
           style="
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: var(--light-bg);
-            border-radius: 15px;
+            margin: 3rem 0;
+            padding: 2.5rem;
+            background: linear-gradient(
+              135deg,
+              rgba(232, 244, 248, 0.5),
+              rgba(212, 233, 242, 0.7)
+            );
+            border-radius: 20px;
           "
         >
-          <p style="color: var(--metallic-blue); font-weight: 600">
-            📅 DATES: May 6 & May 16
-          </p>
-          <p style="color: var(--metallic-blue); font-weight: 600">
-            🕐 TIME: 5pm - 8pm
+          <p style="font-size: 1.2rem; color: var(--azure); font-weight: 600">
+            📅 DATES: May 6 & May 16, 2026<br />🕐 TIME: 5pm - 8pm
           </p>
         </div>
       </div>
-
       <div class="gallery-grid" style="margin-top: 4rem">
         <div class="gallery-item">
           <img
@@ -958,161 +744,259 @@
             alt="Venue"
           />
         </div>
-      </div>
-
-      <div style="text-align: center; margin-top: 4rem">
-        <a href="#contact" class="btn-primary">Join Our Events</a>
+        <div class="gallery-item">
+          <img
+            src="https://cdn.sanity.io/images/c20abca7/production/fe3de70117969f48e5c4357717bf3229402161a3-1284x961.webp"
+            alt="Venue"
+          />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://cdn.sanity.io/images/c20abca7/production/e75d690f4207cc816d6f73b1d03eb20453755760-1920x1280.webp"
+            alt="Venue"
+          />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://cdn.sanity.io/images/c20abca7/production/89ca9a0352a0628203ef4387bb8245a7d17e8d19-1030x682.png"
+            alt="Venue"
+          />
+        </div>
       </div>
     </section>
 
-    <!-- PRIVATE EVENTS SECTION -->
     <section id="private" class="section" style="background: white">
       <div class="section-header">
         <p class="section-tag">From intimate gatherings to full celebrations</p>
         <h2 class="section-title">
           Designed for Celebration, Styled to Remember
         </h2>
-        <p class="section-description">2026 Immersive Private Events</p>
       </div>
-
-      <div style="max-width: 900px; margin: 0 auto">
-        <p class="elegant-text" style="margin-bottom: 2rem">
-          Choose your theme. Select your venue. Now it's time to experience the
+      <div style="max-width: 1100px; margin: 0 auto">
+        <p class="card-text">
+          Choose your theme. Select your venue. Now it’s time to experience the
           immersive fun!
         </p>
-
-        <p class="elegant-text" style="margin-bottom: 2rem">
+        <p class="card-text">
           We create unforgettable experiences for groups of all sizes. Whether
-          it's an intimate gathering or a large celebration, our team brings
+          it’s an intimate gathering or a large celebration, our team brings
           your event to life with style, elegance, and flair.
         </p>
-
-        <p class="elegant-text" style="margin-bottom: 2rem">
+        <p class="card-text">
           Guests can choose from our exclusive 2026 themes—from the timeless
           glamour of La Dolce Vita, to the cinematic sparkle of Hollywood
           Hustle, or the sophisticated intrigue of Bond. Prefer something truly
           unique? We also offer custom themes, tailored to your vision and
           designed to make your occasion one-of-a-kind.
         </p>
-
-        <p class="elegant-text" style="margin-bottom: 2rem">
+        <p class="card-text">
           We provide all themed backdrops and props for Polaroid moments, with
           the option to personalize backdrops, giving your guests fun, memorable
           keepsakes.
         </p>
-
-        <p class="elegant-text" style="margin-bottom: 2rem">
+        <p class="card-text">
           Our events are hosted in an array of stunning venues, from exclusive
           wine cellars, to historic palaces, elegant gardens, and lively
           terraces, providing the perfect backdrop for every occasion.
         </p>
-
-        <p class="elegant-text" style="margin-bottom: 2rem">
+        <p class="card-text">
           To enhance the experience, we suggest guests come in themed attire,
           and offer the option of a pop-up fashion rack so guests can purchase
           curated themed styles on-site.
         </p>
-
-        <p class="elegant-text" style="margin-bottom: 2rem">
-          We also offer a variety of music options, from DJs to live singers,
-          performing curated playlists for each theme—ensuring the soundtrack
-          perfectly matches the mood and atmosphere.
-        </p>
-
-        <p class="elegant-text" style="margin-bottom: 2rem">
-          For those who wish to capture the magic, we offer professional
-          photography and videography, with the exclusive option to create a
-          custom 3-minute cinematic movie trailer, complete with a personalized
-          cast list and tailored music—bringing your immersive experience fully
-          to life long after the event ends.
-        </p>
       </div>
-
-      <div
-        style="
-          text-align: center;
-          margin-top: 4rem;
-          padding: 3rem;
-          background: linear-gradient(135deg, #e3f4f9 0%, #f8fcff 100%);
-          border-radius: 30px;
-        "
-      >
-        <h2 style="color: var(--metallic-blue); margin-bottom: 1.5rem">
-          Celebrate like a Star
-        </h2>
-        <p class="section-description" style="margin-bottom: 2rem">
-          Immerse yourself in the theme and live the moment
-        </p>
-        <a href="#contact" class="btn-primary">Book Your Private Event</a>
+      <div class="gallery-grid" style="margin-top: 4rem">
+        <div class="gallery-item">
+          <img
+            src="https://cdn.sanity.io/images/c20abca7/production/437dd49a02ecac575dc481e3535b2dfb4b275442-951x913.png"
+            alt="Event"
+          />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://cdn.sanity.io/images/c20abca7/production/06e1175d3bde3e3a5a3d37ad7841001a66cdd2ce-1920x1080.png"
+            alt="Event"
+          />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://cdn.sanity.io/images/c20abca7/production/5bdb7664d902978a660db843d80ca21424de53bf-960x720.jpg"
+            alt="Event"
+          />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://cdn.sanity.io/images/c20abca7/production/7abf86da2007f97d3ecd6995e236a27f5bd7036e-648x439.jpg"
+            alt="Event"
+          />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://cdn.sanity.io/images/c20abca7/production/2b0e63b6b7ff63ac55b21b759be3b82b85f181e7-1672x798.png"
+            alt="Event"
+          />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://cdn.sanity.io/images/c20abca7/production/4a9627f5efe3853cab3c8506b3d41602d9576f45-1920x1080.png"
+            alt="Event"
+          />
+        </div>
       </div>
     </section>
 
-    <!-- MOVIE TRAILER SECTION -->
     <section id="movie" class="section">
       <div class="section-header">
-        <p class="section-tag">Your Cinematic Keepsake</p>
+        <p class="section-tag">Lights, Camera, Action!</p>
         <h2 class="section-title">Where Every Guest Becomes A Star</h2>
         <p class="section-description">
           Our professional videographer captures your private event to create
           your very own 3-minute movie trailer. With custom casting, selected
           music, and highlights from your special event, we turn your
-          celebration into a cinematic keepsake.
+          celebration into a cinematic keepsake. The only movie experience on
+          Lake Como, complete with social media–ready clips and your full
+          trailer delivered within 3–4 weeks — making your event truly
+          unforgettable!
         </p>
       </div>
-
       <div class="cards-grid">
         <div class="card">
           <div class="card-content">
-            <h3 class="card-title">🎬 3-Minute Movie Trailer</h3>
+            <h3 class="card-title">
+              3-Minute Movie Trailer with Professional Photography
+            </h3>
             <p class="card-text">
               A fully edited trailer up to 3 minutes in length
             </p>
-            <ul style="margin-top: 1rem; line-height: 1.8">
-              <li>Includes your choice of music to match the tone and style</li>
-              <li>Features custom title and cast names</li>
-              <li>
-                Enhanced with special effects to elevate the cinematic impact
+            <ul style="list-style: none; padding: 0; margin-top: 1.5rem">
+              <li
+                style="
+                  margin-bottom: 0.8rem;
+                  padding-left: 1.5rem;
+                  position: relative;
+                "
+              >
+                <span style="position: absolute; left: 0; color: var(--azure)"
+                  >✓</span
+                >Includes your choice of music to match the tone and style
               </li>
-              <li>Professional photography</li>
+              <li
+                style="
+                  margin-bottom: 0.8rem;
+                  padding-left: 1.5rem;
+                  position: relative;
+                "
+              >
+                <span style="position: absolute; left: 0; color: var(--azure)"
+                  >✓</span
+                >Features custom title and cast names
+              </li>
+              <li
+                style="
+                  margin-bottom: 0.8rem;
+                  padding-left: 1.5rem;
+                  position: relative;
+                "
+              >
+                <span style="position: absolute; left: 0; color: var(--azure)"
+                  >✓</span
+                >Enhanced with special effects to elevate the cinematic impact
+              </li>
+              <li
+                style="
+                  margin-bottom: 0.8rem;
+                  padding-left: 1.5rem;
+                  position: relative;
+                "
+              >
+                <span style="position: absolute; left: 0; color: var(--azure)"
+                  >✓</span
+                >Professional photography
+              </li>
             </ul>
           </div>
         </div>
-
         <div class="card">
           <div class="card-content">
-            <h3 class="card-title">📱 Social Media Ready Cuts</h3>
+            <h3 class="card-title">Social Media Ready Cuts</h3>
             <p class="card-text">
               Shorter versions optimized for social media platforms
             </p>
-            <ul style="margin-top: 1rem; line-height: 1.8">
-              <li>Perfect for Instagram, TikTok, YouTube, or Facebook</li>
-              <li>Designed to grab attention and drive engagement</li>
+            <ul style="list-style: none; padding: 0; margin-top: 1.5rem">
+              <li
+                style="
+                  margin-bottom: 0.8rem;
+                  padding-left: 1.5rem;
+                  position: relative;
+                "
+              >
+                <span style="position: absolute; left: 0; color: var(--azure)"
+                  >✓</span
+                >Perfect for Instagram, TikTok, YouTube, or Facebook
+              </li>
+              <li
+                style="
+                  margin-bottom: 0.8rem;
+                  padding-left: 1.5rem;
+                  position: relative;
+                "
+              >
+                <span style="position: absolute; left: 0; color: var(--azure)"
+                  >✓</span
+                >Designed to grab attention and drive engagement
+              </li>
             </ul>
           </div>
         </div>
-
         <div class="card">
           <div class="card-content">
-            <h3 class="card-title">⏱️ Timeline</h3>
+            <h3 class="card-title">Timeline</h3>
             <p class="card-text">Delivered within 3–4 weeks from event date</p>
-            <ul style="margin-top: 1rem; line-height: 1.8">
-              <li>Professional post-production editing</li>
-              <li>Quality assurance review</li>
-              <li>Secure digital delivery</li>
+            <ul style="list-style: none; padding: 0; margin-top: 1.5rem">
+              <li
+                style="
+                  margin-bottom: 0.8rem;
+                  padding-left: 1.5rem;
+                  position: relative;
+                "
+              >
+                <span style="position: absolute; left: 0; color: var(--azure)"
+                  >✓</span
+                >Professional post-production editing
+              </li>
+              <li
+                style="
+                  margin-bottom: 0.8rem;
+                  padding-left: 1.5rem;
+                  position: relative;
+                "
+              >
+                <span style="position: absolute; left: 0; color: var(--azure)"
+                  >✓</span
+                >Quality assurance review
+              </li>
+              <li
+                style="
+                  margin-bottom: 0.8rem;
+                  padding-left: 1.5rem;
+                  position: relative;
+                "
+              >
+                <span style="position: absolute; left: 0; color: var(--azure)"
+                  >✓</span
+                >Secure digital delivery
+              </li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- GALLERY SECTION -->
     <section id="gallery" class="section" style="background: white">
       <div class="section-header">
-        <p class="section-tag">2026 Themed Events</p>
+        <p class="section-tag">Lights, Camera, Action!</p>
         <h2 class="section-title">Scenes from the Experiences</h2>
-        <p class="section-description">Lights, Camera, Action!</p>
       </div>
-
       <div class="gallery-grid">
         <div class="gallery-item">
           <img
@@ -1168,20 +1052,47 @@
             alt="Gallery"
           />
         </div>
+        <div class="gallery-item">
+          <img
+            src="https://cdn.sanity.io/images/c20abca7/production/ebe619b3de4a6f1995e92ce832606a2eb2d11482-973x1119.jpg"
+            alt="Gallery"
+          />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://cdn.sanity.io/images/c20abca7/production/475628e95f1e0398cdb7f69c2fe264cb9ab94424-1170x691.jpg"
+            alt="Gallery"
+          />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://cdn.sanity.io/images/c20abca7/production/df513f7de5a5c8367bf1fe7c7c154659df5ba021-768x1344.jpg"
+            alt="Gallery"
+          />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://cdn.sanity.io/images/c20abca7/production/bdfedf714bf67f3384a2a0f05294fb2222c2c744-1008x756.jpg"
+            alt="Gallery"
+          />
+        </div>
       </div>
     </section>
 
-    <!-- ABOUT SECTION -->
     <section id="about" class="section">
       <div class="section-header">
-        <p class="section-tag">International Expertise</p>
-        <h2 class="section-title">Your Event Crew</h2>
-        <p class="section-description">
+        <p class="section-tag">
           From the Big Apple to the heart of Milan — our team brings
           international talent to your celebration
         </p>
+        <h2 class="section-title">Your Event Crew</h2>
+        <p class="section-description">
+          Lake Como Style brings immersive, themed experiences to life on the
+          Lake. From our weekly events to private parties, every celebration is
+          carefully styled and designed, allowing guests to step into a world of
+          themed fun.
+        </p>
       </div>
-
       <div class="team-grid">
         <div class="team-member">
           <img
@@ -1193,27 +1104,27 @@
             <h3 class="team-name">Dee Lasprogata</h3>
             <p class="team-role">Founder & Creative Director</p>
             <p class="card-text">
-              Our founder has over 30 years of experience in fashion, working in
-              New York, Los Angeles, Rome, Milan, and Lake Como. She arrived to
-              the shores of Lake Como 20 years ago and has been back and forth
-              ever since.
+              Our founder, Dee Lasprogata has over 30 years of experience in
+              fashion, working in New York, Los Angeles, Rome, Milan, and Lake
+              Como. She arrived to the shores of Lake Como 20 years ago and has
+              been back and forth ever since.
             </p>
             <p class="card-text">
               With roots in Philadelphia, Dee grew up surrounded by couture as
-              her grandmother operated a custom gown atelier. She graduated from
-              both Vanderbilt University and the Fashion Institute of Design in
-              New York City.
+              her grandmother operated a custom gown atelier. Later, she
+              graduated from both Vanderbilt University and the Fashion
+              Institute of Design in New York City.
             </p>
             <p class="card-text">
-              She has launched pioneering fashion collections working with
+              She has launched a pioneering fashion collections working with
               celebrities including Valentino, Stevie Wonder and Giada De
-              Laurentiis. Her visionary work has been featured in major
-              publications including People, Glamour, Io Donna, Women's Wear
-              Daily (WWD), Fox & Friends, TG5, and Entrepreneur.
+              Laurentiis. Over the years, her visionary work has been featured
+              in major publications in both the USA and Italy, including People,
+              Glamour, Io Donna, Women's Wear Daily (WWD), Fox & Friends, TG5,
+              and Entrepreneur.
             </p>
           </div>
         </div>
-
         <div class="team-member">
           <img
             src="https://cdn.sanity.io/images/c20abca7/production/427d578bd9cde9bcce27512c36b3c3eadc4d7ccb-3456x5184.jpg"
@@ -1224,9 +1135,12 @@
             <h3 class="team-name">Stefano Dozza</h3>
             <p class="team-role">Filmmaker & Visual Director</p>
             <p class="card-text">
-              Stefano is a filmmaker, photographer, and content producer from
-              Bologna, currently based between Milan and Rome. He has studied
-              and worked in New York, Los Angeles, and the UK.
+              Stefano Dozza is a filmmaker, photographer, and content producer
+              from Bologna, currently based between Milan and Rome. He has
+              studied and worked in New York, Los Angeles, and the UK. Over the
+              years, his work has spanned corporate and fashion projects, with
+              each video carefully tailored to reflect the unique look and
+              identity of each brand.
             </p>
             <p class="card-text">
               As a versatile creative professional, Stefano brings expertise in
@@ -1238,296 +1152,182 @@
             <p class="card-text">
               Stefano's commitment to sustainability and thoughtful content
               creation aligns perfectly with Lake Como Style's mission to
-              deliver meaningful, memorable experiences.
+              deliver meaningful, memorable experiences that respect both
+              artistry and environment.
             </p>
           </div>
         </div>
       </div>
-
-      <!-- Featured Publications -->
-      <div style="margin-top: 5rem; text-align: center">
+      <div style="text-align: center; padding: 3rem 0; margin-top: 4rem">
+        <p class="section-tag">featured on & in</p>
         <h3
-          style="
-            color: var(--metallic-blue);
-            margin-bottom: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-          "
+          style="font-size: 1.3rem; color: var(--text-light); margin-top: 2rem"
         >
-          Featured On & In
+          People • Glamour • Io Donna • WWD • Fox & Friends • TG5 • Entrepreneur
         </h3>
-        <p class="section-description">
-          People • Glamour • Io Donna • Women's Wear Daily (WWD) • Fox & Friends
-          • TG5 • Entrepreneur
-        </p>
       </div>
     </section>
 
-    <!-- FAQ SECTION -->
-    <section class="section" style="background: white">
+    <section id="contact" class="section" style="background: white">
       <div class="section-header">
-        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-tag">GET IN TOUCH</p>
+        <h2 class="section-title">Let's Create Your Story</h2>
       </div>
-
-      <div class="faq-container">
-        <div class="faq-item">
-          <p class="faq-question">
-            Are there weekly events open to all guests visiting Lake Como?
-          </p>
-          <p class="faq-answer">
-            Yes! We host weekly events for all guests visiting Lake Como,
-            ranging from casual aperitivi to pre-fixed dinners at select
-            lakeside locations. Each week offers a unique experience, allowing
-            guests to enjoy the best of local cuisine, stunning views, and the
-            vibrant atmosphere of the Lake.
-          </p>
-        </div>
-
-        <div class="faq-item">
-          <p class="faq-question">
-            Can I book a private event for a bachelorette, rehearsal dinner or
-            tour group gathering?
-          </p>
-          <p class="faq-answer">
-            Yes! We offer private events tailored for bachelorettes, tour
-            groups, corporate functions, and other special gatherings. Whether
-            it's a curated aperitivo, a pre-fixed dinner, or a full lakeside
-            experience, we can customize the event to suit your group's needs
-            and create a memorable experience on Lake Como.
-          </p>
-        </div>
-
-        <div class="faq-item">
-          <p class="faq-question">What backdrops and props do you offer?</p>
-          <p class="faq-answer">
-            We offer a collection of over 3,000 couture costumes and props,
-            spanning multiple time periods, styles, and themes. The collection
-            includes elegant, theatrical, historical, fantasy, and bespoke
-            pieces, each selected for its craftsmanship, visual impact, and
-            suitability for immersive, high-end events.
-          </p>
-        </div>
-
-        <div class="faq-item">
-          <p class="faq-question">
-            How long in advance do I need to book a private event?
-          </p>
-          <p class="faq-answer">
-            We recommend booking private events at least 2–4 weeks in advance to
-            ensure availability and allow us time to tailor the experience to
-            your group. For larger groups or peak season dates, we suggest
-            booking as early as possible to secure your preferred date and
-            location on Lake Como.
-          </p>
-        </div>
-
-        <div class="faq-item">
-          <p class="faq-question">Do you offer custom themes?</p>
-          <p class="faq-answer">
-            Absolutely! While we have signature themes like La Dolce Vita,
-            Agents of Style, and Hollywood Hustle, we specialize in creating
-            fully customized themes tailored to your vision, brand, or
-            celebration. Our team works closely with you to design every detail.
-          </p>
-        </div>
-
-        <div class="faq-item">
-          <p class="faq-question">Can guests participate in the filming?</p>
-          <p class="faq-answer">
-            Yes! Guests can choose their level of participation. Some prefer to
-            take on starring roles and fully immerse themselves in the
-            performances, while others may simply observe and enjoy the
-            narrative as it unfolds. Our professional actors can enact the full
-            story, ensuring everyone feels comfortable and enjoys the
-            experience.
-          </p>
-        </div>
-
-        <div class="faq-item">
-          <p class="faq-question">
-            What is included in the movie trailer package?
-          </p>
-          <p class="faq-answer">
-            The movie trailer package includes professional filming, a fully
-            edited 3-minute cinematic trailer with custom title, cast names, and
-            your choice of music, plus social media-ready clips. The trailer is
-            delivered within 3-4 weeks of your event.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="section">
-      <div class="section-header">
-        <h2 class="section-title">Get in Touch</h2>
-        <p class="section-description">
-          Ready to create your unforgettable Lake Como experience? Contact us
-          today!
-        </p>
-      </div>
-
       <div class="contact-form">
-        <form action="#" method="POST">
+        <form>
           <div class="form-group">
             <label for="name">Full Name *</label>
-            <input type="text" id="name" name="name" required />
+            <input type="text" id="name" required placeholder="Your name" />
           </div>
-
           <div class="form-group">
-            <label for="email">Email Address *</label>
-            <input type="email" id="email" name="email" required />
+            <label for="email">Email *</label>
+            <input
+              type="email"
+              id="email"
+              required
+              placeholder="your@email.com"
+            />
           </div>
-
           <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" />
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" placeholder="+1 (555) 000-0000" />
           </div>
-
           <div class="form-group">
             <label for="event-type">Event Type *</label>
-            <select id="event-type" name="event-type" required>
-              <option value="">Select an option</option>
-              <option value="private">Private Event</option>
-              <option value="bachelorette">Bachelorette Party</option>
-              <option value="corporate">Corporate Event</option>
-              <option value="wedding">Pre/Post Wedding Event</option>
-              <option value="group">Group Celebration</option>
-              <option value="ticketed">Join Ticketed Event</option>
-              <option value="other">Other</option>
+            <select id="event-type" required>
+              <option value="">Select</option>
+              <option>Private Event</option>
+              <option>Bachelorette</option>
+              <option>Corporate</option>
+              <option>Wedding</option>
+              <option>Ticketed Event</option>
             </select>
           </div>
-
           <div class="form-group">
-            <label for="date">Preferred Date</label>
-            <input type="date" id="date" name="date" />
+            <label for="date">Date</label>
+            <input type="date" id="date" />
           </div>
-
           <div class="form-group">
-            <label for="guests">Number of Guests</label>
-            <input type="number" id="guests" name="guests" min="1" />
+            <label for="guests">Guests</label>
+            <input type="number" id="guests" min="1" />
           </div>
-
           <div class="form-group">
-            <label for="theme">Preferred Theme</label>
-            <select id="theme" name="theme">
-              <option value="">Select a theme</option>
-              <option value="agents">Agents of Style (Bond)</option>
-              <option value="dolcevita">La Dolce Vita</option>
-              <option value="hollywood">Hollywood Hustle</option>
-              <option value="custom">Custom Theme</option>
+            <label for="theme">Theme</label>
+            <select id="theme">
+              <option value="">Select</option>
+              <option>Agents of Style</option>
+              <option>La Dolce Vita</option>
+              <option>Hollywood Hustle</option>
+              <option>Custom</option>
             </select>
           </div>
-
           <div class="form-group">
-            <label for="message">Message / Special Requests *</label>
-            <textarea id="message" name="message" required></textarea>
+            <label for="message">Message *</label>
+            <textarea
+              id="message"
+              required
+              placeholder="Tell us about your vision..."
+            ></textarea>
           </div>
-
           <button type="submit" class="submit-btn">Send Inquiry</button>
         </form>
       </div>
-
       <div
         style="
+          max-width: 800px;
+          margin: 4rem auto;
           text-align: center;
-          margin-top: 3rem;
-          padding: 2rem;
-          background: white;
+          padding: 3rem;
+          background: linear-gradient(
+            135deg,
+            rgba(232, 244, 248, 0.5),
+            rgba(212, 233, 242, 0.7)
+          );
           border-radius: 20px;
-          box-shadow: 0 5px 20px rgba(168, 216, 234, 0.2);
         "
       >
-        <h3 style="color: var(--metallic-blue); margin-bottom: 1rem">
-          Direct Contact
-        </h3>
+        <h3 style="color: var(--azure); margin-bottom: 2rem">Direct Contact</h3>
         <div
           style="
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
           "
         >
-          <a
-            href="mailto:info@lakecomostyle.it"
-            style="
-              color: var(--metallic-blue);
-              text-decoration: none;
-              font-size: 1.2rem;
-            "
-          >
-            ✉ info@lakecomostyle.it
-          </a>
-          <a
-            href="tel:+393487847234"
-            style="
-              color: var(--metallic-blue);
-              text-decoration: none;
-              font-size: 1.2rem;
-            "
-          >
-            📞 +39 348 784 7234
-          </a>
+          <div style="padding: 2rem; background: white; border-radius: 15px">
+            <p
+              style="
+                color: var(--text-light);
+                font-size: 0.9rem;
+                text-transform: uppercase;
+                margin-bottom: 0.5rem;
+              "
+            >
+              Email
+            </p>
+            <a
+              href="mailto:info@lakecomostyle.it "
+              style="
+                color: var(--azure);
+                text-decoration: none;
+                font-size: 1.2rem;
+              "
+              >info@lakecomostyle.it
+            </a>
+          </div>
+          <div style="padding: 2rem; background: white; border-radius: 15px">
+            <p
+              style="
+                color: var(--text-light);
+                font-size: 0.9rem;
+                text-transform: uppercase;
+                margin-bottom: 0.5rem;
+              "
+            >
+              Phone
+            </p>
+            <a
+              href="tel:+393487847234"
+              style="
+                color: var(--azure);
+                text-decoration: none;
+                font-size: 1.2rem;
+              "
+              >+393487847234</a
+            >
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="footer">
       <div class="footer-content">
         <div class="footer-logo">LAKE COMO STYLE</div>
         <p class="footer-tagline">Curated Italian Moments</p>
-
         <div class="footer-contact">
-          <a href="mailto:info@lakecomostyle.it">✉ info@lakecomostyle.it</a>
-          <a href="tel:+393487847234">📞 +39 348 784 7234</a>
+          <a href="mailto:info@lakecomostyle.it ">✉ info@lakecomostyle.it </a>
+          <a href="tel:+393487847234">📞 +393487847234</a>
         </div>
-
         <div class="footer-bottom">
-          <p>
-            &copy; 2026 Lake Como Style. All rights reserved. Luxury Immersive
-            Fashion Experiences on Lake Como.
-          </p>
+          <p>&copy; 2026 Lake Como Style. All rights reserved.</p>
         </div>
       </div>
     </footer>
 
     <script>
-      // Smooth scroll for navigation links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
+      window.addEventListener("scroll", () => {
+        document
+          .getElementById("navbar")
+          .classList.toggle("scrolled", window.scrollY > 100);
+      });
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", (e) => {
           e.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            target.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-          }
+          document
+            .querySelector(a.getAttribute("href"))
+            .scrollIntoView({ behavior: "smooth" });
         });
       });
-
-      // Add animation on scroll
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -100px 0px",
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("fade-in");
-          }
-        });
-      }, observerOptions);
-
-      document
-        .querySelectorAll(".card, .gallery-item, .team-member, .faq-item")
-        .forEach((el) => {
-          observer.observe(el);
-        });
     </script>
   </body>
 </html>
