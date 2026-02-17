@@ -1,0 +1,1978 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lake Como Style — Luxury Immersive Fashion Experiences</title>
+    <meta
+      name="description"
+      content="Curated Italian fashion experiences on Lake Como. From themed events to private villa celebrations and bespoke couture."
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600&family=Space+Grotesk:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "lake-blue": "#4A90E2",
+              "lake-dark": "#3A7BC8",
+              plaster: "#FAF9F7",
+              "soft-black": "#1A1A1A",
+              "warm-gray": "#6B6B6B",
+              "light-gray": "#E8E6E3",
+            },
+            fontFamily: {
+              display: ['"Cormorant Garamond"', "serif"],
+              body: ["Manrope", "sans-serif"],
+              mono: ['"Space Grotesk"', "monospace"],
+            },
+            spacing: {
+              18: "4.5rem",
+              88: "22rem",
+              128: "32rem",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* Base Reset & Luxury Foundation */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Manrope", sans-serif;
+        background-color: #faf9f7;
+        color: #1a1a1a;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Typography Scale */
+      .text-display-xl {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(3rem, 8vw, 7rem);
+        line-height: 0.9;
+        letter-spacing: -0.02em;
+        font-weight: 400;
+      }
+
+      .text-display-lg {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(2.5rem, 5vw, 4.5rem);
+        line-height: 1;
+        letter-spacing: -0.01em;
+        font-weight: 400;
+      }
+
+      .text-display-md {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(1.75rem, 3vw, 2.5rem);
+        line-height: 1.1;
+        font-weight: 500;
+      }
+
+      .text-body-lg {
+        font-size: 1.125rem;
+        line-height: 1.6;
+        font-weight: 300;
+      }
+
+      .text-body {
+        font-size: 1rem;
+        line-height: 1.7;
+        font-weight: 400;
+      }
+
+      .text-label {
+        font-family: "Space Grotesk", monospace;
+        font-size: 0.75rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+
+      /* Refined Easing */
+      .ease-refined {
+        transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+      }
+
+      .ease-dramatic {
+        transition-timing-function: cubic-bezier(0.87, 0, 0.13, 1);
+      }
+
+      /* Custom Selection */
+      ::selection {
+        background-color: #4a90e2;
+        color: white;
+      }
+
+      /* Focus Visible */
+      :focus-visible {
+        outline: 2px solid #4a90e2;
+        outline-offset: 4px;
+      }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #faf9f7;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #e8e6e3;
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #4a90e2;
+      }
+
+      /* Animation Keyframes */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-60px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(60px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes scaleIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes lineExpand {
+        from {
+          transform: scaleX(0);
+        }
+        to {
+          transform: scaleX(1);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      /* Utility Classes */
+      .animate-fade-in-up {
+        animation: fadeInUp 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+      }
+
+      .animate-fade-in {
+        animation: fadeIn 0.6s ease-out forwards;
+      }
+
+      .animate-slide-left {
+        animation: slideInLeft 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+      }
+
+      .animate-slide-right {
+        animation: slideInRight 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+      }
+
+      .animate-scale-in {
+        animation: scaleIn 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+      }
+
+      .animate-line {
+        animation: lineExpand 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+        transform-origin: left;
+      }
+
+      .delay-100 {
+        animation-delay: 100ms;
+      }
+      .delay-200 {
+        animation-delay: 200ms;
+      }
+      .delay-300 {
+        animation-delay: 300ms;
+      }
+      .delay-400 {
+        animation-delay: 400ms;
+      }
+      .delay-500 {
+        animation-delay: 500ms;
+      }
+
+      /* Initial States for Animation */
+      .will-animate {
+        opacity: 0;
+      }
+
+      /* Magnetic Button Effect */
+      .magnetic-btn {
+        position: relative;
+        transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+      }
+
+      /* Image Treatments */
+      .img-luxury {
+        filter: contrast(1.05) saturate(0.95);
+        transition:
+          transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1),
+          filter 0.4s ease;
+      }
+
+      .img-luxury:hover {
+        transform: scale(1.03);
+        filter: contrast(1.1) saturate(1);
+      }
+
+      /* Asymmetric Layout Helpers */
+      .offset-left {
+        margin-left: 5%;
+      }
+
+      .offset-right {
+        margin-right: 5%;
+        margin-left: auto;
+      }
+
+      /* Text Reveal Animation */
+      .text-reveal {
+        overflow: hidden;
+      }
+
+      .text-reveal-inner {
+        transform: translateY(100%);
+        transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+      }
+
+      .text-reveal.revealed .text-reveal-inner {
+        transform: translateY(0);
+      }
+
+      /* Page Transition Overlay */
+      .page-transition {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #4a90e2;
+        z-index: 9999;
+        transform: translateY(100%);
+        transition: transform 0.6s cubic-bezier(0.87, 0, 0.13, 1);
+        pointer-events: none;
+      }
+
+      .page-transition.active {
+        transform: translateY(0);
+      }
+
+      .page-transition.exit {
+        transform: translateY(-100%);
+      }
+
+      /* Navigation Styles */
+      .nav-link {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: #1a1a1a;
+        transform: translateX(-101%);
+        transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+      }
+
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        transform: translateX(0);
+      }
+
+      /* Custom Cursor */
+      .custom-cursor {
+        width: 20px;
+        height: 20px;
+        border: 1px solid #4a90e2;
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 9998;
+        transition:
+          transform 0.15s ease-out,
+          opacity 0.15s ease;
+        mix-blend-mode: difference;
+      }
+
+      .custom-cursor.hover {
+        transform: scale(2.5);
+        background-color: rgba(74, 144, 226, 0.1);
+      }
+
+      /* Accordion Styles */
+      .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+      }
+
+      .accordion-item.active .accordion-content {
+        max-height: 500px;
+      }
+
+      .accordion-icon {
+        transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+      }
+
+      .accordion-item.active .accordion-icon {
+        transform: rotate(45deg);
+      }
+
+      /* Form Styles */
+      .luxury-input {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #e8e6e3;
+        padding: 1rem 0;
+        width: 100%;
+        font-family: "Manrope", sans-serif;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+        outline: none;
+      }
+
+      .luxury-input:focus {
+        border-color: #4a90e2;
+      }
+
+      .luxury-input::placeholder {
+        color: #6b6b6b;
+        font-weight: 300;
+      }
+
+      /* Video Container */
+      .video-container {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .video-container video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Masonry Grid */
+      .masonry-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+      }
+
+      @media (max-width: 768px) {
+        .masonry-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Reduced Motion */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      /* Hide scrollbar during page transitions */
+      body.transitioning {
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body class="bg-plaster text-soft-black">
+    <!-- Page Transition Overlay -->
+    <div class="page-transition" id="pageTransition"></div>
+
+    <!-- Custom Cursor (Desktop Only) -->
+    <div class="custom-cursor hidden lg:block" id="customCursor"></div>
+
+    <!-- Navigation -->
+    <nav
+      id="navbar"
+      class="fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-refined"
+    >
+      <div class="w-full px-6 lg:px-12 py-6 flex justify-between items-center">
+        <a
+          href="#/"
+          class="text-label text-soft-black tracking-widest hover:text-lake-blue transition-colors"
+          data-nav
+        >
+          LAKE COMO STYLE
+        </a>
+
+        <div class="hidden lg:flex items-center gap-12">
+          <a href="#/" class="nav-link text-body text-soft-black py-1" data-nav
+            >Home</a
+          >
+          <a
+            href="#/themes"
+            class="nav-link text-body text-soft-black py-1"
+            data-nav
+            >Themes</a
+          >
+          <a
+            href="#/events"
+            class="nav-link text-body text-soft-black py-1"
+            data-nav
+            >Events</a
+          >
+          <a
+            href="#/private-events"
+            class="nav-link text-body text-soft-black py-1"
+            data-nav
+            >Private</a
+          >
+          <a
+            href="#/movie"
+            class="nav-link text-body text-soft-black py-1"
+            data-nav
+            >Movie</a
+          >
+          <a
+            href="#/gallery"
+            class="nav-link text-body text-soft-black py-1"
+            data-nav
+            >Gallery</a
+          >
+          <a
+            href="#/about"
+            class="nav-link text-body text-soft-black py-1"
+            data-nav
+            >About</a
+          >
+          <a
+            href="#/contact"
+            class="magnetic-btn ml-4 px-6 py-3 bg-lake-blue text-white text-label hover:bg-lake-dark transition-colors"
+            data-nav
+          >
+            Book Now
+          </a>
+        </div>
+
+        <button
+          id="mobileMenuBtn"
+          class="lg:hidden flex flex-col gap-1.5 p-2"
+          aria-label="Toggle menu"
+        >
+          <span class="w-6 h-0.5 bg-soft-black transition-transform"></span>
+          <span class="w-6 h-0.5 bg-soft-black transition-opacity"></span>
+          <span class="w-6 h-0.5 bg-soft-black transition-transform"></span>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobileMenu"
+        class="lg:hidden fixed inset-0 bg-plaster z-40 transform translate-x-full transition-transform duration-500 ease-refined pt-24 px-6"
+      >
+        <div class="flex flex-col gap-8">
+          <a href="#/" class="text-display-md text-soft-black" data-nav>Home</a>
+          <a href="#/themes" class="text-display-md text-soft-black" data-nav
+            >Themes</a
+          >
+          <a href="#/events" class="text-display-md text-soft-black" data-nav
+            >Events</a
+          >
+          <a
+            href="#/private-events"
+            class="text-display-md text-soft-black"
+            data-nav
+            >Private Events</a
+          >
+          <a href="#/movie" class="text-display-md text-soft-black" data-nav
+            >Your Movie</a
+          >
+          <a href="#/gallery" class="text-display-md text-soft-black" data-nav
+            >Gallery</a
+          >
+          <a href="#/about" class="text-display-md text-soft-black" data-nav
+            >About</a
+          >
+          <a href="#/contact" class="text-display-md text-lake-blue" data-nav
+            >Contact</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main id="mainContent" class="min-h-screen pt-20">
+      <!-- Content injected here by Router -->
+    </main>
+
+    <!-- Footer -->
+    <footer
+      id="footer"
+      class="w-full bg-soft-black text-plaster py-20 px-6 lg:px-12 mt-32"
+    >
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
+        <div class="lg:col-span-4">
+          <h3 class="text-label text-lake-blue mb-4">Lake Como Style</h3>
+          <p class="text-body-lg text-plaster/80 font-light max-w-sm">
+            Curated Italian Moments. Immersive fashion experiences on the shores
+            of Lake Como.
+          </p>
+        </div>
+
+        <div class="lg:col-span-2">
+          <h4 class="text-label text-plaster/40 mb-4">Explore</h4>
+          <ul class="space-y-3">
+            <li>
+              <a
+                href="#/themes"
+                class="text-body text-plaster/80 hover:text-lake-blue transition-colors"
+                data-nav
+                >Themes</a
+              >
+            </li>
+            <li>
+              <a
+                href="#/events"
+                class="text-body text-plaster/80 hover:text-lake-blue transition-colors"
+                data-nav
+                >Events</a
+              >
+            </li>
+            <li>
+              <a
+                href="#/private-events"
+                class="text-body text-plaster/80 hover:text-lake-blue transition-colors"
+                data-nav
+                >Private</a
+              >
+            </li>
+            <li>
+              <a
+                href="#/gallery"
+                class="text-body text-plaster/80 hover:text-lake-blue transition-colors"
+                data-nav
+                >Gallery</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-2">
+          <h4 class="text-label text-plaster/40 mb-4">Company</h4>
+          <ul class="space-y-3">
+            <li>
+              <a
+                href="#/about"
+                class="text-body text-plaster/80 hover:text-lake-blue transition-colors"
+                data-nav
+                >About</a
+              >
+            </li>
+            <li>
+              <a
+                href="#/contact"
+                class="text-body text-plaster/80 hover:text-lake-blue transition-colors"
+                data-nav
+                >Contact</a
+              >
+            </li>
+            <li>
+              <a
+                href="#/movie"
+                class="text-body text-plaster/80 hover:text-lake-blue transition-colors"
+                data-nav
+                >Movie Trailer</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-4">
+          <h4 class="text-label text-plaster/40 mb-4">Contact</h4>
+          <p class="text-body text-plaster/80 mb-2">info@lakecomostyle.it</p>
+          <p class="text-body text-plaster/80">+39 348 784 7234</p>
+          <div class="mt-8 flex gap-6">
+            <a
+              href="https://instagram.com/lakecomostyle"
+              target="_blank"
+              rel="noopener"
+              class="text-label text-plaster/60 hover:text-lake-blue transition-colors"
+              >Instagram</a
+            >
+            <a
+              href="#"
+              class="text-label text-plaster/60 hover:text-lake-blue transition-colors"
+              >LinkedIn</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="mt-20 pt-8 border-t border-plaster/10 flex flex-col lg:flex-row justify-between items-center gap-4"
+      >
+        <p class="text-label text-plaster/40">
+          &copy; 2026 Lake Como Style. All rights reserved.
+        </p>
+        <p class="text-label text-plaster/40">Made in Italy</p>
+      </div>
+    </footer>
+
+    <!-- JSON Data -->
+    <script id="siteData" type="application/json">
+      {
+        "homepage": {
+          "_id": "homepage",
+          "heroSection": {
+            "ctaLink": "/contact",
+            "eventShowcase": {
+              "eventTypes": [
+                "Pre- or Post-wedding events",
+                "Small group celebrations",
+                "VIP clients"
+              ],
+              "link": "/themes",
+              "title": "Perfect For"
+            },
+            "mainHeading": "From curated La Dolce Vita lunches & Bond Aperitivos for visitors to private villa events and bespoke couture, we create immersive Made-in-Italy fashion experiences.",
+            "mobileVideoFile": {
+              "assetUrl": "https://cdn.sanity.io/files/c20abca7/production/d1ef0f0bf33db10c1157acd3f71a066ca846983a.mp4"
+            },
+            "playIndicatorText": "hear the music",
+            "preHeading": "Luxury Immersive Fashion Experiences on Lake Como",
+            "secondaryCtaLink": "/process",
+            "subHeading": "Celebrate elegance, style, and the timeless charm of Lake Como",
+            "videoFile": {
+              "assetUrl": "https://cdn.sanity.io/files/c20abca7/production/8619aa7c6162b0324b047155cadceb864dc70208.mp4"
+            }
+          }
+        },
+        "navbar": {
+          "ctaLink": "/contact",
+          "ctaText": "Book Now",
+          "links": [
+            { "label": "Home", "url": "/" },
+            { "label": "2026 Themes", "url": "/themes" },
+            { "label": "2026 Open Ticketed Experiences", "url": "/events" },
+            { "label": "Private Events", "url": "/private-events" },
+            { "label": "Your Own Movie Trailer", "url": "/movie" },
+            { "label": "Gallery", "url": "/gallery" },
+            { "label": "About", "url": "/about" },
+            { "label": "Contact", "url": "/contact" }
+          ],
+          "logoText": "LAKE COMO STYLE"
+        },
+        "footer": {
+          "email": "info@lakecomostyle.it",
+          "footerTagline": "Curated Italian Moments",
+          "phone": "+393487847234"
+        },
+        "themesPage": {
+          "hero": {
+            "description": "Our 2026 themes are designed to turn every day on Lake Como into a fully immersive memory. Step into a world of curated props, photo-ready backdrops, polaroid moments, signature cocktails, themed menus, and music that brings each event to life.",
+            "mainTitle": "Immersive Themes, Unforgettable Moments",
+            "secondaryTitle": "Fully themed, fully immersive, fully unforgettable"
+          },
+          "customThemeCta": {
+            "buttonLink": "/contact",
+            "buttonText": "Join the Scene",
+            "description": "Don't see what you're looking for? We can design a custom theme tailored to your event.",
+            "title": "Theme Inquiry"
+          },
+          "themesList": [
+            {
+              "feel": "Sophisticated, adventurous, playful suspense.",
+              "genre": "Bond Inspired",
+              "icon": "glasses",
+              "image": "https://cdn.sanity.io/images/c20abca7/production/4729227fb0bb7d2fcb85a055cb40b79b0c6afa7e-1600x900.jpg",
+              "story": "Guests step into the world of secret agents, daring missions, and intrigue. Think tuxedos, glamorous dresses, clever props, and action-packed poses.",
+              "title": "Agents of Style",
+              "vibe": "Sleek, stylish, high-stakes, espionage."
+            },
+            {
+              "feel": "Romantic, stylish, lively, playful, cinematic charm.",
+              "genre": "Italian / Romantic Glamour Theme",
+              "icon": "heart",
+              "image": "https://cdn.sanity.io/images/c20abca7/production/9abe77fbeaf20b814914e6c9e218b5753a162c4c-1064x911.png",
+              "story": "Guests step into a story of romance and playful elegance in the heart of 1960s Italy. Think flowing dresses, sharp suits, chic sunglasses, and fabulous hats.",
+              "title": "La Dolce Vita",
+              "vibe": "Stylish, fun, romantic, sun-soaked Italian adventure."
+            },
+            {
+              "feel": "Elegant, nostalgic, cinematic, story-driven, stylish drama.",
+              "genre": "Old Hollywood / Glamour Theme",
+              "icon": "star",
+              "image": "https://cdn.sanity.io/images/c20abca7/production/4a261b170c114177ab1ba62caaa1577566afc635-1170x780.jpg",
+              "story": "Guests become stars of a vintage cinematic caper, full of red carpets, flashing cameras, and silver-screen drama. Think Marilyn Monroe–style gowns, sharp tuxedos, and iconic poses.",
+              "title": "The Hollywood Hustle",
+              "vibe": "Classic 1940s–1960s Tinseltown glamour."
+            }
+          ]
+        },
+        "castPage": {
+          "content": {
+            "paragraphs": [
+              "Choose your theme. Select your venue. Now it's time to experience the immersive fun!",
+              "We create unforgettable experiences for groups of all sizes. Whether it's an intimate gathering or a large celebration, our team brings your event to life with style, elegance, and flair.",
+              "Guests can choose from our exclusive 2026 themes—from the timeless glamour of La Dolce Vita, to the cinematic sparkle of Hollywood Hustle, or the sophisticated intrigue of Bond. Prefer something truly unique? We also offer custom themes, tailored to your vision.",
+              "We provide all themed backdrops and props for Polaroid moments, with the option to personalize backdrops, giving your guests fun, memorable keepsakes.",
+              "Our events are hosted in an array of stunning venues, from exclusive wine cellars, to historic palaces, elegant gardens, and lively terraces.",
+              "To enhance the experience, we suggest guests come in themed attire, and offer the option of a pop-up fashion rack so guests can purchase curated themed styles on-site.",
+              "We also offer a variety of music options, from DJs to live singers, performing curated playlists for each theme.",
+              "For those who wish to capture the magic, we offer professional photography and videography, with the exclusive option to create a custom 3-minute cinematic movie trailer.",
+              "With fashion, food, and drinks at the heart of every experience, your private event on Lake Como becomes more than a celebration—it's an immersive journey your guests will never forget."
+            ]
+          },
+          "cta": {
+            "buttonText": "Book Your Private Event",
+            "description": "Immerse yourself in the theme and live the moment",
+            "title": "Celebrate like a Star"
+          },
+          "hero": {
+            "subtitle": "From intimate gatherings to full celebrations",
+            "title": "Designed for Celebration, Styled to Remember"
+          },
+          "heroFeature": {
+            "subtitle": "2026 Immersive Parties",
+            "title": "Best Private Event"
+          },
+          "showcaseImages": [
+            "https://cdn.sanity.io/images/c20abca7/production/437dd49a02ecac575dc481e3535b2dfb4b275442-951x913.png",
+            "https://cdn.sanity.io/images/c20abca7/production/06e1175d3bde3e3a5a3d37ad7841001a66cdd2ce-1920x1080.png",
+            "https://cdn.sanity.io/images/c20abca7/production/5bdb7664d902978a660db843d80ca21424de53bf-960x720.jpg",
+            "https://cdn.sanity.io/images/c20abca7/production/7abf86da2007f97d3ecd6995e236a27f5bd7036e-648x439.jpg",
+            "https://cdn.sanity.io/images/c20abca7/production/2b0e63b6b7ff63ac55b21b759be3b82b85f181e7-1672x798.png",
+            "https://cdn.sanity.io/images/c20abca7/production/4a9627f5efe3853cab3c8506b3d41602d9576f45-1920x1080.png",
+            "https://cdn.sanity.io/images/c20abca7/production/bdfedf714bf67f3384a2a0f05294fb2222c2c744-1008x756.jpg"
+          ]
+        },
+        "processPage": {
+          "hero": {
+            "description": "Our 2026 themed experiences invite guests into a one-of-a-kind atmosphere on Lake Como, featuring photo-ready backdrops and a curated selection of props for spontaneous, playful photo moments.",
+            "heading": "Seasonal Weekly Events",
+            "subHeading": "From Drinks to Dinner to Dancing Under the Stars"
+          },
+          "heroFeature": {
+            "link": "/themes",
+            "subtitle": "Dive into the World of Cinematic Creativity",
+            "tag": "Choose Your Theme",
+            "title": "THEMED CINEMATIC PARTIES"
+          },
+          "steps": [
+            {
+              "body": "Select from our signature themes: International Agents of Style, Hollywood Hustle, La Dolce Vita, or create a custom theme. With over 3,000 costumes and props, your celebration can be uniquely tailored to your group.",
+              "heading": "Choose or Create Your Story",
+              "stepNumber": 1,
+              "tagline": "LA DOLCE VITA to BOND",
+              "titleLines": ["SELECT", "YOUR", "THEME"]
+            },
+            {
+              "body": "Decide where your cinematic experience will take place: Our Venue, Luxury Hotel, or Your Chosen Venue. We bring all props, costumes, step & repeat backdrops, and filming to your location.",
+              "heading": "Pick Your Location",
+              "stepNumber": 2,
+              "tagline": "YOU NAME IT",
+              "titleLines": ["SELECT", "YOUR", "VENUE"]
+            },
+            {
+              "body": "Our team curates every detail to bring your theme to life. From custom step & repeat backdrops and curated props to music and storylines, we transform venues into a cinematic setting.",
+              "heading": "Production Design",
+              "stepNumber": 3,
+              "tagline": "PROPS & COSTUMES",
+              "titleLines": ["WE DESIGN", "YOUR", "EVENT"]
+            },
+            {
+              "body": "On the day of your event, guests step into a world of intrigue, glamour, and cinematic storytelling. With guidance from our production team, everyone gets to act out key scenes from your chosen theme.",
+              "heading": "The Big Day",
+              "stepNumber": 4,
+              "tagline": "TIME TO SHINE",
+              "titleLines": ["CELEBRATE", "IN", "STYLE"]
+            },
+            {
+              "body": "Within 3–4 weeks, we deliver a beautifully produced 3-minute cinematic trailer, along with social media-ready clips.",
+              "heading": "Post-Production Magic",
+              "stepNumber": 5,
+              "tagline": "YOUR SILVER SCREEN",
+              "titleLines": ["YOUR MOVIE &", "SOCIAL", "MEDIA CLIPS"]
+            },
+            {
+              "body": "Your personalized movie trailer can be treasured for years to come — the perfect way to relive the magic of your event.",
+              "heading": "Keep the Story Alive",
+              "stepNumber": 6,
+              "tagline": "POPCORN TIME",
+              "titleLines": ["RELIVE", "THE", "EXPERIENCE"]
+            }
+          ]
+        },
+        "moviePage": {
+          "deliverables": [
+            {
+              "description": "A fully edited trailer up to 3 minutes in length",
+              "features": [
+                "Includes your choice of music to match the tone and style",
+                "Features custom title and cast names",
+                "Enhanced with special effects to elevate the cinematic impact",
+                "Professional photography"
+              ],
+              "title": "3-Minute Movie Trailer with Professional Photography"
+            },
+            {
+              "description": "Shorter versions optimized for social media platforms",
+              "features": [
+                "Perfect for Instagram, TikTok, YouTube, or Facebook",
+                "Designed to grab attention and drive engagement"
+              ],
+              "title": "Social Media Ready Cuts"
+            },
+            {
+              "description": "Delivered within 3–4 weeks from event date",
+              "features": [
+                "Professional post-production editing",
+                "Quality assurance review",
+                "Secure digital delivery"
+              ],
+              "title": "Timeline"
+            }
+          ],
+          "hero": {
+            "heading": "Where Every Guest Becomes A Star",
+            "subHeading": "Lights, Camera, Action!",
+            "subSubHeading": "Our professional videographer captures your private event to create your very own 3-minute movie trailer."
+          },
+          "heroFeature": {
+            "link": "/contact",
+            "subtitle": "Your Cinematic Keepsake",
+            "tag": "Coming Soon",
+            "title": "MOVIE PREMIERE"
+          },
+          "popcornSection": {
+            "image": "https://cdn.sanity.io/images/c20abca7/production/321c90df5c1ee24afc8168a27d44c0893d84a55f-500x500.png"
+          }
+        },
+        "crewPage": {
+          "crewMembers": [
+            {
+              "bio": [
+                "Our founder, Dee Lasprogata has over 30 years of experience in fashion, working in New York, Los Angeles, Rome, Milan, and Lake Como. She arrived to the shores of Lake Como 20 years ago and has been back and forth ever since.",
+                "With roots in Philadelphia, Dee grew up surrounded by couture as her grandmother operated a custom gown atelier. Later, she graduated from both Vanderbilt University and the Fashion Institute of Design in New York City.",
+                "She has launched pioneering fashion collections working with celebrities including Valentino, Stevie Wonder and Giada De Laurentiis. Over the years, her visionary work has been featured in major publications in both the USA and Italy.",
+                "Today, Dee combines her fashion-forward sensibilities with cinematic flair to craft an unforgettable experience; she curates the wardrobe, props, and look for every guest."
+              ],
+              "image": "https://cdn.sanity.io/images/c20abca7/production/e60f4c4a969ae568d0975a407795225dbe163a2a-470x558.png",
+              "name": "Dee Lasprogata",
+              "role": "Founder & Creative Director",
+              "socials": {
+                "instagram": "https://instagram.com/lakecomostyle",
+                "linkedin": "https://linkedin.com/in/deelasprogata"
+              }
+            },
+            {
+              "bio": [
+                "Stefano Dozza is a filmmaker, photographer, and content producer from Bologna, currently based between Milan and Rome. He has studied and worked in New York, Los Angeles, and the UK.",
+                "As a versatile creative professional, Stefano brings expertise in filmmaking, photography, copywriting, and podcasting to Lake Como Style. His international experience and artistic vision ensure that every cinematic experience captures the essence of Italian elegance combined with Hollywood production values.",
+                "Stefano's commitment to sustainability and thoughtful content creation aligns perfectly with Lake Como Style's mission to deliver meaningful, memorable experiences."
+              ],
+              "image": "https://cdn.sanity.io/images/c20abca7/production/427d578bd9cde9bcce27512c36b3c3eadc4d7ccb-3456x5184.jpg",
+              "name": "Stefano Dozza",
+              "role": "Filmmaker & Visual Director",
+              "socials": {
+                "instagram": "https://instagram.com/johntouche",
+                "website": "https://johntouche.com"
+              }
+            }
+          ],
+          "cta": {
+            "buttonText": "Contact Us",
+            "description": "Join us for an unforgettable immersive experience",
+            "title": "Your Lake Como Team"
+          },
+          "hero": {
+            "description": "Lake Como Style brings immersive, themed experiences to life on the Lake. From our weekly events to private parties, every celebration is carefully styled and designed.",
+            "heading": "Your Event Crew",
+            "subHeading": "From the Big Apple to the heart of Milan"
+          },
+          "heroFeature": {
+            "link": "/contact",
+            "subtitle": "International Expertise",
+            "tag": "2026",
+            "title": "MEET THE TEAM"
+          },
+          "logos": [
+            "https://cdn.sanity.io/images/c20abca7/production/db22b67cdc4c6ad9f1d230c9710b05345e46bb3f-1170x382.jpg",
+            "https://cdn.sanity.io/images/c20abca7/production/1abdd77c34d19a7d239ef968514a8ca79dbadb74-656x360.jpg",
+            "https://cdn.sanity.io/images/c20abca7/production/458f2cfdae32d8daf86566e6e95bd6c2ad526070-1170x639.jpg",
+            "https://cdn.sanity.io/images/c20abca7/production/183c5b6e64301731b664a70ce2b27210574f738c-1019x538.jpg",
+            "https://cdn.sanity.io/images/c20abca7/production/669127a0bcb96a83d790685dd84a4b7827760964-409x160.jpg",
+            "https://cdn.sanity.io/images/c20abca7/production/30c40301d0ec7725d209275840ff506e7afe35ec-1169x473.jpg",
+            "https://cdn.sanity.io/images/c20abca7/production/9d6ee43623b86c12d4370d83c6b02d2afe0ca089-456x353.jpg"
+          ],
+          "logosTitle": "featured on & in"
+        },
+        "venuePage": {
+          "cta": {
+            "buttonText": "Join Our Events",
+            "description": "Create unforgettable moments on Lake Como",
+            "title": "Unique Venues, Unique Events For All"
+          },
+          "description": [
+            "AGENTS OF STYLE AT HOTEL TERZO CROTTO: Nestled in the heart of Cernobbio, Hotel Terzo Crotto is a charming historic property set in a garden‑surrounded former farmhouse dating back to the late 19th century.",
+            "DATES: May 6 & May 16\nTIME: 5pm- 8pm"
+          ],
+          "galleryImages": [
+            "https://cdn.sanity.io/images/c20abca7/production/bdfedf714bf67f3384a2a0f05294fb2222c2c744-1008x756.jpg",
+            "https://cdn.sanity.io/images/c20abca7/production/5bdb7664d902978a660db843d80ca21424de53bf-960x720.jpg",
+            "https://cdn.sanity.io/images/c20abca7/production/fd866ca52e4b811cb176080a9b9468a723e607c2-550x412.jpg",
+            "https://cdn.sanity.io/images/c20abca7/production/fe3de70117969f48e5c4357717bf3229402161a3-1284x961.webp",
+            "https://cdn.sanity.io/images/c20abca7/production/e75d690f4207cc816d6f73b1d03eb20453755760-1920x1280.webp",
+            "https://cdn.sanity.io/images/c20abca7/production/89ca9a0352a0628203ef4387bb8245a7d17e8d19-1030x682.png"
+          ],
+          "hero": {
+            "heading": "Themed Events at Authentic Italian Venues",
+            "location": "Lake Como, Italy",
+            "subHeading": "From Villas to Historic Restaurants Join Our Immersive Events"
+          },
+          "heroFeature": {
+            "link": "Limited Spaces",
+            "tag": "Themed Events at Stunning Venues",
+            "title": "2026 Ticketed Events"
+          }
+        },
+        "galleryPage": {
+          "hero": {
+            "heading": "Scenes from the Experiences",
+            "subHeading": "Lights, Camera, Action!"
+          },
+          "heroFeature": {
+            "link": "/contact",
+            "subtitle": "Scenes",
+            "tag": "2026",
+            "title": "Themed Events"
+          },
+          "images": [
+            "https://cdn.sanity.io/images/c20abca7/production/89307f3fef09feb106360e6380de44b5e9bb536c-1582x821.png",
+            "https://cdn.sanity.io/images/c20abca7/production/c6332474612f28f05d16dd4035a10958381213f5-550x423.png",
+            "https://cdn.sanity.io/images/c20abca7/production/388b2d0430dbd54b63706e771f3a00cf16086aae-3024x2179.jpg",
+            "https://cdn.sanity.io/images/c20abca7/production/7abf86da2007f97d3ecd6995e236a27f5bd7036e-648x439.jpg",
+            "https://cdn.sanity.io/images/c20abca7/production/2b0e63b6b7ff63ac55b21b759be3b82b85f181e7-1672x798.png",
+            "https://cdn.sanity.io/images/c20abca7/production/91472121a6a46f2e4be72ab8cebb4a232978c1d5-1775x892.png",
+            "https://cdn.sanity.io/images/c20abca7/production/ccd733b1ba903f27752dccddac1eaba559934d87-1788x673.png",
+            "https://cdn.sanity.io/images/c20abca7/production/9c7cbf0d082b55c42bddd5af0ff9a80563785bc0-1040x576.png",
+            "https://cdn.sanity.io/images/c20abca7/production/b70d3a824263d3ded7cdfc65e44cd041abccdb6e-2350x4029.jpg",
+            "https://cdn.sanity.io/images/c20abca7/production/ebe619b3de4a6f1995e92ce832606a2eb2d11482-973x1119.jpg",
+            "https://cdn.sanity.io/images/c20abca7/production/475628e95f1e0398cdb7f69c2fe264cb9ab94424-1170x691.jpg",
+            "https://cdn.sanity.io/images/c20abca7/production/df513f7de5a5c8367bf1fe7c7c154659df5ba021-768x1344.jpg",
+            "https://cdn.sanity.io/images/c20abca7/production/bdfedf714bf67f3384a2a0f05294fb2222c2c744-1008x756.jpg"
+          ]
+        },
+        "faqPage": {
+          "contactCta": {
+            "buttonLink": "/contact",
+            "buttonText": "Contact Us",
+            "text": "Still have questions?"
+          },
+          "faqs": [
+            {
+              "answer": "Yes! We host weekly events for all guests visiting Lake Como, ranging from casual aperitivi to pre-fixed dinners at select lakeside locations. Each week offers a unique experience.",
+              "question": "Are there weekly events open to all guests visiting Lake Como?"
+            },
+            {
+              "answer": "Yes! We offer private events tailored for bachelorettes, tour groups, corporate functions, and other special gatherings. We can customize the event to suit your group's needs.",
+              "question": "Can I book a private event for a bachelorette, rehearsal dinner or tour group gathering?"
+            },
+            {
+              "answer": "We offer a collection of over 3,000 couture costumes and props, spanning multiple time periods, styles, and themes. The collection includes elegant, theatrical, historical, fantasy, and bespoke pieces.",
+              "question": "What backdrops and props do you offer?"
+            },
+            {
+              "answer": "We recommend booking private events at least 2–4 weeks in advance to ensure availability. For larger groups or peak season dates, we suggest booking as early as possible.",
+              "question": "How long in advance do I need to book a private event?"
+            },
+            {
+              "answer": "Yes. We offer private presentations and curated previews, either in person or virtually, allowing clients to explore themes, venues, and all backdrops and props in advance.",
+              "question": "Do you offer a sneak peek of the experience before confirming a private party reservation?"
+            },
+            {
+              "answer": "For our seasonal weekly events, we recommend booking at least 1–2 weeks in advance to secure your spot.",
+              "question": "For seasonal weekly events, how far in advance should we book?"
+            }
+          ],
+          "hero": {
+            "description": "Join our immersive themed events",
+            "mainHeading": "2026 Seasonal Events",
+            "preHeading": "Your Immersive Style Adventure Awaits"
+          }
+        },
+        "contactPage": {
+          "cameraImage": "https://cdn.sanity.io/images/c20abca7/production/708cec19ac0d52a98033e50246ca0cb168209f2f-414x600.jpg",
+          "form": {
+            "emailLabel": "Email",
+            "emailPlaceholder": "john@example.com",
+            "eventDateLabel": "Date of Event",
+            "firstNameLabel": "First Name",
+            "firstNamePlaceholder": "John",
+            "formTitle": "Step Into the Scene",
+            "groupSizeDefaultOption": "Select group size",
+            "groupSizeLabel": "How many will you be?",
+            "groupSizeOptions": [
+              "2-5 people",
+              "6-10 people",
+              "11-20 people",
+              "21-50 people",
+              "50+ people"
+            ],
+            "lastNameLabel": "Last Name",
+            "lastNamePlaceholder": "Doe",
+            "messageLabel": "Event Inquiry",
+            "phoneLabel": "Phone",
+            "phonePlaceholder": "555 123-4567",
+            "submitButtonLoadingText": "Sending...",
+            "submitButtonText": "Join the Vibe"
+          },
+          "hero": {
+            "description": "Drop us a message and step into the experience.",
+            "mainHeading": "Join the Party in Style",
+            "preHeading": "Get in Touch"
+          },
+          "success": {
+            "buttonLink": "/",
+            "buttonText": "Back to Home",
+            "message": "Thank you for reaching out. We'll be in touch soon to help you create your unforgettable cinematic experience.",
+            "title": "The Spotlight Awaits!"
+          }
+        }
+      }
+    </script>
+
+    <!-- Application Logic -->
+    <script>
+      // Data Store
+      const DataStore = {
+        data: null,
+
+        init() {
+          const script = document.getElementById("siteData");
+          this.data = JSON.parse(script.textContent);
+        },
+
+        get(page) {
+          return this.data[page] || null;
+        },
+      };
+
+      // Router
+      const Router = {
+        currentRoute: "/",
+        routes: {
+          "/": "home",
+          "/themes": "themes",
+          "/events": "events",
+          "/private-events": "privateEvents",
+          "/movie": "movie",
+          "/gallery": "gallery",
+          "/about": "about",
+          "/contact": "contact",
+          "/process": "process",
+        },
+
+        init() {
+          window.addEventListener("hashchange", () => this.handleRoute());
+          window.addEventListener("load", () => this.handleRoute());
+
+          // Handle clicks
+          document.addEventListener("click", (e) => {
+            const link = e.target.closest("[data-nav]");
+            if (link) {
+              e.preventDefault();
+              const href = link.getAttribute("href");
+              if (href.startsWith("#")) {
+                this.navigate(href.replace("#", ""));
+              }
+            }
+          });
+        },
+
+        navigate(path) {
+          window.location.hash = path;
+        },
+
+        handleRoute() {
+          const hash = window.location.hash.replace("#", "") || "/";
+          const pageName = this.routes[hash] || "home";
+
+          if (this.currentRoute !== hash) {
+            this.transition(() => {
+              this.currentRoute = hash;
+              this.updateActiveNav();
+              PageRenderer.render(pageName);
+              window.scrollTo(0, 0);
+            });
+          } else {
+            this.currentRoute = hash;
+            this.updateActiveNav();
+            PageRenderer.render(pageName);
+          }
+        },
+
+        transition(callback) {
+          const overlay = document.getElementById("pageTransition");
+          document.body.classList.add("transitioning");
+
+          overlay.classList.add("active");
+
+          setTimeout(() => {
+            callback();
+            overlay.classList.remove("active");
+            overlay.classList.add("exit");
+
+            setTimeout(() => {
+              overlay.classList.remove("exit");
+              document.body.classList.remove("transitioning");
+            }, 600);
+          }, 300);
+        },
+
+        updateActiveNav() {
+          document.querySelectorAll(".nav-link").forEach((link) => {
+            link.classList.remove("active");
+            const href = link.getAttribute("href");
+            if (
+              href === `#${this.currentRoute}` ||
+              (this.currentRoute === "/" && href === "#/")
+            ) {
+              link.classList.add("active");
+            }
+          });
+        },
+      };
+
+      // Page Renderer
+      const PageRenderer = {
+        container: null,
+
+        init() {
+          this.container = document.getElementById("mainContent");
+        },
+
+        render(pageName) {
+          const content = this[pageName] ? this[pageName]() : this.home();
+          this.container.innerHTML = content;
+          this.attachEventListeners();
+          this.initAnimations();
+        },
+
+        // Home Page - Split-Shift Hero Layout
+        home() {
+          const data = DataStore.get("homepage");
+          const hero = data.heroSection;
+
+          return `
+                    <section class="min-h-screen relative overflow-hidden">
+                        <!-- Left Content -->
+                        <div class="absolute top-32 left-[5%] z-20 max-w-md will-animate animate-slide-left">
+                            <p class="text-label text-lake-blue mb-4">${hero.preHeading}</p>
+                            <h1 class="text-display-xl text-soft-black mb-6 leading-none">
+                                ${hero.mainHeading.split(" ").slice(0, 4).join(" ")}<br>
+                                <span class="italic text-lake-blue">${hero.mainHeading.split(" ").slice(4, 8).join(" ")}</span>
+                            </h1>
+                            <p class="text-body-lg text-warm-gray mb-8 max-w-sm">${hero.subHeading}</p>
+                            <div class="flex gap-4">
+                                <a href="#/contact" class="magnetic-btn inline-flex items-center px-8 py-4 bg-lake-blue text-white text-label hover:bg-lake-dark transition-all duration-300" data-nav>
+                                    Book Experience
+                                </a>
+                                <a href="#/themes" class="magnetic-btn inline-flex items-center px-8 py-4 border border-soft-black text-soft-black text-label hover:bg-soft-black hover:text-plaster transition-all duration-300" data-nav>
+                                    Explore Themes
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Center Video -->
+                        <div class="absolute inset-0 lg:left-[35%] lg:right-[5%] lg:top-24 lg:bottom-24 video-container will-animate animate-scale-in delay-200">
+                            <video autoplay muted loop playsinline class="w-full h-full object-cover">
+                                <source src="${hero.videoFile.assetUrl}" type="video/mp4">
+                            </video>
+                            <div class="absolute inset-0 bg-gradient-to-t from-plaster/20 to-transparent"></div>
+                        </div>
+                        
+                        <!-- Right Event Showcase -->
+                        <div class="absolute bottom-32 right-[5%] z-20 max-w-xs text-right will-animate animate-slide-right delay-400">
+                            <p class="text-label text-soft-black mb-4">${hero.eventShowcase.title}</p>
+                            <ul class="space-y-2 mb-6">
+                                ${hero.eventShowcase.eventTypes
+                                  .filter((t) => t)
+                                  .map(
+                                    (type) => `
+                                    <li class="text-body text-warm-gray">${type}</li>
+                                `,
+                                  )
+                                  .join("")}
+                            </ul>
+                            <a href="#${hero.eventShowcase.link}" class="text-label text-lake-blue hover:text-lake-dark transition-colors inline-flex items-center gap-2" data-nav>
+                                View All 
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="transform group-hover:translate-x-1 transition-transform">
+                                    <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </section>
+                    
+                    <!-- Feature Strip -->
+                    <section class="py-24 px-[5%] border-t border-light-gray">
+                        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8">
+                            <div class="max-w-2xl will-animate animate-fade-in-up">
+                                <p class="text-label text-lake-blue mb-4">The Experience</p>
+                                <h2 class="text-display-lg text-soft-black mb-6">
+                                    Where Fashion Meets <span class="italic">Cinema</span>
+                                </h2>
+                                <p class="text-body-lg text-warm-gray">
+                                    Step into a world of curated props, photo-ready backdrops, polaroid moments, 
+                                    signature cocktails, themed menus, and music that brings each event to life.
+                                </p>
+                            </div>
+                            <div class="will-animate animate-fade-in-up delay-200">
+                                <a href="#/process" class="magnetic-btn inline-flex items-center gap-3 text-label text-soft-black group" data-nav>
+                                    Discover the Process
+                                    <span class="w-12 h-px bg-soft-black group-hover:w-20 transition-all duration-300"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                `;
+        },
+
+        // Themes Page - Asymmetric Overlapping Bands
+        themes() {
+          const data = DataStore.get("themesPage");
+
+          return `
+                    <section class="pt-32 pb-20 px-[5%]">
+                        <div class="max-w-4xl mb-20 will-animate animate-fade-in-up">
+                            <p class="text-label text-lake-blue mb-4">2026 Collection</p>
+                            <h1 class="text-display-xl text-soft-black mb-6">${data.hero.mainTitle}</h1>
+                            <p class="text-body-lg text-warm-gray max-w-2xl">${data.hero.description}</p>
+                        </div>
+                        
+                        <!-- Asymmetric Theme Bands -->
+                        <div class="space-y-32">
+                            ${data.themesList
+                              .map(
+                                (theme, index) => `
+                                <div class="relative will-animate animate-fade-in-up" style="animation-delay: ${index * 100}ms">
+                                    <div class="flex flex-col ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} items-center gap-8 lg:gap-0">
+                                        <!-- Image -->
+                                        <div class="w-full lg:w-[65%] relative z-10">
+                                            <div class="aspect-[16/9] overflow-hidden">
+                                                <img src="${theme.image}" alt="${theme.title}" 
+                                                     class="w-full h-full object-cover img-luxury"
+                                                     loading="lazy">
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Content Card -->
+                                        <div class="w-full lg:w-[45%] ${index % 2 === 0 ? "lg:-ml-24" : "lg:-mr-24"} relative z-20 bg-plaster p-8 lg:p-12 shadow-xl">
+                                            <div class="flex items-center gap-3 mb-4">
+                                                <span class="text-2xl">${index === 0 ? "🕶️" : index === 1 ? "💋" : "⭐"}</span>
+                                                <span class="text-label text-lake-blue">${theme.genre}</span>
+                                            </div>
+                                            <h2 class="text-display-md text-soft-black mb-4">${theme.title}</h2>
+                                            <p class="text-body text-warm-gray mb-6">${theme.story}</p>
+                                            
+                                            <div class="space-y-3 mb-8">
+                                                <div class="flex gap-4">
+                                                    <span class="text-label text-soft-black/40 w-16">Vibe</span>
+                                                    <span class="text-body text-soft-black">${theme.vibe}</span>
+                                                </div>
+                                                <div class="flex gap-4">
+                                                    <span class="text-label text-soft-black/40 w-16">Feel</span>
+                                                    <span class="text-body text-soft-black">${theme.feel}</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <a href="#/contact" class="magnetic-btn inline-flex items-center px-6 py-3 bg-soft-black text-plaster text-label hover:bg-lake-blue transition-colors" data-nav>
+                                                Book This Theme
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            `,
+                              )
+                              .join("")}
+                        </div>
+                        
+                        <!-- Custom Theme CTA -->
+                        <div class="mt-32 pt-20 border-t border-light-gray will-animate animate-fade-in-up">
+                            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
+                                <div>
+                                    <h3 class="text-display-md text-soft-black mb-2">${data.customThemeCta.title}</h3>
+                                    <p class="text-body text-warm-gray max-w-lg">${data.customThemeCta.description}</p>
+                                </div>
+                                <a href="#${data.customThemeCta.buttonLink}" class="magnetic-btn inline-flex items-center px-8 py-4 border-2 border-lake-blue text-lake-blue text-label hover:bg-lake-blue hover:text-white transition-all duration-300" data-nav>
+                                    ${data.customThemeCta.buttonText}
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                `;
+        },
+
+        // Events Page (Process/Weekly)
+        events() {
+          const data = DataStore.get("processPage");
+
+          return `
+                    <section class="pt-32 pb-20 px-[5%]">
+                        <div class="max-w-4xl mb-20 will-animate animate-fade-in-up">
+                            <p class="text-label text-lake-blue mb-4">${data.hero.subHeading}</p>
+                            <h1 class="text-display-xl text-soft-black mb-6">${data.hero.heading}</h1>
+                            <p class="text-body-lg text-warm-gray whitespace-pre-line">${data.hero.description}</p>
+                        </div>
+                        
+                        <!-- Hero Feature Card -->
+                        <div class="mb-32 will-animate animate-scale-in delay-200">
+                            <div class="relative bg-soft-black text-plaster p-12 lg:p-20 overflow-hidden">
+                                <div class="relative z-10 max-w-2xl">
+                                    <span class="text-label text-lake-blue mb-4 block">${data.heroFeature.tag}</span>
+                                    <h2 class="text-display-lg mb-4">${data.heroFeature.title}</h2>
+                                    <p class="text-body-lg text-plaster/80 mb-8">${data.heroFeature.subtitle}</p>
+                                    <a href="#${data.heroFeature.link}" class="magnetic-btn inline-flex items-center px-8 py-4 bg-lake-blue text-white text-label hover:bg-lake-dark transition-colors" data-nav>
+                                        Explore Themes
+                                    </a>
+                                </div>
+                                <div class="absolute top-0 right-0 w-1/2 h-full opacity-10">
+                                    <div class="absolute inset-0 bg-gradient-to-l from-lake-blue to-transparent"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Process Steps - Broken Grid -->
+                        <div class="space-y-24">
+                            ${data.steps
+                              .map(
+                                (step, index) => `
+                                <div class="will-animate animate-fade-in-up relative" style="animation-delay: ${index * 100}ms">
+                                    <div class="flex flex-col ${index % 2 === 0 ? "lg:items-start" : "lg:items-end"}">
+                                        <!-- Step Number -->
+                                        <div class="text-[8rem] lg:text-[12rem] font-display text-light-gray leading-none select-none absolute -top-8 ${index % 2 === 0 ? "left-0" : "right-0"} -z-10">
+                                            0${step.stepNumber}
+                                        </div>
+                                        
+                                        <!-- Content -->
+                                        <div class="w-full lg:w-${index % 3 === 0 ? "3/5" : index % 3 === 1 ? "2/5" : "1/2"} pt-20">
+                                            <span class="text-label text-lake-blue mb-2 block">${step.tagline}</span>
+                                            <h3 class="text-display-md text-soft-black mb-2">${step.heading}</h3>
+                                            <div class="w-16 h-px bg-lake-blue mb-6"></div>
+                                            <div class="text-body text-warm-gray space-y-4 whitespace-pre-line">
+                                                ${step.body}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `,
+                              )
+                              .join("")}
+                        </div>
+                        
+                        <!-- Video Section -->
+                        <div class="mt-32 pt-20 border-t border-light-gray will-animate animate-fade-in-up">
+                            <h3 class="text-display-md text-soft-black mb-4">${data.videoSection.heading}</h3>
+                            <p class="text-body text-warm-gray whitespace-pre-line">${data.videoSection.subHeading}</p>
+                        </div>
+                    </section>
+                `;
+        },
+
+        // Private Events Page
+        privateEvents() {
+          const data = DataStore.get("castPage");
+
+          return `
+                    <section class="pt-32 pb-20 px-[5%]">
+                        <!-- Hero -->
+                        <div class="max-w-5xl mb-20 will-animate animate-fade-in-up">
+                            <p class="text-label text-lake-blue mb-4">${data.hero.subtitle}</p>
+                            <h1 class="text-display-xl text-soft-black mb-8">${data.hero.title}</h1>
+                            
+                            <!-- Content Paragraphs -->
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
+                                ${data.content.paragraphs
+                                  .slice(0, 4)
+                                  .map(
+                                    (p, i) => `
+                                    <p class="text-body-lg text-warm-gray ${i === 0 ? "lg:col-span-2 text-display-md font-display text-soft-black" : ""}">
+                                        ${p}
+                                    </p>
+                                `,
+                                  )
+                                  .join("")}
+                            </div>
+                        </div>
+                        
+                        <!-- Showcase Images - Masonry -->
+                        <div class="mb-20 will-animate animate-fade-in-up delay-200">
+                            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                                ${data.showcaseImages
+                                  .slice(0, 4)
+                                  .map(
+                                    (img, i) => `
+                                    <div class="${i === 0 ? "col-span-2 row-span-2" : ""} overflow-hidden aspect-[${i === 0 ? "1/1" : "4/3"}]">
+                                        <img src="${img}" alt="Event showcase" class="w-full h-full object-cover img-luxury" loading="lazy">
+                                    </div>
+                                `,
+                                  )
+                                  .join("")}
+                            </div>
+                        </div>
+                        
+                        <!-- More Content -->
+                        <div class="max-w-4xl mb-20 will-animate animate-fade-in-up">
+                            <div class="space-y-6">
+                                ${data.content.paragraphs
+                                  .slice(4)
+                                  .map(
+                                    (p) => `
+                                    <p class="text-body text-warm-gray">${p}</p>
+                                `,
+                                  )
+                                  .join("")}
+                            </div>
+                        </div>
+                        
+                        <!-- CTA Section -->
+                        <div class="will-animate animate-scale-in delay-200">
+                            <div class="bg-lake-blue text-white p-12 lg:p-20 text-center">
+                                <h2 class="text-display-lg mb-4">${data.cta.title}</h2>
+                                <p class="text-body-lg text-white/80 mb-8 max-w-xl mx-auto">${data.cta.description}</p>
+                                <a href="#/contact" class="magnetic-btn inline-flex items-center px-10 py-5 bg-white text-lake-blue text-label hover:bg-soft-black hover:text-white transition-all duration-300" data-nav>
+                                    ${data.cta.buttonText}
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                `;
+        },
+
+        // Movie Page
+        movie() {
+          const data = DataStore.get("moviePage");
+
+          return `
+                    <section class="pt-32 pb-20 px-[5%]">
+                        <!-- Hero -->
+                        <div class="text-center max-w-4xl mx-auto mb-20 will-animate animate-fade-in-up">
+                            <p class="text-label text-lake-blue mb-4">${data.hero.subHeading}</p>
+                            <h1 class="text-display-xl text-soft-black mb-6">${data.hero.heading}</h1>
+                            <p class="text-body-lg text-warm-gray">${data.hero.subSubHeading}</p>
+                        </div>
+                        
+                        <!-- Deliverables -->
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
+                            ${data.deliverables
+                              .map(
+                                (item, index) => `
+                                <div class="will-animate animate-fade-in-up border-t-2 border-soft-black pt-8" style="animation-delay: ${index * 100}ms">
+                                    <h3 class="text-display-md text-soft-black mb-4">${item.title}</h3>
+                                    <p class="text-body text-warm-gray mb-6">${item.description}</p>
+                                    <ul class="space-y-3">
+                                        ${item.features
+                                          .map(
+                                            (f) => `
+                                            <li class="flex items-start gap-3 text-body text-soft-black">
+                                                <span class="text-lake-blue mt-1">→</span>
+                                                ${f}
+                                            </li>
+                                        `,
+                                          )
+                                          .join("")}
+                                    </ul>
+                                </div>
+                            `,
+                              )
+                              .join("")}
+                        </div>
+                        
+                        <!-- Timeline -->
+                        <div class="bg-soft-black text-plaster p-12 lg:p-20 will-animate animate-scale-in delay-300">
+                            <div class="flex flex-col lg:flex-row justify-between items-center gap-8">
+                                <div>
+                                    <p class="text-label text-lake-blue mb-2">Delivery</p>
+                                    <h3 class="text-display-md">Timeline</h3>
+                                </div>
+                                <p class="text-body-lg text-plaster/80">${data.timeline}</p>
+                            </div>
+                        </div>
+                    </section>
+                `;
+        },
+
+        // Gallery Page - Magazine Spread
+        gallery() {
+          const data = DataStore.get("galleryPage");
+
+          return `
+                    <section class="pt-32 pb-20 px-[5%]">
+                        <div class="mb-16 will-animate animate-fade-in-up">
+                            <p class="text-label text-lake-blue mb-4">${data.hero.subHeading}</p>
+                            <h1 class="text-display-xl text-soft-black">${data.hero.heading}</h1>
+                        </div>
+                        
+                        <!-- Masonry Gallery -->
+                        <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+                            ${data.images
+                              .map(
+                                (img, index) => `
+                                <div class="break-inside-avoid will-animate animate-fade-in-up" style="animation-delay: ${(index % 6) * 50}ms">
+                                    <div class="overflow-hidden group cursor-pointer" onclick="GalleryLightbox.open('${img}')">
+                                        <img src="${img}" alt="Gallery image ${index + 1}" 
+                                             class="w-full h-auto object-cover img-luxury"
+                                             loading="lazy"
+                                             style="aspect-ratio: ${index % 3 === 0 ? "16/9" : index % 3 === 1 ? "3/4" : "4/3"}">
+                                        <div class="absolute inset-0 bg-lake-blue/0 group-hover:bg-lake-blue/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                            <span class="text-label text-white bg-soft-black/80 px-4 py-2">View</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            `,
+                              )
+                              .join("")}
+                        </div>
+                    </section>
+                    
+                    <!-- Lightbox Modal -->
+                    <div id="lightbox" class="fixed inset-0 z-50 bg-soft-black/95 hidden items-center justify-center p-8">
+                        <button onclick="GalleryLightbox.close()" class="absolute top-8 right-8 text-white text-label hover:text-lake-blue transition-colors">Close</button>
+                        <img id="lightboxImg" src="" alt="Full size" class="max-w-full max-h-[90vh] object-contain">
+                    </div>
+                `;
+        },
+
+        // About Page
+        about() {
+          const data = DataStore.get("crewPage");
+
+          return `
+                    <section class="pt-32 pb-20 px-[5%]">
+                        <!-- Hero -->
+                        <div class="max-w-4xl mb-20 will-animate animate-fade-in-up">
+                            <p class="text-label text-lake-blue mb-4">${data.hero.subHeading}</p>
+                            <h1 class="text-display-xl text-soft-black mb-6">${data.hero.heading}</h1>
+                            <p class="text-body-lg text-warm-gray">${data.hero.description}</p>
+                        </div>
+                        
+                        <!-- Team Members -->
+                        <div class="space-y-32 mb-32">
+                            ${data.crewMembers
+                              .map(
+                                (member, index) => `
+                                <div class="will-animate animate-fade-in-up" style="animation-delay: ${index * 100}ms">
+                                    <div class="flex flex-col ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} gap-12 items-start">
+                                        <!-- Image -->
+                                        <div class="w-full lg:w-2/5">
+                                            <div class="aspect-[3/4] overflow-hidden">
+                                                <img src="${member.image}" alt="${member.name}" class="w-full h-full object-cover img-luxury" loading="lazy">
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Content -->
+                                        <div class="w-full lg:w-3/5 lg:pt-12">
+                                            <p class="text-label text-lake-blue mb-2">${member.role}</p>
+                                            <h2 class="text-display-lg text-soft-black mb-6">${member.name}</h2>
+                                            <div class="space-y-4 mb-8">
+                                                ${member.bio
+                                                  .map(
+                                                    (p) => `
+                                                    <p class="text-body text-warm-gray">${p}</p>
+                                                `,
+                                                  )
+                                                  .join("")}
+                                            </div>
+                                            <div class="flex gap-6">
+                                                ${
+                                                  member.socials.instagram
+                                                    ? `
+                                                    <a href="${member.socials.instagram}" target="_blank" rel="noopener" class="text-label text-soft-black hover:text-lake-blue transition-colors">Instagram</a>
+                                                `
+                                                    : ""
+                                                }
+                                                ${
+                                                  member.socials.linkedin
+                                                    ? `
+                                                    <a href="${member.socials.linkedin}" target="_blank" rel="noopener" class="text-label text-soft-black hover:text-lake-blue transition-colors">LinkedIn</a>
+                                                `
+                                                    : ""
+                                                }
+                                                ${
+                                                  member.socials.website
+                                                    ? `
+                                                    <a href="${member.socials.website}" target="_blank" rel="noopener" class="text-label text-soft-black hover:text-lake-blue transition-colors">Website</a>
+                                                `
+                                                    : ""
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `,
+                              )
+                              .join("")}
+                        </div>
+                        
+                        <!-- Logos -->
+                        <div class="pt-20 border-t border-light-gray will-animate animate-fade-in-up">
+                            <p class="text-label text-warm-gray mb-12 text-center">${data.logosTitle}</p>
+                            <div class="flex flex-wrap justify-center items-center gap-12 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                                ${data.logos
+                                  .slice(0, 4)
+                                  .map(
+                                    (logo) => `
+                                    <img src="${logo}" alt="Featured logo" class="h-8 w-auto object-contain" loading="lazy">
+                                `,
+                                  )
+                                  .join("")}
+                            </div>
+                        </div>
+                    </section>
+                `;
+        },
+
+        // Contact Page - Floating Form
+        contact() {
+          const data = DataStore.get("contactPage");
+
+          return `
+                    <section class="min-h-screen pt-32 pb-20 relative overflow-hidden">
+                        <!-- Vertical Text -->
+                        <div class="hidden lg:block absolute left-8 top-1/2 -translate-y-1/2 will-animate animate-slide-left">
+                            <h2 class="text-display-xl text-light-gray whitespace-nowrap" style="writing-mode: vertical-rl; transform: rotate(180deg);">
+                                GET IN TOUCH
+                            </h2>
+                        </div>
+                        
+                        <div class="px-[5%] lg:px-[15%]">
+                            <div class="flex flex-col lg:flex-row gap-16">
+                                <!-- Left Info -->
+                                <div class="w-full lg:w-1/3 will-animate animate-fade-in-up">
+                                    <p class="text-label text-lake-blue mb-4">${data.hero.preHeading}</p>
+                                    <h1 class="text-display-lg text-soft-black mb-6">${data.hero.mainHeading}</h1>
+                                    <p class="text-body-lg text-warm-gray mb-12">${data.hero.description}</p>
+                                    
+                                    <div class="aspect-[3/4] max-w-sm overflow-hidden">
+                                        <img src="${data.cameraImage}" alt="Vintage camera" class="w-full h-full object-cover img-luxury" loading="lazy">
+                                    </div>
+                                </div>
+                                
+                                <!-- Right Form -->
+                                <div class="w-full lg:w-2/3 lg:pl-16 will-animate animate-fade-in-up delay-200">
+                                    <h3 class="text-display-md text-soft-black mb-12">${data.form.formTitle}</h3>
+                                    
+                                    <form id="contactForm" class="space-y-8">
+                                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                                            <div>
+                                                <label class="text-label text-warm-gray mb-2 block">${data.form.firstNameLabel}</label>
+                                                <input type="text" name="firstName" placeholder="${data.form.firstNamePlaceholder}" class="luxury-input" required>
+                                            </div>
+                                            <div>
+                                                <label class="text-label text-warm-gray mb-2 block">${data.form.lastNameLabel}</label>
+                                                <input type="text" name="lastName" placeholder="${data.form.lastNamePlaceholder}" class="luxury-input" required>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                                            <div>
+                                                <label class="text-label text-warm-gray mb-2 block">${data.form.emailLabel}</label>
+                                                <input type="email" name="email" placeholder="${data.form.emailPlaceholder}" class="luxury-input" required>
+                                            </div>
+                                            <div>
+                                                <label class="text-label text-warm-gray mb-2 block">${data.form.phoneLabel}</label>
+                                                <input type="tel" name="phone" placeholder="${data.form.phonePlaceholder}" class="luxury-input">
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <label class="text-label text-warm-gray mb-2 block">${data.form.eventDateLabel}</label>
+                                            <input type="date" name="eventDate" class="luxury-input">
+                                        </div>
+                                        
+                                        <div>
+                                            <label class="text-label text-warm-gray mb-2 block">${data.form.groupSizeLabel}</label>
+                                            <select name="groupSize" class="luxury-input bg-transparent cursor-pointer">
+                                                <option value="">${data.form.groupSizeDefaultOption}</option>
+                                                ${data.form.groupSizeOptions
+                                                  .map(
+                                                    (opt) => `
+                                                    <option value="${opt}">${opt}</option>
+                                                `,
+                                                  )
+                                                  .join("")}
+                                            </select>
+                                        </div>
+                                        
+                                        <div>
+                                            <label class="text-label text-warm-gray mb-2 block">${data.form.messageLabel}</label>
+                                            <textarea name="message" rows="4" class="luxury-input resize-none"></textarea>
+                                        </div>
+                                        
+                                        <button type="submit" class="magnetic-btn w-full lg:w-auto px-12 py-5 bg-lake-blue text-white text-label hover:bg-lake-dark transition-colors">
+                                            ${data.form.submitButtonText}
+                                        </button>
+                                    </form>
+                                    
+                                    <!-- Success Message (Hidden by default) -->
+                                    <div id="successMessage" class="hidden mt-8 p-8 bg-soft-black text-plaster">
+                                        <h4 class="text-display-md mb-2">${data.success.title}</h4>
+                                        <p class="text-body text-plaster/80 mb-6">${data.success.message}</p>
+                                        <a href="#/" class="text-label text-lake-blue hover:text-white transition-colors" data-nav>${data.success.buttonText}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                `;
+        },
+
+        // Process Page (alias for events)
+        process() {
+          return this.events();
+        },
+
+        attachEventListeners() {
+          // Form submission
+          const form = document.getElementById("contactForm");
+          if (form) {
+            form.addEventListener("submit", (e) => {
+              e.preventDefault();
+              const successDiv = document.getElementById("successMessage");
+              if (successDiv) {
+                form.style.display = "none";
+                successDiv.classList.remove("hidden");
+                successDiv.classList.add("animate-fade-in-up");
+              }
+            });
+          }
+
+          // Mobile menu
+          const mobileBtn = document.getElementById("mobileMenuBtn");
+          const mobileMenu = document.getElementById("mobileMenu");
+          if (mobileBtn && mobileMenu) {
+            mobileBtn.addEventListener("click", () => {
+              const isOpen = mobileMenu.classList.contains("translate-x-0");
+              if (isOpen) {
+                mobileMenu.classList.remove("translate-x-0");
+                mobileMenu.classList.add("translate-x-full");
+              } else {
+                mobileMenu.classList.remove("translate-x-full");
+                mobileMenu.classList.add("translate-x-0");
+              }
+            });
+          }
+        },
+
+        initAnimations() {
+          // Intersection Observer for scroll animations
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.style.opacity = "1";
+                  entry.target.style.transform = "translateY(0)";
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            {
+              threshold: 0.1,
+              rootMargin: "0px 0px -50px 0px",
+            },
+          );
+
+          document.querySelectorAll(".will-animate").forEach((el) => {
+            observer.observe(el);
+          });
+        },
+      };
+
+      // Gallery Lightbox
+      const GalleryLightbox = {
+        open(src) {
+          const lightbox = document.getElementById("lightbox");
+          const img = document.getElementById("lightboxImg");
+          if (lightbox && img) {
+            img.src = src;
+            lightbox.classList.remove("hidden");
+            lightbox.classList.add("flex");
+            document.body.style.overflow = "hidden";
+          }
+        },
+
+        close() {
+          const lightbox = document.getElementById("lightbox");
+          if (lightbox) {
+            lightbox.classList.add("hidden");
+            lightbox.classList.remove("flex");
+            document.body.style.overflow = "";
+          }
+        },
+      };
+
+      // Custom Cursor
+      const CustomCursor = {
+        cursor: null,
+        isActive: false,
+
+        init() {
+          this.cursor = document.getElementById("customCursor");
+          if (!this.cursor || window.matchMedia("(pointer: coarse)").matches)
+            return;
+
+          this.isActive = true;
+
+          document.addEventListener("mousemove", (e) => {
+            this.cursor.style.left = e.clientX - 10 + "px";
+            this.cursor.style.top = e.clientY - 10 + "px";
+          });
+
+          // Magnetic effect for buttons
+          document.querySelectorAll(".magnetic-btn").forEach((btn) => {
+            btn.addEventListener("mouseenter", () => {
+              this.cursor.classList.add("hover");
+            });
+
+            btn.addEventListener("mouseleave", () => {
+              this.cursor.classList.remove("hover");
+              btn.style.transform = "";
+            });
+
+            btn.addEventListener("mousemove", (e) => {
+              const rect = btn.getBoundingClientRect();
+              const x = e.clientX - rect.left - rect.width / 2;
+              const y = e.clientY - rect.top - rect.height / 2;
+              btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+            });
+          });
+        },
+      };
+
+      // Navbar Scroll Effect
+      const NavbarEffect = {
+        init() {
+          const navbar = document.getElementById("navbar");
+          let lastScroll = 0;
+
+          window.addEventListener(
+            "scroll",
+            () => {
+              const currentScroll = window.pageYOffset;
+
+              if (currentScroll > 100) {
+                navbar.classList.add(
+                  "bg-plaster/90",
+                  "backdrop-blur-md",
+                  "shadow-sm",
+                );
+              } else {
+                navbar.classList.remove(
+                  "bg-plaster/90",
+                  "backdrop-blur-md",
+                  "shadow-sm",
+                );
+              }
+
+              lastScroll = currentScroll;
+            },
+            { passive: true },
+          );
+        },
+      };
+
+      // Initialize Application
+      document.addEventListener("DOMContentLoaded", () => {
+        DataStore.init();
+        PageRenderer.init();
+        Router.init();
+        CustomCursor.init();
+        NavbarEffect.init();
+      });
+    </script>
+  </body>
+</html>

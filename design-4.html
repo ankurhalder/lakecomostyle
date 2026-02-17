@@ -1,0 +1,1271 @@
+<!doctype html>
+<html lang="en" class="antialiased selection:bg-lake-mist selection:text-white">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LAKE COMO STYLE | Cinematic Luxury Experiences</title>
+
+    <!-- TAILWIND CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Plus+Jakarta+Sans:wght@200;300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CONFIG -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "lake-mist": "#9FB3C8",
+              "lake-deep": "#7A92A8",
+              silk: "#F9F9F7" /* Slightly warmer/richer */,
+              obsidian: "#0A0A0A",
+              charcoal: "#1F1F1F",
+              "gold-accent": "#C5A059",
+            },
+            fontFamily: {
+              serif: ['"Bodoni Moda"', "serif"],
+              sans: ['"Plus Jakarta Sans"', "sans-serif"],
+            },
+            transitionDuration: {
+              400: "400ms",
+              600: "600ms",
+              800: "800ms",
+            },
+            spacing: {
+              128: "32rem",
+            },
+            cursor: {
+              none: "none",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* --- CORE LUXURY STYLES --- */
+      body {
+        background-color: #f9f9f7;
+        color: #0a0a0a;
+        opacity: 0;
+        transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        cursor: none; /* Custom cursor takes over */
+      }
+
+      body.loaded {
+        opacity: 1;
+      }
+
+      /* Mobile overrides for cursor */
+      @media (hover: none) and (pointer: coarse) {
+        body {
+          cursor: auto;
+        }
+        #cursor-dot,
+        #cursor-outline {
+          display: none;
+        }
+      }
+
+      /* --- CUSTOM CURSOR --- */
+      #cursor-dot {
+        width: 8px;
+        height: 8px;
+        background-color: #111;
+        position: fixed;
+        top: 0;
+        left: 0;
+        border-radius: 50%;
+        z-index: 9999;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.3s,
+          height 0.3s,
+          background-color 0.3s;
+      }
+      #cursor-outline {
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(17, 17, 17, 0.2);
+        position: fixed;
+        top: 0;
+        left: 0;
+        border-radius: 50%;
+        z-index: 9998;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.3s,
+          height 0.3s,
+          border-color 0.3s,
+          transform 0.1s;
+      }
+
+      /* Cursor States */
+      body.hover-link #cursor-dot {
+        width: 12px;
+        height: 12px;
+        background-color: #9fb3c8;
+      }
+      body.hover-link #cursor-outline {
+        width: 60px;
+        height: 60px;
+        border-color: #9fb3c8;
+      }
+
+      body.hover-video #cursor-dot {
+        width: 80px;
+        height: 80px;
+        background-color: white;
+        opacity: 0.1;
+        mix-blend-mode: difference;
+      }
+      body.hover-video #cursor-outline {
+        display: none;
+      }
+
+      /* --- PAGE TRANSITIONS (ZOOM EFFECT) --- */
+      #app {
+        min-height: 100vh;
+        transform-origin: center top;
+        transition:
+          opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+          transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .page-enter {
+        opacity: 0;
+        transform: scale(0.98);
+      }
+      .page-enter-active {
+        opacity: 1;
+        transform: scale(1);
+      }
+      .page-exit {
+        opacity: 1;
+        transform: scale(1);
+      }
+      .page-exit-active {
+        opacity: 0;
+        transform: scale(1.02);
+      }
+
+      /* --- TEXT REVEALS --- */
+      .reveal-text-wrapper {
+        overflow: hidden;
+        display: block;
+      }
+      .reveal-text-inner {
+        display: block;
+        transform: translateY(110%);
+        transition: transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
+      .reveal-text-inner.visible {
+        transform: translateY(0);
+      }
+
+      /* --- IMAGE PARALLAX & REVEAL --- */
+      .reveal-img-container {
+        overflow: hidden;
+        position: relative;
+      }
+      .reveal-img-curtain {
+        position: absolute;
+        inset: 0;
+        background: #f9f9f7;
+        z-index: 10;
+        transform: scaleY(1);
+        transform-origin: bottom;
+        transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+      }
+      .reveal-img-curtain.visible {
+        transform: scaleY(0);
+      }
+
+      .img-scale {
+        transition: transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      .reveal-img-container:hover .img-scale {
+        transform: scale(1.05);
+      }
+
+      /* --- UTILITIES --- */
+      .noise-overlay {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 40;
+        opacity: 0.04;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+      .scroll-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .glass-nav {
+        background: rgba(255, 255, 255, 0.02);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      /* Floating Labels */
+      .floating-input:placeholder-shown + label {
+        top: 1rem;
+        font-size: 1rem;
+        color: #7a92a8;
+      }
+      .floating-input:focus + label,
+      .floating-input:not(:placeholder-shown) + label {
+        top: -0.5rem;
+        font-size: 0.75rem;
+        color: #111;
+      }
+    </style>
+  </head>
+  <body class="overflow-x-hidden relative">
+    <!-- CURSOR SYSTEM -->
+    <div id="cursor-dot"></div>
+    <div id="cursor-outline"></div>
+
+    <!-- TEXTURE -->
+    <div class="noise-overlay"></div>
+
+    <!-- LIGHTBOX MODAL -->
+    <div
+      id="lightbox"
+      class="fixed inset-0 z-[100] bg-obsidian text-white opacity-0 pointer-events-none transition-opacity duration-500 flex flex-col items-center justify-center p-4 md:p-12"
+    >
+      <button
+        id="lightbox-close"
+        class="absolute top-8 right-8 text-white hover:text-lake-mist transition-colors cursor-pointer"
+      >
+        <svg
+          width="40"
+          height="40"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1"
+        >
+          <path d="M18 6L6 18M6 6l12 12" />
+        </svg>
+      </button>
+      <img
+        id="lightbox-img"
+        src=""
+        class="max-w-full max-h-[85vh] object-contain shadow-2xl scale-95 transition-transform duration-500"
+      />
+      <p
+        id="lightbox-caption"
+        class="mt-6 font-serif text-xl tracking-wide opacity-80"
+      ></p>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav
+      id="navbar"
+      class="fixed w-full z-50 top-0 left-0 transition-all duration-700 py-6 px-6 md:px-12 flex justify-between items-center text-white mix-blend-difference"
+    >
+      <a
+        href="/"
+        data-link
+        class="font-serif text-2xl tracking-tighter hover:opacity-70 transition-opacity z-50 relative cursor-pointer"
+        data-cursor="link"
+      >
+        LAKE COMO STYLE
+      </a>
+
+      <!-- Desktop Menu -->
+      <div
+        class="hidden md:flex gap-10 text-[11px] font-sans tracking-[0.2em] uppercase font-medium items-center"
+      >
+        <a
+          href="/themes"
+          data-link
+          class="hover:text-lake-mist transition-colors cursor-pointer relative group"
+          data-cursor="link"
+        >
+          Themes
+          <span
+            class="absolute -bottom-2 left-0 w-0 h-px bg-lake-mist transition-all duration-300 group-hover:w-full"
+          ></span>
+        </a>
+        <a
+          href="/faq"
+          data-link
+          class="hover:text-lake-mist transition-colors cursor-pointer relative group"
+          data-cursor="link"
+        >
+          Tickets
+          <span
+            class="absolute -bottom-2 left-0 w-0 h-px bg-lake-mist transition-all duration-300 group-hover:w-full"
+          ></span>
+        </a>
+        <a
+          href="/cast"
+          data-link
+          class="hover:text-lake-mist transition-colors cursor-pointer relative group"
+          data-cursor="link"
+        >
+          Private Events
+          <span
+            class="absolute -bottom-2 left-0 w-0 h-px bg-lake-mist transition-all duration-300 group-hover:w-full"
+          ></span>
+        </a>
+        <a
+          href="/gallery"
+          data-link
+          class="hover:text-lake-mist transition-colors cursor-pointer relative group"
+          data-cursor="link"
+        >
+          Gallery
+          <span
+            class="absolute -bottom-2 left-0 w-0 h-px bg-lake-mist transition-all duration-300 group-hover:w-full"
+          ></span>
+        </a>
+        <a
+          href="/contact"
+          data-link
+          class="ml-4 px-8 py-3 border border-white/30 rounded-full hover:bg-white hover:text-obsidian hover:border-white transition-all duration-500 cursor-pointer"
+          data-cursor="link"
+        >
+          Book Now
+        </a>
+      </div>
+
+      <!-- Mobile Toggle -->
+      <button
+        id="mobile-toggle"
+        class="md:hidden z-50 space-y-1.5 group cursor-pointer"
+        data-cursor="link"
+      >
+        <span
+          class="block w-8 h-px bg-current transition-transform duration-300 group-hover:w-6"
+        ></span>
+        <span class="block w-8 h-px bg-current"></span>
+        <span
+          class="block w-8 h-px bg-current transition-transform duration-300 group-hover:w-4"
+        ></span>
+      </button>
+    </nav>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 bg-obsidian text-silk z-40 transform translate-x-full transition-transform duration-700 cubic-bezier(0.77, 0, 0.175, 1) flex flex-col justify-center items-center gap-8"
+    >
+      <a
+        href="/"
+        data-link
+        class="font-serif text-5xl mobile-link hover:text-lake-mist transition-colors"
+        >Home</a
+      >
+      <a
+        href="/themes"
+        data-link
+        class="font-serif text-5xl mobile-link hover:text-lake-mist transition-colors"
+        >Themes</a
+      >
+      <a
+        href="/cast"
+        data-link
+        class="font-serif text-5xl mobile-link hover:text-lake-mist transition-colors"
+        >Private Events</a
+      >
+      <a
+        href="/movie"
+        data-link
+        class="font-serif text-5xl mobile-link hover:text-lake-mist transition-colors"
+        >Your Trailer</a
+      >
+      <a
+        href="/gallery"
+        data-link
+        class="font-serif text-5xl mobile-link hover:text-lake-mist transition-colors"
+        >Gallery</a
+      >
+      <a
+        href="/contact"
+        data-link
+        class="mt-12 px-10 py-4 border border-lake-mist text-lake-mist rounded-full mobile-link hover:bg-lake-mist hover:text-obsidian transition-colors"
+        >Contact</a
+      >
+    </div>
+
+    <!-- MAIN APP CONTAINER -->
+    <main id="app"></main>
+
+    <!-- FOOTER -->
+    <footer
+      class="bg-obsidian text-white pt-32 pb-12 px-6 md:px-12 mt-auto relative z-10"
+    >
+      <div
+        class="max-w-[1800px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 border-t border-white/5 pt-12"
+      >
+        <div class="md:col-span-5">
+          <h2 class="font-serif text-4xl mb-8">Curated Italian Moments</h2>
+          <p
+            class="text-white/40 font-sans text-sm max-w-md leading-relaxed tracking-wide"
+          >
+            Immersive cinematic experiences on the shores of Lake Como. From
+            private villas to historic palaces, we turn your celebration into a
+            movie.
+          </p>
+        </div>
+        <div class="md:col-span-3">
+          <h3
+            class="font-sans text-[10px] tracking-[0.2em] uppercase mb-8 text-lake-mist"
+          >
+            Explore
+          </h3>
+          <ul class="space-y-4 font-serif text-xl text-white/70">
+            <li>
+              <a
+                href="/themes"
+                data-link
+                class="hover:text-white transition-colors hover:pl-2 duration-300"
+                data-cursor="link"
+                >2026 Themes</a
+              >
+            </li>
+            <li>
+              <a
+                href="/process"
+                data-link
+                class="hover:text-white transition-colors hover:pl-2 duration-300"
+                data-cursor="link"
+                >The Process</a
+              >
+            </li>
+            <li>
+              <a
+                href="/crew"
+                data-link
+                class="hover:text-white transition-colors hover:pl-2 duration-300"
+                data-cursor="link"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a
+                href="/faq"
+                data-link
+                class="hover:text-white transition-colors hover:pl-2 duration-300"
+                data-cursor="link"
+                >FAQ</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="md:col-span-4">
+          <h3
+            class="font-sans text-[10px] tracking-[0.2em] uppercase mb-8 text-lake-mist"
+          >
+            Contact
+          </h3>
+          <p class="text-white/60 font-sans text-sm mb-2 tracking-wide">
+            info@lakecomostyle.it
+          </p>
+          <p class="text-white/60 font-sans text-sm tracking-wide">
+            +39 348 784 7234
+          </p>
+
+          <div
+            class="mt-12 p-6 border border-white/10 inline-block bg-white/5 backdrop-blur-sm"
+          >
+            <div class="flex items-center gap-4">
+              <span class="relative flex h-3 w-3">
+                <span
+                  class="animate-ping absolute inline-flex h-full w-full rounded-full bg-lake-mist opacity-75"
+                ></span>
+                <span
+                  class="relative inline-flex rounded-full h-3 w-3 bg-lake-mist"
+                ></span>
+              </span>
+              <span
+                class="text-[10px] text-lake-mist uppercase tracking-[0.2em]"
+                >Booking Season 2026 Open</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="max-w-[1800px] mx-auto mt-32 flex justify-between items-end text-[10px] text-white/20 font-sans uppercase tracking-[0.2em]"
+      >
+        <span>© 2026 Lake Como Style</span>
+        <span>Designed in Italy</span>
+      </div>
+    </footer>
+
+    <!-- JSON DATA STORE -->
+    <script>
+      window.DB = {
+        _metadata: {
+          exportedAt: "2026-02-16T22:21:23.059Z",
+          projectId: "c20abca7",
+          dataset: "production",
+        },
+        homepage: [
+          {
+            _id: "homepage",
+            _type: "homepage",
+            heroSection: {
+              ctaLink: "/contact",
+              eventShowcase: {
+                eventTypes: [
+                  "Pre- or Post-wedding events",
+                  "Small group celebrations",
+                  "VIP clients",
+                  "",
+                ],
+                link: "/themes",
+                title: "Perfect For",
+              },
+              mainHeading:
+                "From curated La Dolce Vita lunches & Bond Aperitivos for visitors to private villa events and bespoke couture, we create immersive Made-in-Italy fashion experiences. ",
+              mobileVideoFile: {
+                _type: "file",
+                assetUrl:
+                  "https://cdn.sanity.io/files/c20abca7/production/d1ef0f0bf33db10c1157acd3f71a066ca846983a.mp4",
+              },
+              playIndicatorText: "hear the music",
+              preHeading: "Luxury Immersive Fashion Experiences on Lake Como",
+              secondaryCtaLink: "/process",
+              subHeading:
+                "Celebrate elegance, style, and the timeless charm of Lake Como",
+              videoFile: {
+                _type: "file",
+                assetUrl:
+                  "https://cdn.sanity.io/files/c20abca7/production/8619aa7c6162b0324b047155cadceb864dc70208.mp4",
+              },
+            },
+            title: "Home Page",
+          },
+        ],
+        navbar: [
+          {
+            _id: "navbar",
+            _type: "navbar",
+            ctaLink: "/contact",
+            ctaText: "Book Now",
+            links: [
+              { label: "Home", url: "/" },
+              { label: "2026 Themes", url: "/themes" },
+              { label: "Open Tickets", url: "/faq" },
+              { label: "Private Events", url: "/cast" },
+              { label: "Your Trailer", url: "/movie" },
+              { label: "Gallery", url: "/gallery" },
+              { label: "About", url: "/crew" },
+            ],
+          },
+        ],
+        themesPage: [
+          {
+            _id: "themesPage",
+            _type: "themesPage",
+            customThemeCta: {
+              buttonLink: "/contact",
+              buttonText: "Join the Scene",
+              description:
+                "Don't see what you're looking for? We can design a custom theme tailored to your event.",
+              title: "Theme Inquiry",
+            },
+            hero: {
+              description:
+                "Our 2026 themes are designed to turn every day on Lake Como into a fully immersive memory. Step into a world of curated props, photo-ready backdrops, and cinematic music.",
+              mainTitle: "Immersive Themes",
+              secondaryTitle:
+                "Fully themed, fully immersive, fully unforgettable",
+            },
+            themesList: [
+              {
+                feel: "Sophisticated, adventurous, playful suspense.",
+                genre: "Bond Inspired",
+                image: {
+                  _type: "image",
+                  assetUrl:
+                    "https://cdn.sanity.io/images/c20abca7/production/4729227fb0bb7d2fcb85a055cb40b79b0c6afa7e-1600x900.jpg",
+                },
+                story:
+                  "Guests step into the world of secret agents, daring missions, and intrigue. Think tuxedos, glamorous dresses, clever props, and action-packed poses.",
+                title: "Agents of Style",
+                vibe: "Sleek, stylish, high-stakes, espionage.",
+              },
+              {
+                feel: "Romantic, stylish, lively, playful, cinematic charm.",
+                genre: "Italian / Romantic Glamour Theme",
+                image: {
+                  _type: "image",
+                  assetUrl:
+                    "https://cdn.sanity.io/images/c20abca7/production/9abe77fbeaf20b814914e6c9e218b5753a162c4c-1064x911.png",
+                },
+                story:
+                  "Guests step into a story of romance and playful elegance in the heart of 1960s Italy. Think flowing dresses, sharp suits, chic sunglasses, and fabulous hats.",
+                title: "La Dolce Vita",
+                vibe: "Stylish, fun, romantic, sun-soaked Italian adventure.",
+              },
+              {
+                feel: "Elegant, nostalgic, cinematic, story-driven, stylish drama.",
+                genre: "Old Hollywood / Glamour Theme",
+                image: {
+                  _type: "image",
+                  assetUrl:
+                    "https://cdn.sanity.io/images/c20abca7/production/4a261b170c114177ab1ba62caaa1577566afc635-1170x780.jpg",
+                },
+                story:
+                  "Guests become stars of a vintage cinematic caper, full of red carpets, flashing cameras, and silver-screen drama. Think Marilyn Monroe–style gowns, sharp tuxedos, and iconic poses.",
+                title: "The Hollywood Hustle",
+                vibe: "Classic 1940s–1960s Tinseltown glamour.",
+              },
+            ],
+          },
+        ],
+        castPage: [
+          {
+            _id: "castPage",
+            hero: {
+              title: "Designed for Celebration",
+              subtitle: "From intimate gatherings to full celebrations",
+            },
+            content: {
+              paragraphs: [
+                "Choose your theme. Select your venue. Now it’s time to experience the immersive fun!",
+                "We create unforgettable experiences for groups of all sizes. Whether it’s an intimate gathering or a large celebration, our team brings your event to life with style, elegance, and flair.",
+                "Guests can choose from our exclusive 2026 themes—from the timeless glamour of La Dolce Vita, to the cinematic sparkle of Hollywood Hustle, or the sophisticated intrigue of Bond.",
+              ],
+            },
+            showcaseImages: [
+              {
+                image: {
+                  assetUrl:
+                    "https://cdn.sanity.io/images/c20abca7/production/437dd49a02ecac575dc481e3535b2dfb4b275442-951x913.png",
+                },
+              },
+              {
+                image: {
+                  assetUrl:
+                    "https://cdn.sanity.io/images/c20abca7/production/06e1175d3bde3e3a5a3d37ad7841001a66cdd2ce-1920x1080.png",
+                },
+              },
+              {
+                image: {
+                  assetUrl:
+                    "https://cdn.sanity.io/images/c20abca7/production/5bdb7664d902978a660db843d80ca21424de53bf-960x720.jpg",
+                },
+              },
+            ],
+          },
+        ],
+        processPage: [
+          {
+            _id: "processPage",
+            hero: {
+              heading: "Seasonal Weekly Events",
+              subHeading: "From Drinks to Dinner to Dancing Under the Stars",
+            },
+            steps: [
+              {
+                stepNumber: 1,
+                heading: "Choose Your Story",
+                body: "Select from our signature themes or create a custom one. With over 3,000 costumes and props, your celebration can be uniquely tailored.",
+              },
+              {
+                stepNumber: 2,
+                heading: "Pick Your Location",
+                body: "Whether our venue, a luxury hotel, or a private boat, we bring the cinema to you.",
+              },
+              {
+                stepNumber: 3,
+                heading: "Production Design",
+                body: "We curate custom backdrops, curated props, music and storylines.",
+              },
+              {
+                stepNumber: 4,
+                heading: "The Big Day",
+                body: "Guests step into a world of intrigue. Our professional videographer captures the magic.",
+              },
+            ],
+          },
+        ],
+        galleryPage: [
+          {
+            images: [
+              {
+                assetUrl:
+                  "https://cdn.sanity.io/images/c20abca7/production/89307f3fef09feb106360e6380de44b5e9bb536c-1582x821.png",
+              },
+              {
+                assetUrl:
+                  "https://cdn.sanity.io/images/c20abca7/production/c6332474612f28f05d16dd4035a10958381213f5-550x423.png",
+              },
+              {
+                assetUrl:
+                  "https://cdn.sanity.io/images/c20abca7/production/388b2d0430dbd54b63706e771f3a00cf16086aae-3024x2179.jpg",
+              },
+              {
+                assetUrl:
+                  "https://cdn.sanity.io/images/c20abca7/production/7abf86da2007f97d3ecd6995e236a27f5bd7036e-648x439.jpg",
+              },
+              {
+                assetUrl:
+                  "https://cdn.sanity.io/images/c20abca7/production/2b0e63b6b7ff63ac55b21b759be3b82b85f181e7-1672x798.png",
+              },
+              {
+                assetUrl:
+                  "https://cdn.sanity.io/images/c20abca7/production/91472121a6a46f2e4be72ab8cebb4a232978c1d5-1775x892.png",
+              },
+            ],
+          },
+        ],
+        faqPage: [
+          {
+            faqs: [
+              {
+                question: "Are there weekly events open to all guests?",
+                answer:
+                  "Yes! We host weekly events for all guests visiting Lake Como.",
+              },
+              {
+                question: "Can I book a private event?",
+                answer:
+                  "Yes! We offer private events tailored for bachelorettes, tour groups, and corporate functions.",
+              },
+              {
+                question: "What props do you offer?",
+                answer:
+                  "We offer a collection of over 3,000 couture costumes and props.",
+              },
+            ],
+          },
+        ],
+        contactPage: [
+          {
+            hero: {
+              mainHeading: "Join the Party in Style",
+              preHeading: "Get in Touch",
+            },
+            cameraImage: {
+              assetUrl:
+                "https://cdn.sanity.io/images/c20abca7/production/708cec19ac0d52a98033e50246ca0cb168209f2f-414x600.jpg",
+            },
+          },
+        ],
+      };
+    </script>
+
+    <!-- CORE LOGIC -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const app = document.getElementById("app");
+        const nav = document.getElementById("navbar");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const mobileToggle = document.getElementById("mobile-toggle");
+
+        // Cursor Logic
+        const cursorDot = document.getElementById("cursor-dot");
+        const cursorOutline = document.getElementById("cursor-outline");
+
+        window.addEventListener("mousemove", (e) => {
+          const posX = e.clientX;
+          const posY = e.clientY;
+
+          cursorDot.style.left = `${posX}px`;
+          cursorDot.style.top = `${posY}px`;
+
+          // Add slight delay for outline to create fluid feel
+          cursorOutline.animate(
+            {
+              left: `${posX}px`,
+              top: `${posY}px`,
+            },
+            { duration: 500, fill: "forwards" },
+          );
+        });
+
+        // 1. ROUTER & TRANSITIONS
+        const routes = {
+          "/": renderHome,
+          "/themes": renderThemes,
+          "/cast": renderPrivateEvents,
+          "/process": renderProcess,
+          "/movie": renderProcess,
+          "/gallery": renderGallery,
+          "/crew": renderCrew,
+          "/faq": renderFAQ,
+          "/contact": renderContact,
+        };
+
+        function navigate(path) {
+          app.classList.add("page-exit-active");
+
+          setTimeout(() => {
+            // Use Hash routing to prevent SecurityError in sandboxed environments
+            window.location.hash = path;
+
+            // Note: The actual rendering is handled by the hashchange listener
+            // which is triggered by window.location.hash = path
+
+            // Close mobile menu
+            mobileMenu.classList.add("translate-x-full");
+          }, 500); // Wait for transition
+        }
+
+        // Handle Hash Changes
+        window.addEventListener("hashchange", () => {
+          const path = window.location.hash.slice(1) || "/";
+          const renderFn = routes[path] || routes["/"];
+
+          app.innerHTML = renderFn();
+          window.scrollTo(0, 0);
+
+          app.classList.remove("page-exit-active");
+          app.classList.add("page-enter");
+
+          requestAnimationFrame(() => {
+            app.classList.remove("page-enter");
+            app.classList.add("page-enter-active");
+            setTimeout(() => app.classList.remove("page-enter-active"), 600);
+          });
+
+          observeElements();
+          attachInteractions();
+          updateNavStyle(path);
+        });
+
+        // Link Interception
+        document.body.addEventListener("click", (e) => {
+          const link = e.target.closest("[data-link]");
+          if (link) {
+            e.preventDefault();
+            navigate(link.getAttribute("href"));
+          }
+        });
+
+        // 2. RENDERERS
+        function renderHome() {
+          const data = window.DB.homepage[0];
+          return `
+                    <section class="relative h-screen w-full overflow-hidden bg-obsidian group" data-cursor="video">
+                        <video id="hero-video" class="absolute top-0 left-0 w-full h-full object-cover opacity-60" autoplay loop muted playsinline>
+                            <source src="${data.heroSection.videoFile.assetUrl}" type="video/mp4">
+                        </video>
+                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-transparent to-transparent"></div>
+                        
+                        <button id="audio-toggle" class="absolute top-32 right-6 md:right-12 z-30 text-white/50 hover:text-white transition-colors uppercase text-[10px] tracking-widest border border-white/20 px-4 py-2 rounded-full cursor-pointer mix-blend-difference" data-cursor="link">
+                            Enable Sound
+                        </button>
+
+                        <div class="absolute bottom-0 left-0 p-6 md:p-16 w-full max-w-[1400px] z-20">
+                            <div class="reveal-text-wrapper mb-6">
+                                <span class="reveal-text-inner text-lake-mist font-sans text-[11px] tracking-[0.3em] uppercase">
+                                    ${data.heroSection.preHeading}
+                                </span>
+                            </div>
+                            <h1 class="text-white font-serif text-5xl md:text-9xl leading-[0.9] tracking-tighter mb-10 max-w-5xl">
+                                <span class="reveal-text-wrapper"><span class="reveal-text-inner delay-100">From Curated</span></span>
+                                <span class="reveal-text-wrapper"><span class="reveal-text-inner delay-200">La Dolce Vita Lunches</span></span>
+                                <span class="reveal-text-wrapper"><span class="reveal-text-inner delay-300 text-white/60">& Bond Aperitivos</span></span>
+                            </h1>
+                            <div class="flex gap-8 items-center reveal-text-wrapper">
+                                <span class="reveal-text-inner delay-500">
+                                    <a href="/themes" data-link class="bg-white text-obsidian px-10 py-5 rounded-full font-sans text-xs tracking-widest uppercase hover:bg-lake-mist transition-colors cursor-pointer" data-cursor="link">Explore Themes</a>
+                                </span>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section class="py-40 px-6 md:px-12 max-w-[1800px] mx-auto">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-32 items-center">
+                            <div class="pl-0 md:pl-12">
+                                <h2 class="font-serif text-6xl md:text-7xl mb-10 leading-[1.1]">
+                                    The Art of the <br><span class="text-lake-mist italic">Italian Moment</span>
+                                </h2>
+                                <p class="font-sans text-charcoal/70 text-lg leading-relaxed mb-16 max-w-md">
+                                    We don't just plan events. We engineer cinematic memories. 
+                                    Every detail is curated to transport you into a world of elegance, 
+                                    where the line between reality and film blurs.
+                                </p>
+                                <a href="/contact" data-link class="group inline-flex items-center gap-4 border-b border-obsidian pb-2 font-sans text-xs tracking-widest uppercase hover:text-lake-mist hover:border-lake-mist transition-colors cursor-pointer" data-cursor="link">
+                                    Begin the Journey
+                                    <span class="group-hover:translate-x-2 transition-transform duration-300">→</span>
+                                </a>
+                            </div>
+                            <div class="reveal-img-container aspect-[4/5] md:aspect-[3/4]">
+                                <div class="reveal-img-curtain"></div>
+                                <img src="https://cdn.sanity.io/images/c20abca7/production/9abe77fbeaf20b814914e6c9e218b5753a162c4c-1064x911.png" alt="La Dolce Vita" class="w-full h-full object-cover img-scale grayscale hover:grayscale-0 transition-all duration-[1.5s]">
+                            </div>
+                        </div>
+                    </section>
+                `;
+        }
+
+        function renderThemes() {
+          const data = window.DB.themesPage[0];
+          const themesHtml = data.themesList
+            .map(
+              (theme, index) => `
+                    <div class="sticky top-0 min-h-screen flex flex-col md:flex-row bg-silk border-t border-charcoal/5">
+                        <div class="w-full md:w-1/2 h-[50vh] md:h-screen relative overflow-hidden group border-r border-charcoal/5">
+                            <img src="${theme.image.assetUrl}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105" alt="${theme.title}">
+                            <div class="absolute inset-0 bg-obsidian/10 group-hover:bg-transparent transition-colors duration-700"></div>
+                        </div>
+                        <div class="w-full md:w-1/2 min-h-[50vh] md:h-screen flex flex-col justify-center p-8 md:p-32 bg-silk relative">
+                             <span class="absolute top-12 left-12 md:left-32 text-lake-mist font-sans text-[10px] tracking-[0.3em] uppercase">Collection 0${index + 1}</span>
+                            <h2 class="font-serif text-5xl md:text-8xl mb-8">${theme.title}</h2>
+                            <p class="font-serif italic text-2xl text-lake-deep mb-10">${theme.vibe}</p>
+                            <p class="font-sans text-charcoal/60 leading-loose max-w-md mb-16 text-sm tracking-wide">${theme.story}</p>
+                            <div class="flex gap-6">
+                                <button class="px-8 py-3 border border-charcoal/10 rounded-full hover:border-lake-mist hover:text-lake-mist transition-colors text-xs uppercase tracking-widest cursor-pointer" data-cursor="link">Moodboard</button>
+                                <a href="/contact" data-link class="px-8 py-3 bg-obsidian text-white rounded-full hover:bg-lake-mist transition-colors text-xs uppercase tracking-widest cursor-pointer" data-cursor="link">Inquire</a>
+                            </div>
+                        </div>
+                    </div>
+                `,
+            )
+            .join("");
+
+          return `
+                    <div class="pt-48 pb-24 px-6 md:px-12 bg-silk">
+                        <h1 class="font-serif text-7xl md:text-[10rem] text-center mb-6 leading-[0.8]">2026 Collections</h1>
+                        <p class="text-center font-sans text-charcoal/40 tracking-[0.3em] uppercase text-xs animate-bounce mt-12">Scroll to Explore</p>
+                    </div>
+                    ${themesHtml}
+                    <div class="bg-lake-mist text-white py-40 text-center relative overflow-hidden">
+                        <h2 class="font-serif text-5xl mb-8 relative z-10">Have a specific vision?</h2>
+                        <a href="/contact" data-link class="inline-block border-b border-white/50 pb-2 hover:text-obsidian hover:border-obsidian transition-colors relative z-10 cursor-pointer" data-cursor="link">Request Bespoke Design</a>
+                    </div>
+                `;
+        }
+
+        function renderPrivateEvents() {
+          const data = window.DB.castPage[0];
+          return `
+                    <section class="pt-48 pb-32 px-6 md:px-12 max-w-[1600px] mx-auto">
+                        <span class="block text-lake-mist font-sans text-[10px] tracking-[0.3em] uppercase mb-8">Private Commissions</span>
+                        <h1 class="font-serif text-6xl md:text-9xl mb-20 max-w-5xl leading-[0.85]">${data.hero.title}</h1>
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 font-sans text-charcoal/70 leading-relaxed border-t border-charcoal/10 pt-12">
+                            <div class="md:col-span-7 text-2xl md:text-3xl text-obsidian font-serif leading-normal">
+                                "${data.content.paragraphs[1]}"
+                            </div>
+                            <div class="md:col-span-1"></div>
+                            <div class="md:col-span-4 flex flex-col justify-between">
+                                <p class="mb-8 text-sm leading-loose">${data.content.paragraphs[3]}</p>
+                                <a href="/contact" data-link class="text-lake-mist uppercase text-xs tracking-widest border-b border-lake-mist self-start pb-1 cursor-pointer" data-cursor="link">Check Availability</a>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section class="w-full overflow-x-auto scroll-hide pb-32 pl-6 md:pl-12 cursor-grab active:cursor-grabbing">
+                        <div class="flex gap-12 w-max pr-12">
+                            ${data.showcaseImages
+                              .map(
+                                (img) => `
+                                <div class="w-[70vw] md:w-[35vw] aspect-[16/10] relative overflow-hidden rounded-sm reveal-img-container">
+                                    <div class="reveal-img-curtain"></div>
+                                    <img src="${img.image.assetUrl}" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-[1s] img-scale">
+                                </div>
+                            `,
+                              )
+                              .join("")}
+                        </div>
+                    </section>
+                `;
+        }
+
+        function renderGallery() {
+          const data = window.DB.galleryPage[0];
+          return `
+                     <section class="pt-48 px-6 md:px-12 mb-24">
+                        <h1 class="font-serif text-8xl mb-6">The Archive</h1>
+                        <p class="font-sans text-[10px] tracking-[0.3em] uppercase text-charcoal/40">Captured Moments</p>
+                    </section>
+                    <section class="columns-1 md:columns-3 gap-8 px-6 md:px-12 pb-32 space-y-8">
+                        ${data.images
+                          .map(
+                            (img, i) => `
+                            <div class="break-inside-avoid reveal-img-container mb-8 cursor-zoom-in group" onclick="openLightbox('${img.assetUrl}')" data-cursor="link">
+                                <div class="reveal-img-curtain"></div>
+                                <img src="${img.assetUrl}" class="w-full h-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-700 img-scale" loading="lazy">
+                                <div class="absolute bottom-4 left-4 text-white font-sans text-[10px] opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-widest z-20">View Fullscreen</div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            </div>
+                        `,
+                          )
+                          .join("")}
+                    </section>
+                `;
+        }
+
+        function renderContact() {
+          const data = window.DB.contactPage[0];
+          return `
+                    <div class="flex flex-col md:flex-row min-h-screen">
+                        <div class="w-full md:w-1/2 pt-40 px-6 md:px-20 bg-silk">
+                            <span class="text-lake-mist font-sans text-[10px] tracking-[0.3em] uppercase block mb-6">Inquiries</span>
+                            <h1 class="font-serif text-6xl md:text-7xl mb-16 leading-tight">${data.hero.mainHeading}</h1>
+                            
+                            <form class="space-y-16 max-w-lg mb-20">
+                                <div class="relative">
+                                    <input type="text" id="name" placeholder=" " class="floating-input w-full bg-transparent border-b border-charcoal/20 py-4 focus:outline-none focus:border-lake-mist transition-colors font-sans text-lg text-obsidian">
+                                    <label for="name" class="absolute left-0 top-4 text-charcoal/40 transition-all duration-300 font-sans pointer-events-none">Your Name</label>
+                                </div>
+                                <div class="relative">
+                                    <input type="email" id="email" placeholder=" " class="floating-input w-full bg-transparent border-b border-charcoal/20 py-4 focus:outline-none focus:border-lake-mist transition-colors font-sans text-lg text-obsidian">
+                                    <label for="email" class="absolute left-0 top-4 text-charcoal/40 transition-all duration-300 font-sans pointer-events-none">Email Address</label>
+                                </div>
+                                <div class="grid grid-cols-2 gap-12">
+                                    <div class="relative">
+                                         <input type="date" class="w-full bg-transparent border-b border-charcoal/20 py-4 focus:outline-none focus:border-lake-mist font-sans text-charcoal/80 text-sm uppercase tracking-wider">
+                                    </div>
+                                    <div class="relative">
+                                        <select class="w-full bg-transparent border-b border-charcoal/20 py-4 focus:outline-none focus:border-lake-mist font-sans text-charcoal/80 text-sm uppercase tracking-wider appearance-none rounded-none cursor-pointer" data-cursor="link">
+                                            <option>Group Size</option>
+                                            <option>2-10 Guests</option>
+                                            <option>10-50 Guests</option>
+                                            <option>50+ Guests</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="relative">
+                                    <textarea id="msg" rows="1" placeholder=" " class="floating-input w-full bg-transparent border-b border-charcoal/20 py-4 focus:outline-none focus:border-lake-mist transition-colors font-sans text-lg text-obsidian resize-none"></textarea>
+                                    <label for="msg" class="absolute left-0 top-4 text-charcoal/40 transition-all duration-300 font-sans pointer-events-none">Tell us about your vision...</label>
+                                </div>
+                                
+                                <button class="w-full bg-obsidian text-white py-5 rounded-full font-sans uppercase tracking-[0.2em] text-[11px] hover:bg-lake-mist transition-colors duration-500 cursor-pointer" data-cursor="link">
+                                    Send Inquiry
+                                </button>
+                            </form>
+                        </div>
+                        <div class="hidden md:block w-1/2 fixed right-0 top-0 h-full overflow-hidden">
+                            <img src="${data.cameraImage.assetUrl}" class="w-full h-full object-cover grayscale mix-blend-multiply opacity-80" alt="Camera">
+                            <div class="absolute inset-0 bg-lake-mist/10"></div>
+                            <div class="absolute bottom-12 right-12 text-right">
+                                <p class="text-obsidian font-serif text-3xl">Lake Como, Italy</p>
+                                <p class="text-obsidian/60 font-sans text-xs uppercase tracking-widest mt-2">Headquarters</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+        }
+
+        function renderProcess() {
+          const data = window.DB.processPage[0];
+          return `
+                    <div class="pt-48 px-6 md:px-12 max-w-6xl mx-auto">
+                        <h1 class="font-serif text-7xl md:text-9xl mb-32 text-center">The Methodology</h1>
+                        
+                        <div class="space-y-0 border-l border-charcoal/10 ml-4 md:ml-0 relative">
+                            ${data.steps
+                              .map(
+                                (step) => `
+                                <div class="relative pl-12 pb-32 group">
+                                    <div class="absolute -left-[5px] top-2 w-[9px] h-[9px] rounded-full bg-silk border border-charcoal/40 group-hover:bg-lake-mist group-hover:border-lake-mist transition-all duration-500 z-10 scale-100 group-hover:scale-150"></div>
+                                    <span class="font-sans text-lake-mist text-[10px] tracking-[0.3em] uppercase mb-4 block opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-2 group-hover:translate-y-0">Phase 0${step.stepNumber}</span>
+                                    <h3 class="font-serif text-5xl mb-6 group-hover:translate-x-4 transition-transform duration-500 text-charcoal group-hover:text-black">${step.heading}</h3>
+                                    <p class="font-sans text-charcoal/60 leading-relaxed max-w-2xl text-lg group-hover:text-charcoal/80 transition-colors">${step.body}</p>
+                                </div>
+                            `,
+                              )
+                              .join("")}
+                        </div>
+                    </div>
+                `;
+        }
+
+        function renderFAQ() {
+          const data = window.DB.faqPage[0];
+          return `
+                    <div class="pt-48 px-6 md:px-12 max-w-5xl mx-auto min-h-screen">
+                        <span class="block text-lake-mist font-sans text-[10px] tracking-[0.3em] uppercase mb-8">Support</span>
+                        <h1 class="font-serif text-7xl mb-24">Inquiries</h1>
+                        <div class="space-y-6">
+                            ${data.faqs
+                              .map(
+                                (faq) => `
+                                <details class="group border-b border-charcoal/10 pb-6">
+                                    <summary class="list-none flex justify-between items-center cursor-pointer py-6" data-cursor="link">
+                                        <span class="font-serif text-2xl md:text-3xl text-charcoal/80 group-hover:text-lake-mist transition-colors">${faq.question}</span>
+                                        <span class="font-sans text-3xl font-light group-open:rotate-45 transition-transform duration-300 text-lake-mist">+</span>
+                                    </summary>
+                                    <div class="mt-4 font-sans text-charcoal/60 leading-loose text-base max-w-3xl pb-4 pl-4 border-l border-lake-mist/30">
+                                        ${faq.answer}
+                                    </div>
+                                </details>
+                            `,
+                              )
+                              .join("")}
+                        </div>
+                    </div>
+                 `;
+        }
+
+        function renderCrew() {
+          return `
+                    <div class="pt-48 px-6 md:px-12 max-w-[1800px] mx-auto min-h-screen">
+                        <h1 class="font-serif text-8xl md:text-[10rem] mb-32 leading-[0.8] tracking-tight">The Architects</h1>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-32">
+                            <div class="space-y-8 group">
+                                <div class="reveal-img-container aspect-[3/4]">
+                                    <div class="reveal-img-curtain"></div>
+                                    <img src="https://cdn.sanity.io/images/c20abca7/production/e60f4c4a969ae568d0975a407795225dbe163a2a-470x558.png" class="w-full h-full grayscale object-cover">
+                                </div>
+                                <div>
+                                    <h2 class="font-serif text-4xl mb-2">Dee Lasprogata</h2>
+                                    <p class="font-sans text-[10px] tracking-[0.2em] uppercase text-lake-mist mb-6">Founder & Creative Director</p>
+                                    <p class="font-sans text-charcoal/70 leading-relaxed max-w-md">
+                                        With roots in Philadelphia and a soul in Milan, Dee combines fashion-forward sensibilities with cinematic flair.
+                                    </p>
+                                </div>
+                            </div>
+                             <div class="space-y-8 md:pt-48 group">
+                                <div class="reveal-img-container aspect-[3/4]">
+                                    <div class="reveal-img-curtain"></div>
+                                    <img src="https://cdn.sanity.io/images/c20abca7/production/427d578bd9cde9bcce27512c36b3c3eadc4d7ccb-3456x5184.jpg" class="w-full h-full grayscale object-cover">
+                                </div>
+                                <div>
+                                    <h2 class="font-serif text-4xl mb-2">Stefano Dozza</h2>
+                                    <p class="font-sans text-[10px] tracking-[0.2em] uppercase text-lake-mist mb-6">Filmmaker & Visual Director</p>
+                                    <p class="font-sans text-charcoal/70 leading-relaxed max-w-md">
+                                        Capturing the essence of Italian elegance combined with Hollywood production values.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 `;
+        }
+
+        // 3. UTILITIES & INIT
+        function updateNavStyle(path) {
+          if (path === "/") {
+            nav.classList.remove("glass-nav", "text-obsidian");
+            nav.classList.add("text-white", "mix-blend-difference");
+          } else {
+            nav.classList.add("glass-nav", "text-white"); // Actually stick to white text with mix-blend-diff for consistency
+          }
+        }
+
+        function observeElements() {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  if (entry.target.classList.contains("reveal-text-inner")) {
+                    entry.target.classList.add("visible");
+                  } else if (
+                    entry.target.classList.contains("reveal-img-curtain")
+                  ) {
+                    setTimeout(
+                      () => entry.target.classList.add("visible"),
+                      200,
+                    );
+                  }
+                }
+              });
+            },
+            { threshold: 0.15 },
+          );
+
+          document
+            .querySelectorAll(".reveal-text-inner")
+            .forEach((el) => observer.observe(el));
+          document
+            .querySelectorAll(".reveal-img-curtain")
+            .forEach((el) => observer.observe(el));
+        }
+
+        function attachInteractions() {
+          // Audio Toggle for Home
+          const video = document.getElementById("hero-video");
+          const btn = document.getElementById("audio-toggle");
+
+          if (video && btn) {
+            btn.addEventListener("click", () => {
+              if (video.muted) {
+                video.muted = false;
+                btn.textContent = "Disable Sound";
+              } else {
+                video.muted = true;
+                btn.textContent = "Enable Sound";
+              }
+            });
+          }
+
+          // Cursor Hover States
+          document.querySelectorAll('[data-cursor="link"]').forEach((el) => {
+            el.addEventListener("mouseenter", () =>
+              document.body.classList.add("hover-link"),
+            );
+            el.addEventListener("mouseleave", () =>
+              document.body.classList.remove("hover-link"),
+            );
+          });
+
+          document.querySelectorAll('[data-cursor="video"]').forEach((el) => {
+            el.addEventListener("mouseenter", () =>
+              document.body.classList.add("hover-video"),
+            );
+            el.addEventListener("mouseleave", () =>
+              document.body.classList.remove("hover-video"),
+            );
+          });
+        }
+
+        // Lightbox Functions (Global)
+        window.openLightbox = (src) => {
+          const lightbox = document.getElementById("lightbox");
+          const img = document.getElementById("lightbox-img");
+          img.src = src;
+
+          lightbox.classList.remove("pointer-events-none", "opacity-0");
+          // Small delay for scale effect
+          setTimeout(() => img.classList.remove("scale-95"), 100);
+        };
+
+        document
+          .getElementById("lightbox-close")
+          .addEventListener("click", () => {
+            const lightbox = document.getElementById("lightbox");
+            const img = document.getElementById("lightbox-img");
+            img.classList.add("scale-95");
+            lightbox.classList.add("opacity-0");
+            setTimeout(
+              () => lightbox.classList.add("pointer-events-none"),
+              500,
+            );
+          });
+
+        // Mobile Toggle Logic
+        mobileToggle.addEventListener("click", () => {
+          const isOpen = mobileMenu.classList.contains("translate-x-0");
+          if (isOpen) {
+            mobileMenu.classList.remove("translate-x-0");
+            mobileMenu.classList.add("translate-x-full");
+          } else {
+            mobileMenu.classList.remove("translate-x-full");
+            mobileMenu.classList.add("translate-x-0");
+          }
+        });
+
+        // Initial Load
+        setTimeout(() => {
+          document.body.classList.add("loaded");
+          // Use hash to determine initial page
+          const path = window.location.hash.slice(1) || "/";
+          app.innerHTML = (routes[path] || routes["/"])();
+          updateNavStyle(path);
+          observeElements();
+          attachInteractions();
+        }, 100);
+      });
+    </script>
+  </body>
+</html>

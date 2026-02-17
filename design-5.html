@@ -1,0 +1,1187 @@
+<!doctype html>
+<html lang="en" class="antialiased scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lake Como Style | Cinematic Fashion Experiences</title>
+
+    <!-- Fonts: Cormorant Garamond (Luxury Serif) & Manrope (Modern Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Manrope:wght@200;300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              midnight: "#05080a",
+              porcelain: "#f2f0eb",
+              champagne: "#d4af37",
+              "slate-light": "#94a3b8",
+              charcoal: "#1c1c1c",
+            },
+            fontFamily: {
+              serif: ['"Cormorant Garamond"', "serif"],
+              sans: ['"Manrope"', "sans-serif"],
+            },
+            fontSize: {
+              display: [
+                "5rem",
+                { lineHeight: "0.9", letterSpacing: "-0.02em" },
+              ],
+              hero: ["8rem", { lineHeight: "0.85", letterSpacing: "-0.04em" }],
+            },
+            spacing: {
+              128: "32rem",
+            },
+            animation: {
+              "fade-in-up":
+                "fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+              "scale-in": "scaleIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+              marquee: "marquee 25s linear infinite",
+            },
+            keyframes: {
+              fadeInUp: {
+                "0%": { opacity: "0", transform: "translateY(40px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+              scaleIn: {
+                "0%": { opacity: "0", transform: "scale(0.95)" },
+                "100%": { opacity: "1", transform: "scale(1)" },
+              },
+              marquee: {
+                "0%": { transform: "translateX(0%)" },
+                "100%": { transform: "translateX(-100%)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* --- ELITE SYSTEM STYLES --- */
+      :root {
+        --cursor-size: 20px;
+        --cursor-hover-size: 80px;
+      }
+
+      body {
+        background-color: #f2f0eb;
+        color: #05080a;
+        cursor: none; /* Hide default cursor */
+        overflow-x: hidden;
+      }
+
+      body.dark-mode {
+        background-color: #05080a;
+        color: #f2f0eb;
+      }
+
+      /* Custom Cursor */
+      #cursor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: var(--cursor-size);
+        height: var(--cursor-size);
+        border: 1px solid currentColor;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+          height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+          background-color 0.4s,
+          mix-blend-mode 0.4s;
+        mix-blend-mode: difference;
+      }
+
+      #cursor.hovered {
+        width: var(--cursor-hover-size);
+        height: var(--cursor-hover-size);
+        background-color: #ffffff;
+        border-color: transparent;
+        opacity: 0.8;
+      }
+
+      #cursor-dot {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 4px;
+        background-color: currentColor;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: transform 0.1s;
+      }
+
+      /* Typography Utilities */
+      .text-balance {
+        text-wrap: balance;
+      }
+      .font-italic {
+        font-style: italic;
+      }
+
+      /* Image Reveal */
+      .img-reveal-container {
+        overflow: hidden;
+        position: relative;
+      }
+      .img-reveal {
+        transform: scale(1.2);
+        transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .img-reveal.loaded {
+        transform: scale(1);
+      }
+
+      /* Navigation Link Hover Effect */
+      .nav-link {
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: currentColor;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .nav-link:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+
+      /* Smooth Scroll Hide */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 3px;
+      }
+
+      /* Page Transitions */
+      .page-enter {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      .page-enter-active {
+        opacity: 1;
+        transform: translateY(0);
+        transition:
+          opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .page-exit {
+        opacity: 1;
+      }
+      .page-exit-active {
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      /* Loader */
+      #loader {
+        position: fixed;
+        inset: 0;
+        background: #05080a;
+        z-index: 10000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #f2f0eb;
+        transition:
+          opacity 0.8s ease,
+          visibility 0.8s ease;
+      }
+      .loader-text {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2rem;
+        font-style: italic;
+        overflow: hidden;
+      }
+      .loader-text span {
+        display: inline-block;
+        transform: translateY(100%);
+        animation: revealText 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      @keyframes revealText {
+        to {
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body class="transition-colors duration-700">
+    <!-- Preloader -->
+    <div id="loader">
+      <div class="loader-text">
+        <span>L</span><span>a</span><span>k</span><span>e</span>
+        <span class="mx-2">&</span>
+        <span>S</span><span>t</span><span>y</span><span>l</span><span>e</span>
+      </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div id="cursor"></div>
+    <div id="cursor-dot"></div>
+
+    <!-- Navigation -->
+    <nav
+      class="fixed top-0 left-0 w-full z-50 px-6 py-8 flex justify-between items-center mix-blend-difference text-porcelain pointer-events-none"
+    >
+      <a
+        href="/"
+        class="pointer-events-auto nav-link text-2xl font-serif font-bold tracking-tighter hover-trigger"
+        data-link
+      >
+        LAKE COMO <span class="font-light italic">STYLE</span>
+      </a>
+
+      <div
+        class="hidden md:flex gap-10 text-xs uppercase tracking-[0.2em] font-medium pointer-events-auto"
+      >
+        <a href="/themes" class="nav-link hover-trigger" data-link>Themes</a>
+        <a href="/process" class="nav-link hover-trigger" data-link>Process</a>
+        <a href="/cast" class="nav-link hover-trigger" data-link>Private</a>
+        <a href="/crew" class="nav-link hover-trigger" data-link>Team</a>
+        <a href="/gallery" class="nav-link hover-trigger" data-link>Gallery</a>
+        <a
+          href="/contact"
+          class="nav-link hover-trigger border-b border-transparent hover:border-white pb-0.5 transition-all"
+          data-link
+          >Book Now</a
+        >
+      </div>
+
+      <button
+        class="md:hidden pointer-events-auto hover-trigger"
+        id="mobile-menu-btn"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1"
+            d="M4 6h16M4 12h16M4 18h16"
+          ></path>
+        </svg>
+      </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 bg-midnight z-40 transform translate-x-full transition-transform duration-700 cubic-bezier(0.16, 1, 0.3, 1) flex flex-col justify-center items-center gap-8 text-porcelain"
+    >
+      <button
+        id="close-menu"
+        class="absolute top-8 right-8 hover-trigger text-porcelain"
+      >
+        <svg
+          class="w-8 h-8"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1"
+            d="M6 18L18 6M6 6l12 12"
+          ></path>
+        </svg>
+      </button>
+      <a
+        href="/"
+        class="text-3xl font-serif italic hover:text-champagne transition-colors"
+        data-link
+        >Home</a
+      >
+      <a
+        href="/themes"
+        class="text-3xl font-serif italic hover:text-champagne transition-colors"
+        data-link
+        >Themes</a
+      >
+      <a
+        href="/process"
+        class="text-3xl font-serif italic hover:text-champagne transition-colors"
+        data-link
+        >Process</a
+      >
+      <a
+        href="/cast"
+        class="text-3xl font-serif italic hover:text-champagne transition-colors"
+        data-link
+        >Private Events</a
+      >
+      <a
+        href="/crew"
+        class="text-3xl font-serif italic hover:text-champagne transition-colors"
+        data-link
+        >Team</a
+      >
+      <a
+        href="/contact"
+        class="text-3xl font-serif italic hover:text-champagne transition-colors"
+        data-link
+        >Contact</a
+      >
+    </div>
+
+    <!-- Main Content -->
+    <main id="app" class="min-h-screen relative">
+      <!-- Dynamic Content -->
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="bg-midnight text-porcelain py-24 px-6 md:px-20 border-t border-white/10"
+    >
+      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-16">
+        <div class="md:col-span-5">
+          <h3 class="text-4xl font-serif mb-8 italic">Lake Como Style</h3>
+          <p class="text-slate-light font-light leading-relaxed max-w-sm">
+            Curated Italian Moments. From intimate gatherings to full cinematic
+            productions, we bring the magic of the silver screen to the shores
+            of Lake Como.
+          </p>
+        </div>
+        <div class="md:col-span-2 md:col-start-7">
+          <h4 class="text-xs uppercase tracking-widest text-slate-light mb-8">
+            Contact
+          </h4>
+          <p
+            class="mb-4 hover:text-champagne transition-colors cursor-pointer hover-trigger"
+          >
+            info@lakecomostyle.it
+          </p>
+          <p
+            class="hover:text-champagne transition-colors cursor-pointer hover-trigger"
+          >
+            +39 348 784 7234
+          </p>
+        </div>
+        <div class="md:col-span-2">
+          <h4 class="text-xs uppercase tracking-widest text-slate-light mb-8">
+            Social
+          </h4>
+          <div class="flex flex-col gap-4 text-sm font-light">
+            <a
+              href="#"
+              class="hover:text-champagne transition-colors hover-trigger"
+              >Instagram</a
+            >
+            <a
+              href="#"
+              class="hover:text-champagne transition-colors hover-trigger"
+              >LinkedIn</a
+            >
+          </div>
+        </div>
+      </div>
+      <div
+        class="max-w-7xl mx-auto mt-32 pt-8 border-t border-white/10 flex justify-between text-[10px] uppercase tracking-widest text-slate-light"
+      >
+        <span>© 2026 Lake Como Style</span>
+        <span>Designed for Immersion</span>
+      </div>
+    </footer>
+
+    <script>
+      // ------------------------------------------------------------------
+      // 1. DATA INJECTION
+      // ------------------------------------------------------------------
+      const SITE_DATA = {
+        homepage: [
+          {
+            _id: "homepage",
+            heroSection: {
+              preHeading: "Luxury Immersive Fashion Experiences on Lake Como",
+              mainHeading:
+                "From curated La Dolce Vita lunches & Bond Aperitivos for visitors to private villa events and bespoke couture, we create immersive Made-in-Italy fashion experiences.",
+              subHeading:
+                "Celebrate elegance, style, and the timeless charm of Lake Como",
+              videoFile: {
+                assetUrl:
+                  "https://cdn.sanity.io/files/c20abca7/production/8619aa7c6162b0324b047155cadceb864dc70208.mp4",
+              },
+              ctaLink: "/contact",
+              secondaryCtaLink: "/process",
+            },
+          },
+        ],
+        themesPage: [
+          {
+            _id: "themesPage",
+            hero: {
+              mainTitle: "Immersive Themes, Unforgettable Moments",
+              secondaryTitle:
+                "Fully themed, fully immersive, fully unforgettable",
+              description:
+                "Our 2026 themes are designed to turn every day on Lake Como into a fully immersive memory. Step into a world of curated props, photo-ready backdrops, polaroid moments, signature cocktails, themed menus, and music that brings each event to life.",
+            },
+            themesList: [
+              {
+                title: "Agents of Style",
+                genre: "Bond Inspired",
+                feel: "Sophisticated, adventurous, playful suspense.",
+                story:
+                  "Guests step into the world of secret agents, daring missions, and intrigue. Think tuxedos, glamorous dresses, clever props, and action-packed poses.",
+                image: {
+                  assetUrl:
+                    "https://cdn.sanity.io/images/c20abca7/production/4729227fb0bb7d2fcb85a055cb40b79b0c6afa7e-1600x900.jpg",
+                },
+              },
+              {
+                title: "La Dolce Vita",
+                genre: "Italian / Romantic Glamour Theme",
+                feel: "Romantic, stylish, lively, playful, cinematic charm.",
+                story:
+                  "Guests step into a story of romance and playful elegance in the heart of 1960s Italy. Think flowing dresses, sharp suits, chic sunglasses, and fabulous hats.",
+                image: {
+                  assetUrl:
+                    "https://cdn.sanity.io/images/c20abca7/production/9abe77fbeaf20b814914e6c9e218b5753a162c4c-1064x911.png",
+                },
+              },
+              {
+                title: "The Hollywood Hustle",
+                genre: "Old Hollywood / Glamour Theme",
+                feel: "Elegant, nostalgic, cinematic, story-driven, stylish drama.",
+                story:
+                  "Guests become stars of a vintage cinematic caper, full of red carpets, flashing cameras, and silver-screen drama. Think Marilyn Monroe–style gowns, sharp tuxedos, and iconic poses.",
+                image: {
+                  assetUrl:
+                    "https://cdn.sanity.io/images/c20abca7/production/4a261b170c114177ab1ba62caaa1577566afc635-1170x780.jpg",
+                },
+              },
+            ],
+            customThemeCta: {
+              title: "Theme Inquiry",
+              description:
+                "Don't see what you're looking for? We can design a custom theme tailored to your event.",
+              buttonText: "Join the Scene",
+              buttonLink: "/contact/",
+            },
+          },
+        ],
+        processPage: [
+          {
+            _id: "processPage",
+            hero: {
+              heading: "Seasonal Weekly Events",
+              subHeading: "From Drinks to Dinner to Dancing Under the Stars",
+              description:
+                "Our 2026 themed experiences invite guests into a one-of-a-kind atmosphere on Lake Como, featuring photo-ready backdrops and a curated selection of props for spontaneous, playful photo moments.",
+            },
+            steps: [
+              {
+                stepNumber: 1,
+                tagline: "LA DOLCE VITA to BOND",
+                titleLines: ["SELECT", "YOUR", "THEME"],
+                body: "Select from our signature themes: International Agents of Style, Hollywood Hussle, La Dolce Vita, Pink Ladies, Angels & Demons or create a custom theme.",
+              },
+              {
+                stepNumber: 2,
+                tagline: "YOU NAME IT",
+                titleLines: ["SELECT", "YOUR", "VENUE"],
+                body: "Decide where your cinematic experience will take place: Our Venue, Luxury Hotel, or Your Chosen Venue.",
+              },
+              {
+                stepNumber: 3,
+                tagline: "PROPS & COSTUMES",
+                titleLines: ["WE DESIGN", "YOUR", "EVENT"],
+                body: "Our team curates every detail to bring your theme to life. From custom step & repeat backdrops and curated props to music and storylines.",
+              },
+              {
+                stepNumber: 4,
+                tagline: "TIME TO SHINE",
+                titleLines: ["CELEBRATE", "IN", "STYLE"],
+                body: "On the day of your event, guests step into a world of intrigue, glamour, and cinematic storytelling.",
+              },
+              {
+                stepNumber: 5,
+                tagline: "YOUR SILVER SCREEN",
+                titleLines: ["YOUR MOVIE &", "SOCIAL", "MEDIA CLIPS"],
+                body: "Within 3–4 weeks, we deliver a beautifully produced 3-minute cinematic trailer, along with social media-ready clips.",
+              },
+              {
+                stepNumber: 6,
+                tagline: "POPCORN TIME",
+                titleLines: ["RELIVE", "THE", "EXPERIENCE"],
+                body: "Your personalized movie trailer can be treasured for years to come — the perfect way to relive the magic of your event.",
+              },
+            ],
+          },
+        ],
+        castPage: [
+          {
+            _id: "castPage",
+            hero: {
+              title: "Designed for Celebration, Styled to Remember",
+              subtitle: "From intimate gatherings to full celebrations",
+            },
+            content: {
+              paragraphs: [
+                "Choose your theme. Select your venue. Now it's time to experience the immersive fun!",
+                "We create unforgettable experiences for groups of all sizes. Whether it's an intimate gathering or a large celebration, our team brings your event to life with style, elegance, and flair.",
+                "Guests can choose from our exclusive 2026 themes—from the timeless glamour of La Dolce Vita, to the cinematic sparkle of Hollywood Hustle, or the sophisticated intrigue of Bond.",
+              ],
+            },
+            cta: {
+              title: "Celebrate like a Star",
+              description: "Immerse yourself in the theme and live the moment",
+              buttonText: "Book Your Private Event",
+            },
+            showcaseImages: [
+              {
+                image: {
+                  assetUrl:
+                    "https://cdn.sanity.io/images/c20abca7/production/437dd49a02ecac575dc481e3535b2dfb4b275442-951x913.png",
+                },
+              },
+              {
+                image: {
+                  assetUrl:
+                    "https://cdn.sanity.io/images/c20abca7/production/06e1175d3bde3e3a5a3d37ad7841001a66cdd2ce-1920x1080.png",
+                },
+              },
+              {
+                image: {
+                  assetUrl:
+                    "https://cdn.sanity.io/images/c20abca7/production/5bdb7664d902978a660db843d80ca21424de53bf-960x720.jpg",
+                },
+              },
+            ],
+          },
+        ],
+        crewPage: [
+          {
+            _id: "crewPage",
+            hero: {
+              heading: "Your Event Crew",
+              subHeading:
+                "From the Big Apple to the heart of Milan — our team brings international talent to your celebration",
+              description:
+                "Lake Como Style brings immersive, themed experiences to life on the Lake.",
+            },
+            crewMembers: [
+              {
+                name: "Dee Lasprogata",
+                role: "Founder & Creative Director",
+                bio: [
+                  "Our founder, Dee Lasprogata has over 30 years of experience in fashion, working in New York, Los Angeles, Rome, Milan, and Lake Como.",
+                  "She has launched a pioneering fashion collections working with celebrities including Valentino, Stevie Wonder and Giada De Laurentiis.",
+                ],
+                image: {
+                  assetUrl:
+                    "https://cdn.sanity.io/images/c20abca7/production/e60f4c4a969ae568d0975a407795225dbe163a2a-470x558.png",
+                },
+              },
+              {
+                name: "Stefano Dozza",
+                role: "Filmmaker & Visual Director",
+                bio: [
+                  "Stefano Dozza is a filmmaker, photographer, and content producer from Bologna, currently based between Milan and Rome.",
+                  "As a versatile creative professional, Stefano brings expertise in filmmaking, photography, copywriting, and podcasting to Lake Como Style.",
+                ],
+                image: {
+                  assetUrl:
+                    "https://cdn.sanity.io/images/c20abca7/production/427d578bd9cde9bcce27512c36b3c3eadc4d7ccb-3456x5184.jpg",
+                },
+              },
+            ],
+          },
+        ],
+        contactPage: [
+          {
+            _id: "contactPage",
+            hero: {
+              preHeading: "Get in Touch",
+              mainHeading: "Join the Party in Style",
+              description: "Drop us a message and step into the experience.",
+            },
+            form: {
+              formTitle: "Step Into the Scene",
+              firstNameLabel: "First Name",
+              lastNameLabel: "Last Name",
+              emailLabel: "Email",
+              phoneLabel: "Phone",
+              groupSizeLabel: "How many will you be?",
+              groupSizeOptions: [
+                "2-5 people",
+                "6-10 people",
+                "11-20 people",
+                "21-50 people",
+                "50+ people",
+              ],
+              messageLabel: "Event Inquiry",
+              submitButtonText: "Join the Vibe",
+            },
+          },
+        ],
+        galleryPage: [
+          {
+            _id: "galleryPage",
+            hero: {
+              heading: "Scenes from the Experiences",
+              subHeading: "Lights, Camera, Action!",
+            },
+            images: [
+              {
+                _type: "image",
+                assetUrl:
+                  "https://cdn.sanity.io/images/c20abca7/production/89307f3fef09feb106360e6380de44b5e9bb536c-1582x821.png",
+              },
+              {
+                _type: "image",
+                assetUrl:
+                  "https://cdn.sanity.io/images/c20abca7/production/c6332474612f28f05d16dd4035a10958381213f5-550x423.png",
+              },
+              {
+                _type: "image",
+                assetUrl:
+                  "https://cdn.sanity.io/images/c20abca7/production/388b2d0430dbd54b63706e771f3a00cf16086aae-3024x2179.jpg",
+              },
+              {
+                _type: "image",
+                assetUrl:
+                  "https://cdn.sanity.io/images/c20abca7/production/7abf86da2007f97d3ecd6995e236a27f5bd7036e-648x439.jpg",
+              },
+              {
+                _type: "image",
+                assetUrl:
+                  "https://cdn.sanity.io/images/c20abca7/production/2b0e63b6b7ff63ac55b21b759be3b82b85f181e7-1672x798.png",
+              },
+              {
+                _type: "image",
+                assetUrl:
+                  "https://cdn.sanity.io/images/c20abca7/production/91472121a6a46f2e4be72ab8cebb4a232978c1d5-1775x892.png",
+              },
+            ],
+          },
+        ],
+      };
+
+      // ------------------------------------------------------------------
+      // 2. ROUTER & STATE MANAGEMENT
+      // ------------------------------------------------------------------
+      const app = document.getElementById("app");
+      const cursor = document.getElementById("cursor");
+      const cursorDot = document.getElementById("cursor-dot");
+
+      // Router Logic
+      const routes = {
+        "/": renderHome,
+        "/themes": renderThemes,
+        "/process": renderProcess,
+        "/cast": renderCast,
+        "/crew": renderCrew,
+        "/contact": renderContact,
+        "/gallery": renderGallery,
+      };
+
+      function handleRoute() {
+        const path = window.location.pathname;
+        const renderFn = routes[path] || routes["/"];
+
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: "auto" });
+
+        // Render with transition
+        app.style.opacity = "0";
+        app.style.transform = "translateY(20px)";
+
+        setTimeout(() => {
+          app.innerHTML = "";
+          renderFn();
+          initInteractions();
+
+          // Trigger reflow
+          void app.offsetWidth;
+
+          app.style.transition =
+            "opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)";
+          app.style.opacity = "1";
+          app.style.transform = "translateY(0)";
+        }, 300);
+      }
+
+      window.addEventListener("popstate", handleRoute);
+
+      // Intercept Links
+      document.addEventListener("click", (e) => {
+        const link = e.target.closest("a[data-link]");
+        if (link) {
+          e.preventDefault();
+          const href = link.getAttribute("href");
+          window.history.pushState({}, "", href);
+          handleRoute();
+
+          // Close mobile menu if open
+          const mobileMenu = document.getElementById("mobile-menu");
+          if (!mobileMenu.classList.contains("translate-x-full")) {
+            mobileMenu.classList.add("translate-x-full");
+          }
+        }
+      });
+
+      // ------------------------------------------------------------------
+      // 3. RENDER FUNCTIONS (High-End UI)
+      // ------------------------------------------------------------------
+
+      function renderHome() {
+        const data = SITE_DATA.homepage[0].heroSection;
+
+        const html = `
+                <!-- Hero Section -->
+                <section class="relative h-screen w-full overflow-hidden flex items-center justify-center bg-midnight">
+                    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-60">
+                        <source src="${data.videoFile.assetUrl}" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 bg-gradient-to-b from-midnight/30 via-transparent to-midnight"></div>
+                    
+                    <div class="relative z-10 text-porcelain max-w-7xl px-6 md:px-20 w-full grid md:grid-cols-12 gap-12 items-end pb-20">
+                        <div class="md:col-span-8 space-y-8 animate-fade-in-up">
+                            <span class="inline-block py-2 px-4 border border-porcelain/20 rounded-full text-[10px] uppercase tracking-[0.3em] backdrop-blur-md">${data.preHeading}</span>
+                            <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-medium leading-[0.9] text-balance">
+                                ${data.mainHeading}
+                            </h1>
+                            <p class="text-lg md:text-xl font-sans font-light text-porcelain/80 max-w-xl leading-relaxed">
+                                ${data.subHeading}
+                            </p>
+                            <div class="flex flex-wrap gap-6 pt-8">
+                                <a href="${data.ctaLink}" data-link class="group relative px-10 py-4 bg-porcelain text-midnight overflow-hidden hover-trigger">
+                                    <span class="relative z-10 font-medium uppercase tracking-widest text-xs">Book Experience</span>
+                                    <div class="absolute inset-0 bg-midnight transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
+                                    <span class="absolute inset-0 flex items-center justify-center text-porcelain opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20 font-medium uppercase tracking-widest text-xs">Book Experience</span>
+                                </a>
+                                <a href="${data.secondaryCtaLink}" data-link class="px-10 py-4 border border-porcelain/30 text-porcelain hover:bg-porcelain/10 transition-colors hover-trigger uppercase tracking-widest text-xs">
+                                    View Process
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Decorative Counter -->
+                        <div class="md:col-span-4 hidden md:flex flex-col justify-end items-end border-l border-porcelain/20 pl-8 h-full pb-4">
+                            <p class="text-9xl font-serif italic text-porcelain/10 select-none">2026</p>
+                            <p class="text-xs uppercase tracking-widest text-porcelain/60 mt-4">Season Collection</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Editorial Intro -->
+                <section class="py-40 px-6 md:px-20 bg-porcelain text-midnight">
+                    <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-16">
+                        <div class="md:col-span-4 sticky top-32 h-fit">
+                            <h2 class="text-xs font-bold uppercase tracking-widest text-midnight mb-4">The Concept</h2>
+                            <div class="w-12 h-px bg-midnight mb-8"></div>
+                        </div>
+                        <div class="md:col-span-8">
+                            <p class="text-4xl md:text-5xl font-serif leading-[1.1] text-balance">
+                                We don't just host events. We curate <span class="italic text-champagne">cinematic narratives</span> where you are the protagonist.
+                            </p>
+                            <div class="mt-16 grid grid-cols-2 gap-12 border-t border-midnight/10 pt-12">
+                                <div>
+                                    <h3 class="text-5xl font-serif mb-2">3k+</h3>
+                                    <p class="text-xs uppercase tracking-widest text-midnight/50">Costume Pieces</p>
+                                </div>
+                                <div>
+                                    <h3 class="text-5xl font-serif mb-2">100%</h3>
+                                    <p class="text-xs uppercase tracking-widest text-midnight/50">Immersive</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+        app.innerHTML = html;
+      }
+
+      function renderThemes() {
+        const data = SITE_DATA.themesPage[0];
+
+        let themesHtml = data.themesList
+          .map(
+            (theme, index) => `
+                <div class="group relative h-[90vh] w-full border-b border-midnight/10 hover-trigger" data-link href="/contact">
+                    <div class="img-reveal-container h-full w-full">
+                        <img src="${theme.image.assetUrl}" alt="${theme.title}" class="img-reveal absolute inset-0 w-full h-full object-cover">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500"></div>
+                    
+                    <div class="absolute bottom-0 left-0 w-full p-8 md:p-20 text-porcelain transform translate-y-8 group-hover:translate-y-0 transition-transform duration-700 cubic-bezier(0.16, 1, 0.3, 1)">
+                        <div class="flex flex-col md:flex-row justify-between items-end gap-8">
+                            <div class="max-w-3xl">
+                                <span class="text-champagne uppercase tracking-widest text-[10px] font-bold mb-4 block">${theme.genre}</span>
+                                <h3 class="text-6xl md:text-8xl font-serif mb-6 leading-none">${theme.title}</h3>
+                                <p class="max-w-xl text-porcelain/70 font-light text-lg leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-200">
+                                    ${theme.story}
+                                </p>
+                            </div>
+                            <div class="hidden md:block mb-2">
+                                <span class="inline-flex items-center gap-4 text-xs uppercase tracking-widest border-b border-porcelain pb-2 group-hover:gap-6 transition-all">
+                                    Explore Theme <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `,
+          )
+          .join("");
+
+        const html = `
+                <section class="min-h-screen pt-40 pb-20 px-6 md:px-20 bg-porcelain">
+                    <div class="max-w-7xl mx-auto mb-32">
+                        <h1 class="text-7xl md:text-9xl font-serif text-midnight mb-12 leading-none">${data.hero.mainTitle}</h1>
+                        <div class="grid md:grid-cols-2 gap-12 items-start">
+                            <p class="text-xl font-sans font-light text-midnight/70 leading-relaxed">${data.hero.description}</p>
+                            <div class="flex items-end justify-end">
+                                <span class="text-[12rem] font-serif text-stroke opacity-10 select-none leading-none">2026</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col">
+                        ${themesHtml}
+                    </div>
+
+                    <!-- Custom CTA -->
+                    <div class="mt-32 bg-midnight text-porcelain p-12 md:p-32 text-center relative overflow-hidden">
+                        <div class="relative z-10">
+                            <h2 class="text-5xl md:text-6xl font-serif mb-8">${data.customThemeCta.title}</h2>
+                            <p class="text-midnight/50 mb-12 max-w-2xl mx-auto font-light">${data.customThemeCta.description}</p>
+                            <a href="${data.customThemeCta.buttonLink}" data-link class="inline-block px-12 py-5 bg-porcelain text-midnight font-medium uppercase tracking-widest hover:bg-champagne hover:text-white transition-colors hover-trigger">
+                                ${data.customThemeCta.buttonText}
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            `;
+        app.innerHTML = html;
+
+        // Trigger image reveals
+        setTimeout(() => {
+          document.querySelectorAll(".img-reveal").forEach((img) => {
+            img.classList.add("loaded");
+          });
+        }, 100);
+      }
+
+      function renderProcess() {
+        const data = SITE_DATA.processPage[0];
+
+        const stepsHtml = data.steps
+          .map(
+            (step, index) => `
+                <div class="relative pl-8 md:pl-0 md:grid md:grid-cols-12 gap-12 py-24 border-b border-midnight/10 group hover:bg-porcelain/50 transition-colors">
+                    <!-- Timeline Line -->
+                    <div class="absolute left-0 top-0 bottom-0 w-px bg-midnight/20 md:left-1/2 md:-ml-px"></div>
+                    
+                    <div class="md:col-span-5 md:text-right md:pr-12 relative z-10">
+                        <span class="text-[10px] font-bold text-champagne uppercase tracking-widest mb-4 block">${step.tagline}</span>
+                        <h3 class="text-5xl md:text-6xl font-serif leading-none text-midnight">
+                            ${step.titleLines.map((line) => `<span class="block">${line}</span>`).join("")}
+                        </h3>
+                    </div>
+                    
+                    <div class="md:col-span-2 flex items-center justify-center relative z-10">
+                        <div class="w-3 h-3 rounded-full bg-midnight border-4 border-porcelain shadow-lg group-hover:scale-150 transition-transform duration-500"></div>
+                    </div>
+                    
+                    <div class="md:col-span-5 md:pl-12 relative z-10 pt-6 md:pt-0">
+                        <p class="text-midnight/70 font-light leading-relaxed text-lg">${step.body}</p>
+                    </div>
+                </div>
+            `,
+          )
+          .join("");
+
+        const html = `
+                <section class="min-h-screen pt-40 pb-20 px-6 md:px-20 bg-porcelain">
+                    <div class="max-w-7xl mx-auto mb-32 text-center">
+                        <span class="text-champagne uppercase tracking-widest text-[10px] font-bold block mb-6">${data.hero.subHeading}</span>
+                        <h1 class="text-6xl md:text-8xl font-serif text-midnight mb-8 leading-tight">${data.hero.heading}</h1>
+                        <p class="max-w-2xl mx-auto text-midnight/60 font-light text-lg">${data.hero.description}</p>
+                    </div>
+
+                    <div class="max-w-6xl mx-auto">
+                        ${stepsHtml}
+                    </div>
+                </section>
+            `;
+        app.innerHTML = html;
+      }
+
+      function renderCast() {
+        const data = SITE_DATA.castPage[0];
+
+        const imagesHtml = data.showcaseImages
+          .map(
+            (img) => `
+                <div class="min-w-[85vw] md:min-w-[500px] h-[60vh] md:h-[80vh] relative overflow-hidden group hover-trigger snap-center">
+                    <img src="${img.image.assetUrl}" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
+                </div>
+            `,
+          )
+          .join("");
+
+        const html = `
+                <section class="min-h-screen pt-40 pb-20 bg-white">
+                    <div class="px-6 md:px-20 max-w-7xl mx-auto mb-32 grid md:grid-cols-2 gap-12 items-end">
+                        <div>
+                            <h1 class="text-7xl md:text-9xl font-serif text-midnight leading-[0.85]">${data.hero.title}</h1>
+                        </div>
+                        <div class="pb-4 flex flex-col items-start md:items-end">
+                            <p class="text-xl font-light text-midnight/50 mb-8">${data.hero.subtitle}</p>
+                            <a href="/contact" data-link class="text-midnight border-b border-midnight pb-1 uppercase tracking-widest text-[10px] hover:text-champagne hover:border-champagne transition-colors hover-trigger">
+                                ${data.cta.buttonText}
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Horizontal Scroll -->
+                    <div class="flex overflow-x-auto gap-4 px-6 md:px-20 pb-12 snap-x snap-mandatory no-scrollbar">
+                        ${imagesHtml}
+                    </div>
+
+                    <div class="px-6 md:px-20 max-w-4xl mx-auto mt-32 space-y-12">
+                        ${data.content.paragraphs.map((p) => `<p class="text-2xl md:text-3xl font-serif text-midnight leading-relaxed">${p}</p>`).join("")}
+                    </div>
+                </section>
+            `;
+        app.innerHTML = html;
+      }
+
+      function renderCrew() {
+        const data = SITE_DATA.crewPage[0];
+
+        const crewHtml = data.crewMembers
+          .map(
+            (member) => `
+                <div class="group bg-white p-8 md:p-16 hover:shadow-2xl transition-shadow duration-700 hover-trigger">
+                    <div class="aspect-[3/4] overflow-hidden mb-10 relative grayscale group-hover:grayscale-0 transition-all duration-1000">
+                        <img src="${member.image.assetUrl}" alt="${member.name}" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-4xl font-serif text-midnight mb-2">${member.name}</h3>
+                    <p class="text-champagne uppercase tracking-widest text-[10px] font-bold mb-8">${member.role}</p>
+                    <div class="space-y-6 text-midnight/60 font-light leading-relaxed border-t border-midnight/10 pt-8">
+                        ${member.bio.map((b) => `<p class="text-sm md:text-base">${b}</p>`).join("")}
+                    </div>
+                </div>
+            `,
+          )
+          .join("");
+
+        const html = `
+                <section class="min-h-screen pt-40 pb-20 px-6 md:px-20 bg-porcelain">
+                    <div class="max-w-7xl mx-auto mb-32">
+                        <span class="text-champagne uppercase tracking-widest text-[10px] font-bold block mb-6">${data.hero.subHeading}</span>
+                        <h1 class="text-7xl md:text-9xl font-serif text-midnight mb-12">${data.hero.heading}</h1>
+                        <p class="max-w-2xl text-lg font-light text-midnight/60">${data.hero.description}</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8 max-w-7xl mx-auto">
+                        ${crewHtml}
+                    </div>
+                </section>
+            `;
+        app.innerHTML = html;
+      }
+
+      function renderContact() {
+        const data = SITE_DATA.contactPage[0];
+
+        const html = `
+                <section class="min-h-screen flex flex-col md:flex-row">
+                    <!-- Left: Info -->
+                    <div class="w-full md:w-1/2 bg-midnight text-porcelain p-12 md:p-24 flex flex-col justify-between relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-20">
+                             <img src="https://cdn.sanity.io/images/c20abca7/production/708cec19ac0d52a98033e50246ca0cb168209f2f-414x600.jpg" class="w-full h-full object-cover grayscale">
+                        </div>
+                        <div class="relative z-10">
+                            <span class="text-champagne uppercase tracking-widest text-[10px] font-bold mb-6 block">${data.hero.preHeading}</span>
+                            <h1 class="text-6xl md:text-8xl font-serif mb-8 leading-none">${data.hero.mainHeading}</h1>
+                            <p class="text-xl font-light text-porcelain/70">${data.hero.description}</p>
+                        </div>
+                        <div class="relative z-10 mt-12 md:mt-0 space-y-4">
+                            <p class="text-[10px] uppercase tracking-widest text-porcelain/40">Contact Direct</p>
+                            <p class="text-lg font-serif italic">info@lakecomostyle.it</p>
+                            <p class="text-lg font-serif italic">+39 348 784 7234</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Form -->
+                    <div class="w-full md:w-1/2 bg-porcelain p-12 md:p-24 flex items-center">
+                        <form class="w-full max-w-md mx-auto space-y-12" onsubmit="event.preventDefault(); alert('Thank you for reaching out. We will be in touch soon.');">
+                            <h2 class="text-4xl font-serif text-midnight">${data.form.formTitle}</h2>
+                            
+                            <div class="grid grid-cols-2 gap-8">
+                                <div class="space-y-3">
+                                    <label class="text-[10px] uppercase tracking-widest text-midnight/50 font-bold">${data.form.firstNameLabel}</label>
+                                    <input type="text" class="w-full border-b border-midnight/20 py-4 focus:outline-none focus:border-midnight transition-colors bg-transparent font-serif text-xl" placeholder="${data.form.firstNamePlaceholder || "John"}">
+                                </div>
+                                <div class="space-y-3">
+                                    <label class="text-[10px] uppercase tracking-widest text-midnight/50 font-bold">${data.form.lastNameLabel}</label>
+                                    <input type="text" class="w-full border-b border-midnight/20 py-4 focus:outline-none focus:border-midnight transition-colors bg-transparent font-serif text-xl" placeholder="${data.form.lastNamePlaceholder || "Doe"}">
+                                </div>
+                            </div>
+
+                            <div class="space-y-3">
+                                <label class="text-[10px] uppercase tracking-widest text-midnight/50 font-bold">${data.form.emailLabel}</label>
+                                <input type="email" class="w-full border-b border-midnight/20 py-4 focus:outline-none focus:border-midnight transition-colors bg-transparent font-serif text-xl" placeholder="${data.form.emailPlaceholder || "john@example.com"}">
+                            </div>
+
+                            <div class="space-y-3">
+                                <label class="text-[10px] uppercase tracking-widest text-midnight/50 font-bold">${data.form.groupSizeLabel}</label>
+                                <select class="w-full border-b border-midnight/20 py-4 focus:outline-none focus:border-midnight transition-colors bg-transparent text-midnight font-serif text-xl">
+                                    <option>${data.form.groupSizeDefaultOption || "Select group size"}</option>
+                                    ${data.form.groupSizeOptions.map((opt) => `<option>${opt}</option>`).join("")}
+                                </select>
+                            </div>
+
+                            <div class="space-y-3">
+                                <label class="text-[10px] uppercase tracking-widest text-midnight/50 font-bold">${data.form.messageLabel}</label>
+                                <textarea rows="4" class="w-full border-b border-midnight/20 py-4 focus:outline-none focus:border-midnight transition-colors bg-transparent resize-none font-serif text-xl"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-midnight text-porcelain py-6 uppercase tracking-widest text-[10px] font-bold hover:bg-champagne transition-colors hover-trigger mt-8">
+                                ${data.form.submitButtonText}
+                            </button>
+                        </form>
+                    </div>
+                </section>
+            `;
+        app.innerHTML = html;
+      }
+
+      function renderGallery() {
+        const data = SITE_DATA.galleryPage[0];
+        const imagesHtml = data.images
+          .map(
+            (img) => `
+                <div class="break-inside-avoid mb-8 hover-trigger group relative overflow-hidden">
+                    <img src="${img.assetUrl}" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
+                </div>
+            `,
+          )
+          .join("");
+
+        const html = `
+                <section class="min-h-screen pt-40 pb-20 px-6 md:px-20 bg-porcelain">
+                    <div class="max-w-7xl mx-auto mb-24 text-center">
+                        <h1 class="text-7xl md:text-9xl font-serif text-midnight mb-6">${data.hero.heading}</h1>
+                        <p class="text-xl font-light text-midnight/50">${data.hero.subHeading}</p>
+                    </div>
+                    
+                    <div class="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8 max-w-7xl mx-auto">
+                        ${imagesHtml}
+                    </div>
+                </section>
+            `;
+        app.innerHTML = html;
+      }
+
+      // ------------------------------------------------------------------
+      // 4. INTERACTION LOGIC
+      // ------------------------------------------------------------------
+      function initInteractions() {
+        // Custom Cursor Logic
+        const hoverTriggers = document.querySelectorAll(
+          ".hover-trigger, a, button, input, textarea, select",
+        );
+
+        hoverTriggers.forEach((trigger) => {
+          trigger.addEventListener("mouseenter", () => {
+            cursor.classList.add("hovered");
+            cursorDot.style.transform = "translate(-50%, -50%) scale(0)";
+          });
+          trigger.addEventListener("mouseleave", () => {
+            cursor.classList.remove("hovered");
+            cursorDot.style.transform = "translate(-50%, -50%) scale(1)";
+          });
+        });
+
+        document.addEventListener("mousemove", (e) => {
+          cursor.style.left = e.clientX + "px";
+          cursor.style.top = e.clientY + "px";
+          cursorDot.style.left = e.clientX + "px";
+          cursorDot.style.top = e.clientY + "px";
+        });
+
+        // Mobile Menu Logic
+        const menuBtn = document.getElementById("mobile-menu-btn");
+        const closeBtn = document.getElementById("close-menu");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        if (menuBtn && closeBtn && mobileMenu) {
+          menuBtn.addEventListener("click", () =>
+            mobileMenu.classList.remove("translate-x-full"),
+          );
+          closeBtn.addEventListener("click", () =>
+            mobileMenu.classList.add("translate-x-full"),
+          );
+        }
+
+        // Image Reveal Observer
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("loaded");
+              }
+            });
+          },
+          { threshold: 0.1 },
+        );
+
+        document
+          .querySelectorAll(".img-reveal")
+          .forEach((img) => observer.observe(img));
+      }
+
+      // Initialize App
+      window.addEventListener("load", () => {
+        // Remove Loader
+        const loader = document.getElementById("loader");
+        setTimeout(() => {
+          loader.style.opacity = "0";
+          loader.style.visibility = "hidden";
+          handleRoute();
+        }, 1500);
+      });
+    </script>
+  </body>
+</html>
